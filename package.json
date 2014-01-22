@@ -1,0 +1,18 @@
+{
+  "name": "my_web_server1",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": ">=3.4.7",
+    "ejs": "*",
+    "ejs-locals": "*",
+    "less-middleware": "*",
+    "nconf": "*",
+    "bower": "~1.2.8",
+    "async": "~0.2.9",
+    "string": "~1.7.0",
+    "winston": "~0.7.2"
+  }
+}

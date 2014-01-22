@@ -1,0 +1,20 @@
+{
+  "name": "bower_test",
+  "version": "0.0.1",
+  "authors": [
+    "test <test@test.test>"
+  ],
+  "license": "MIT",
+  "private": true,   "// не публиковать пакет, оставить приватным":1,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "bootstrap": "*"
+  }
+}

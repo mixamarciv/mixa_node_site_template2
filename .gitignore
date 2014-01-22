@@ -1,0 +1,19 @@
+node_modules/
+tmp/
+temp/
+public/vendor/bower_components/
+
+
+#############
+## Windows detritus
+#############
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
