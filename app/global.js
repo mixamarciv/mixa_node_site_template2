@@ -12,16 +12,23 @@ g.fs   = require('fs');
 g.util = require('util');
 
 g.app_config = require('../config');
-g.log        = require('./log_config.js')();
+g.app_config.main_path = g.path.normalize(g.path.join(__dirname, '..'));
+g.app_config.templates_path = g.path.normalize( g.path.join(__dirname, '..',g.app_config.get("templates:path")) );
+
+g.log = require('./log_config.js')();
 
 
 
 
 g.app_fnc = {};
-f = g.app_fnc;
+a = g.app_fnc;
 
-f.HttpError = require('./error/http_error.js');
+a.render = require('./render/render.js');
+a.HttpError = require('./error/http_error.js');
 
+a.mixa = require('mixa_std_js_functions');
+
+a.session = require('./session/session.js');
 
 /*********
 winston.profile('test');

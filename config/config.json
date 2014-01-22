@@ -7,6 +7,10 @@
         "#other log level names": "all,trace,debug,info,warn,error,fatal"
     },
     
+    "templates": {
+    	"path": "./views"
+    },
+    
     "db": {                                     
         "connection": "mongodb://localhost",    
         "name": "db_name",                      

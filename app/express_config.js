@@ -12,20 +12,27 @@ module.exports = function (app, express) {
     //test.get_info('express_config run');
     //test.set_var_value('express_config2');
     
-    var ejs = require('ejs-locals'),
-        path = g.path,
+    var path = g.path,
         config = g.app_config;
         //mongoose = require('../utils/mongoose'),
         //MongoStore = require('connect-mongo')(express),
 
     var router = require('../routes');
     
+    /****
+    //задаем шаблонизатор
+    var ect = require('ect');
+    var ectRenderer = ect({ watch: true, // — Automatic reloading of changed templates,
+                                         //defaulting to false (useful for debugging with enabled cache, not supported for client-side)
+                            root: __dirname + '/views',
+                            cache: true, // — Compiled functions are cached, defaulting to true
+                            test : 1,
+                           });
+    app.engine('ect', ectRenderer.render );
+    ***/
     
-
- 
-    app.engine('ejs', ejs);
-    app.set('views', path.join(__dirname, '../views'));
-    app.set('view engine', 'ejs');
+    //app.set('views', path.normalize(path.join(__dirname, '../views')) );
+    //app.set('view engine', 'ejs');
     
     
 
@@ -75,7 +82,7 @@ module.exports = function (app, express) {
     
 
     //user functions load:
-    require('./app_use/index.js')(app,express);
+    require('./app_use/app_use.js')(app,express);
 
 
     //Routing

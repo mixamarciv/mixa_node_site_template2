@@ -1,9 +1,9 @@
+//тут загружаем список всех роутов
 var g  = require('../app.js');
-var gf = g.app_fnc;
+var a  = g.app_fnc;
 var r  = require('./global/index.js');
-/*
- * GET home page.
- */
+
+
 module.exports = function(app){
   
   app.get('/',function(req, res, next){
