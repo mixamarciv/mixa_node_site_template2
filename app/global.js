@@ -17,7 +17,7 @@ g.app_config.templates_path = g.path.normalize( g.path.join(__dirname, '..',g.ap
 
 g.log = require('./log_config.js')();
 
-
+g.mixa = require('mixa_std_js_functions');
 
 
 g.app_fnc = {};
@@ -26,7 +26,7 @@ a = g.app_fnc;
 a.render = require('./render/render.js');
 a.HttpError = require('./error/http_error.js');
 
-a.mixa = require('mixa_std_js_functions');
+
 
 a.session = require('./session/session.js');
 

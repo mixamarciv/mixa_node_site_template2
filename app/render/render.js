@@ -3,7 +3,7 @@ var g = require('../global.js');
 var a = g.app_fnc;
 
 //задаем обработку вывода шаблона
-module.exports = function(req,res,template,data){
+module.exports = function(req,res,template){
     g.log.info("render '"+template+"'..");
     var ect = require('ect');
     var renderer = ect({ watch: true, // — Automatic reloading of changed templates,
@@ -15,8 +15,11 @@ module.exports = function(req,res,template,data){
     
     //app.engine('ect', renderer.render );
     var template_file_path = g.path.join(g.app_config.templates_path,template);
-    if(!data.g) data.g = g;
-    if(!data.a) data.a = a;
+
+    //if(!data) data = {};
+    var data = res.locals.data;
+    
+
     var html;
     
     try {
@@ -28,6 +31,8 @@ module.exports = function(req,res,template,data){
              "file: "+template_file_path+
              "<pre>"+
              g.util.inspect(err,1,10,0)+
+             "</pre>(data size:"+data.length+") :<pre>"+
+             g.util.inspect(data,1,3,0)+
              "</pre></body></html>";
     }
     
@@ -35,5 +40,17 @@ module.exports = function(req,res,template,data){
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
     }
     
+    if(!html){
+        g.log.error("send data (data size:"+data.length+")");
+        html = "<html><head><title>ERROR template render</title></head>"+
+               "<body style=\"background: #000; color:#ccc; font-weight: bolder;\">"+
+               "file: "+template_file_path+
+               "<pre>"+
+               g.util.inspect(data,1,1,0)+
+               "</pre></body></html>";
+    }
+    
     res.end(html);
+    
+    
 }

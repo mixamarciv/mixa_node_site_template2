@@ -3,7 +3,7 @@
   <%- @g.log.error("render template0"); %>
   <head>
     <title>ERROR</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css?lid=<%- @gen_link_id() %>' />
   </head>
   <body>
     <h1>ERROR(ОШИБКА): нужна авторизация</h1>

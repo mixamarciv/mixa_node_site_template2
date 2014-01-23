@@ -9,11 +9,11 @@ module.exports = function(req,res,next){
     if(!req.session || !req.session.user){
         g.log.info("!req.session || !req.session.user");
         //res.render("need_auth.ect",{g:g});
-        a.render(req,res,"need_auth.ect",{g:g})
+        a.render(req,res,"need_auth.ect")
         return 0;
     }
     
-    res.locals.user = req.session.user;
+    res.locals.data.user = req.session.user;
     
     return next();
 }
