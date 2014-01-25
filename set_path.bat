@@ -14,22 +14,16 @@
 
 :: ===========================================================================
 :: задаем основные пути для запуска скрипта
-@SET NODE_PATH_BIN1=d:\programs\nodejs
-@SET NODE_PATH_BIN2=d:\program\nodejs
-@SET GIT_PATH=d:\programs\nodejs\git
-@SET GIT_PATH2=d:\program\nodejs\git
-@SET PYTHON_PATH=d:\programs\nodejs\Python26
-@SET PYTHON_PATH2=d:\programs\nodejs\Python26
+@SET NODE_PATH_BIN=d:\program\nodejs
+@SET GIT_PATH=d:\program\nodejs\git
+@SET PYTHON_PATH=d:\program\nodejs\Python26
+
 
 @SET PATH=%WINDIR%;%WINDIR%\system32
 @SET PATH=%PATH%;%PYTHON_PATH%;%GIT_PATH%;%GIT_PATH%\bin;%GIT_PATH%\cmd
-@SET PATH=%PATH%;%PYTHON_PATH2%;%GIT_PATH2%;%GIT_PATH2%\bin;%GIT_PATH2%\cmd
-@SET PATH=%PATH%;%NODE_PATH_BIN1%
-@SET PATH=%PATH%;%NODE_PATH_BIN2%
-@SET PATH=%PATH%;%NODE_PATH_BIN1%\node_modules\npm\node_modules
-@SET PATH=%PATH%;%NODE_PATH_BIN2%\node_modules\npm\node_modules
-@SET PATH=%PATH%;%NODE_PATH_BIN1%\node_modules\.bin
-@SET PATH=%PATH%;%NODE_PATH_BIN2%\node_modules\.bin
+@SET PATH=%PATH%;%NODE_PATH_BIN%
+@SET PATH=%PATH%;%NODE_PATH_BIN%\node_modules\npm\node_modules
+@SET PATH=%PATH%;%NODE_PATH_BIN%\node_modules\.bin
 @SET PATH=%PATH%;.\node_modules\.bin
 
 @SET NODE_PATH=.
