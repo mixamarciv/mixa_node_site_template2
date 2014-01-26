@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html>
+<% extend @templates_path+'/index.ect' %>
+
+
   <%- @g.log.error("render template0"); %>
-  <head>
-    <title>ERROR</title>
-    <link rel='stylesheet' href='/stylesheets/style.css?lid=<%- @gen_link_id() %>' />
-  </head>
-  <body>
-    <h1>ERROR(ОШИБКА): нужна авторизация</h1>
-    пройдите по ссылке что бы авторизоваться
-    <%- @g.log.debug("render template"); %>
+
+    <h1>Добро пожаловать!</h1>
+    <h2>проходите в мой дом, мои двери открыты )</h2>
+    
+    <h3><br>вы зашли на этот сайт первый раз
+        <br>поэтому попали на эту страницу
+        <br>и авторизовались как анонимный пользователь
+        <br>для анонимных пользователей доступны не все ресурсы этого сайта
+        <br>вы можете попробовать авторизоваться под своей учетной записью или 
+        <br>попробовать открыть ссылку прямо сейчас
+    </h3>
+
     <%- @g.log.warn("render template!"); %>
-  </body>
-</html>
+    
+<% block 'footer' : %>
+	<span>Custom footer content</span>
+<% end %>

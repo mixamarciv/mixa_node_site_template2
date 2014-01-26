@@ -36,7 +36,7 @@ module.exports = function (app, express) {
     
     
 
-    //прокси мы тоже доверяем )
+    //прокси мы тоже доверяем
     app.enable('trust proxy');
 
 
@@ -81,26 +81,15 @@ module.exports = function (app, express) {
     }));
     
 
-    //user functions load:
+    //user functions load: - загружаем все функции и проходим проверки пользователя
     require('./app_use/app_use.js')(app,express);
 
 
-    //Routing
+    //теперь задаем все роуты на вывод нужных страниц пользователю
     //app.use(app.router);
     require('../routes')(app);
 
 
-    /* Public directory
-    //app.use(express.static(path.join(__dirname, '../public')));
-    //app.use("/public", express.static(path.join(__dirname, '../public')));
-    app.use(function(rec,res,next){
-        log.info('no routes for: "%s"',rec.originalUrl);
-        if(typeof rec == 'number' ){
-            throw(new HttpError(rec));
-        }
-        res.send(500, 'no routes for: '+rec.originalUrl);
-    });
-    */
 
     
     // ------------------------------------------------------------------------

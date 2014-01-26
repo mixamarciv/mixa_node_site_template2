@@ -3,7 +3,7 @@ var g = require('../global.js');
 
 module.exports = function(req,res,next){
     
-    g.log.info("load res.sendHttpError..");
+    //g.log.info("load res.sendHttpError..");
     
     res.sendHttpError = function(error){
         g.log.warn("execute res.sendHttpError..");

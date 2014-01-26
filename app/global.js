@@ -30,35 +30,5 @@ a.HttpError = require('./error/http_error.js');
 
 a.session = require('./session/session.js');
 
-/*********
-winston.profile('test');
 
-
-log4js.configure({
- appenders: [
-   { type: 'console' },
-   { category: 'app', type: 'file', filename: config.get("log:app:filepath"), maxLogSize: 20480, backups: 10 },
-   { category: 'inf', type: 'file', filename: config.get("log:inf:filepath"), maxLogSize: 20480, backups: 10 }
-  ]
-});
-
-//задаем setLevel для каждой категории логов из конфиг файла
-function set_log_levels_from_config(config){
-  var log_types = config.get('log');
-  for(var log_type in log_types){
-    if(log_types[log_type] && log_types[log_type].filepath){
-      var log_type_level = 'ALL';
-      if(log_types[log_type].level){
-        log_type_level = log_types[log_type].level;
-      }
-      var logger = log4js.getLogger(log_type);
-      logger.setLevel(log_type_level);
-      console.log("  log type \""+log_type+"\" set level \""+log_type_level+"\"");
-    }
-  }
-}
-
-set_log_levels_from_config(config);
-
-******/
 

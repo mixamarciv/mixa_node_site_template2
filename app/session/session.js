@@ -9,7 +9,7 @@ module.exports = {
     visit: session_visit,
     end: session_end,
     check_link_id: check_link_id,
-    link_id: gen_link_id,
+    gen_link_id: gen_link_id,
 }
 
 function get_random_time_id() {
@@ -70,6 +70,7 @@ function session_visit(req,res,next){
     }
     req.session.count++;
     
+    //задаем gen_link_id() доступной для использования в шаблонах
     res.locals.data.gen_link_id = function(is_long){
         return gen_link_id(req,res,is_long);
     }

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title><%- @page_title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css?lid=<%- @gen_link_id() %>' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% content %>
+    <footer>
+        <% content 'footer' %>
+    </footer>
   </body>
 </html>

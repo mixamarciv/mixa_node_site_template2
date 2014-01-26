@@ -1,5 +1,8 @@
 {
+    
     "port": 3000,
+    
+    "site_title_default": "тестовый сайт3000",
     
     "log": {
         "app": { "filepath": "./temp/log/app.log", "level": "info"  },
