@@ -6,6 +6,11 @@ var config = require('../config');
 
 var winston = require('winston');
 
+var g = require('./global.js');
+
+var date_to_str_format = g.mixa.str.date_to_str_format;
+
+
 
 var transport_console_options = {
     colorize: true,
@@ -14,9 +19,20 @@ var transport_console_options = {
     json: false
 }
 
+
+
+var log_filename = config.get("log:app:filepath")+"/app_"+date_to_str_format("YMDhmsms")+".log";
+var log_level = config.get("log:app:level");
+
+if(g.app_config.get('app_is_webserver')){
+    //если запускаем внешнее приложение
+    log_filename = config.get("log:inf:filepath")+"/app_"+date_to_str_format("YMDhmsms")+".log";
+    log_level = config.get("log:inf:level");
+}
+
 var transport_file_options = {
-    filename: config.get("log:app:filepath"),
-    level: config.get("log:app:level"),
+    filename: log_filename,
+    level: log_level,
     handleExceptions: true,
     timestamp: true,
     maxsize: 1024*100,

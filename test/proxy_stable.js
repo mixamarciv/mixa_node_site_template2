@@ -1,9 +1,9 @@
 console.log("start http proxy");
-var cfg = require("./config/config.js");
-var dump = require("./my_std_modules/var_dump.js");
-var mystr = require("./my_std_modules/str_functions.js");
+//var cfg = require("./config/config.js");
+//var dump = require("./my_std_modules/var_dump.js");
+//var mystr = require("./my_std_modules/str_functions.js");
 
-var ip = require("./my_std_modules/ip.js");
+//var ip = require("./my_std_modules/ip.js");
 
 var sys =require("util");
 var url = require("url");
@@ -62,6 +62,9 @@ http_proxy = http.createServer(function(request, response) {
     test: 1
   };
 
+  if((/.*127\.0\.0\.1.*/).test(options.host)){
+    options.port = 3000;
+  }else
   if((/.*miffka\.troley\.net.*/).test(options.host)){
     options.port = 8081;
   }else

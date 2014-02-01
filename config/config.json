@@ -5,8 +5,8 @@
     "site_title_default": "тестовый сайт3000",
     
     "log": {
-        "app": { "filepath": "./temp/log/app.log", "level": "info"  },
-        "inf": { "filepath": "./temp/log/inf.log", "level": "trace" },
+        "app": { "filepath": "./temp/log", "level": "info"  },
+        "inf": { "filepath": "./temp/log", "level": "trace" },
         "#other log level names": "all,trace,debug,info,warn,error,fatal"
     },
     

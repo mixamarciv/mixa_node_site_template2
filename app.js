@@ -3,27 +3,36 @@ console.log('load app..');
 var g = require('./app/global.js');
 module.exports = g; 
 
-var express = require('express');
-var app = express();
+var config = g.app_config;
+
+if(config.get('app_is_webserver')){
+    //если запускаем наш веб сервер
+
+    var express = require('express');
+    var app = express();
+    
+    require('./app/express_config.js')(app, express);
+    
+    var http = require('http');
+    var server = http.createServer(app);
+    var port = config.get('port');
+    
+    server.listen(port, function(){
+        g.log.info('Express server listening on port ' + port);
+    });
+    
+    server.on('error',function(err){
+        g.log.error('http server error: %j',err);
+    });
+    
+    console.log('start app');
+    
+}else{
+    //если запускаем внешнее приложение
+    var user_app = args[2];
+    console.log('start app '+user_app);
+}
 
 
-require('./app/express_config.js')(app, express);
-
-var http = require('http');
-var server = http.createServer(app);
-var port = g.app_config.get('port');
-
-server.listen(port, function(){
-    g.log.info('Express server listening on port ' + port);
-});
-
-server.on('error',function(err){
-    g.log.error('http server error: %j',err);
-});
-
-
-
-
-
-console.log('start app');
+console.log('end load');
 

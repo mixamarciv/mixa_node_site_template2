@@ -5,7 +5,16 @@ var path  = require('path'),
 nconf.argv()
      .env()
      .file({ file: path.join(__dirname,'/config.json') });
-       
+     
+     
+var args = process.argv;
+if(args.length<=2){
+    nconf.set("app_is_webserver",1); //флаг, что приложение запущено как веб сервер
+}else{
+    nconf.set("app_is_webserver",0);
+}
+
+
 module.exports = nconf;
 
 
