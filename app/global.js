@@ -1,5 +1,6 @@
 console.log('load global functions..');
-
+//тут объявляем все глобальные переменные которые используются практически во всех модулях
+//!порядок подключения модулей НЕ МЕНЯТЬ
 
 var global_app_var = {};
 module.exports = global_app_var;
@@ -34,5 +35,6 @@ if(g.app_config.get('app_is_webserver')){
     a.session = require('./session/session.js');
 }
 
-
+//подключаем модуль для обмена сообщениями между процессами
+g.exchange = require('./exchange_data/exchange.js');
 

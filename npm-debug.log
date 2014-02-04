@@ -1,0 +1,1706 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'd:\\program\\nodejs\\\\node.exe',
+1 verbose cli   'd:\\program\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'ee-net' ]
+2 info using npm@1.3.21
+3 info using node@v0.10.24
+4 verbose node symlink d:\program\nodejs\\node.exe
+5 warn package.json my_web_server1@0.0.1 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'ee-net', null ]
+8 verbose cache add name=undefined spec="ee-net" args=["ee-net",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'ee-net',
+9 verbose parsed url   path: 'ee-net',
+9 verbose parsed url   href: 'ee-net' }
+10 silly lockFile e01d0cff-ee-net ee-net
+11 verbose lock ee-net C:\Users\User\AppData\Roaming\npm-cache\e01d0cff-ee-net.lock
+12 silly lockFile e01d0cff-ee-net ee-net
+13 silly lockFile e01d0cff-ee-net ee-net
+14 verbose addNamed [ 'ee-net', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 94c95a25-ee-net ee-net@
+17 verbose lock ee-net@ C:\Users\User\AppData\Roaming\npm-cache\94c95a25-ee-net.lock
+18 silly addNameRange { name: 'ee-net', range: '*', hasData: false }
+19 verbose url raw ee-net
+20 verbose url resolving [ 'https://registry.npmjs.org/', './ee-net' ]
+21 verbose url resolved https://registry.npmjs.org/ee-net
+22 info trying registry request attempt 1 at 17:54:07
+23 http GET https://registry.npmjs.org/ee-net
+24 http 200 https://registry.npmjs.org/ee-net
+25 silly registry.get cb [ 200,
+25 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:04 GMT',
+25 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+25 silly registry.get     etag: '"D11LFJJ6SO9JUS0QK14HMQMAT"',
+25 silly registry.get     'content-type': 'application/json',
+25 silly registry.get     via: '1.1 varnish',
+25 silly registry.get     'cache-control': 'max-age=1',
+25 silly registry.get     'content-length': '24029',
+25 silly registry.get     'accept-ranges': 'bytes',
+25 silly registry.get     age: '0',
+25 silly registry.get     'x-served-by': 'cache-v43-ASH, cache-fra1229-FRA',
+25 silly registry.get     'x-cache': 'MISS, MISS',
+25 silly registry.get     'x-cache-hits': '0, 0',
+25 silly registry.get     'x-timer': 'S1391522044.416080236,VS0,VS44,VE67,VE121',
+25 silly registry.get     vary: 'Accept',
+25 silly registry.get     'keep-alive': 'timeout=10, max=50',
+25 silly registry.get     connection: 'Keep-Alive' } ]
+26 silly addNameRange number 2 { name: 'ee-net', range: '*', hasData: true }
+27 silly addNameRange versions [ 'ee-net', [ '0.1.0', '0.1.1', '0.1.2', '0.1.3' ] ]
+28 verbose addNamed [ 'ee-net', '0.1.3' ]
+29 verbose addNamed [ '0.1.3', '0.1.3' ]
+30 silly lockFile 06362a2d-ee-net-0-1-3 ee-net@0.1.3
+31 verbose lock ee-net@0.1.3 C:\Users\User\AppData\Roaming\npm-cache\06362a2d-ee-net-0-1-3.lock
+32 silly lockFile d41ad325-pmjs-org-ee-net-ee-net-0-1-3-tgz https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz
+33 verbose lock https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz C:\Users\User\AppData\Roaming\npm-cache\d41ad325-pmjs-org-ee-net-ee-net-0-1-3-tgz.lock
+34 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz',
+34 verbose addRemoteTarball   '65a47a5825dbd2484b27f87db0b68f9978fd56fb' ]
+35 info retry fetch attempt 1 at 17:54:08
+36 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\tmp.tgz
+37 http GET https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz
+38 http 200 https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz
+39 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\tmp.tgz
+40 silly lockFile c3c23921-048895-0-546685146400705-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package
+41 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package C:\Users\User\AppData\Roaming\npm-cache\c3c23921-048895-0-546685146400705-package.lock
+42 silly lockFile f761470f-048895-0-546685146400705-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\tmp.tgz
+43 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\f761470f-048895-0-546685146400705-tmp-tgz.lock
+44 silly gunzTarPerm modes [ '755', '644' ]
+45 silly gunzTarPerm extractEntry package.json
+46 silly gunzTarPerm extractEntry .npmignore
+47 silly gunzTarPerm extractEntry README.md
+48 silly gunzTarPerm extractEntry index.js
+49 silly gunzTarPerm extractEntry test.js
+50 silly gunzTarPerm extractEntry .travis.yml
+51 silly gunzTarPerm extractEntry lib/Connection.js
+52 silly gunzTarPerm extractEntry lib/Server.js
+53 silly gunzTarPerm extractEntry lib/net.js
+54 silly lockFile c3c23921-048895-0-546685146400705-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package
+55 silly lockFile c3c23921-048895-0-546685146400705-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package
+56 silly lockFile f761470f-048895-0-546685146400705-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\tmp.tgz
+57 silly lockFile f761470f-048895-0-546685146400705-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\tmp.tgz
+58 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-net\\0.1.3\\package.tgz',
+58 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522048895-0.546685146400705\\package' ]
+59 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+60 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package
+61 silly lockFile c3c23921-048895-0-546685146400705-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package
+62 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package C:\Users\User\AppData\Roaming\npm-cache\c3c23921-048895-0-546685146400705-package.lock
+63 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+64 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz C:\Users\User\AppData\Roaming\npm-cache\890949ee-m-cache-ee-net-0-1-3-package-tgz.lock
+65 silly lockFile c3c23921-048895-0-546685146400705-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package
+66 silly lockFile c3c23921-048895-0-546685146400705-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522048895-0.546685146400705\package
+67 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+68 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+69 silly lockFile 71ee187a-g-npm-cache-ee-net-0-1-3-package C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package
+70 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package C:\Users\User\AppData\Roaming\npm-cache\71ee187a-g-npm-cache-ee-net-0-1-3-package.lock
+71 silly lockFile 71ee187a-g-npm-cache-ee-net-0-1-3-package C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package
+72 silly lockFile 71ee187a-g-npm-cache-ee-net-0-1-3-package C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package
+73 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+74 silly lockFile 3a8abb20-g-npm-cache-ee-net-0-1-3-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package
+75 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package C:\Users\User\AppData\Roaming\npm-cache\3a8abb20-g-npm-cache-ee-net-0-1-3-package.lock
+76 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+77 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz C:\Users\User\AppData\Roaming\npm-cache\890949ee-m-cache-ee-net-0-1-3-package-tgz.lock
+78 silly gunzTarPerm modes [ '755', '644' ]
+79 silly gunzTarPerm extractEntry package.json
+80 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+81 silly gunzTarPerm extractEntry .npmignore
+82 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+83 silly gunzTarPerm extractEntry README.md
+84 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+85 silly gunzTarPerm extractEntry index.js
+86 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+87 silly gunzTarPerm extractEntry test.js
+88 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+89 silly gunzTarPerm extractEntry .travis.yml
+90 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+91 silly gunzTarPerm extractEntry lib/Connection.js
+92 silly gunzTarPerm modified mode [ 'lib/Connection.js', 438, 420 ]
+93 silly gunzTarPerm extractEntry lib/net.js
+94 silly gunzTarPerm modified mode [ 'lib/net.js', 438, 420 ]
+95 silly gunzTarPerm extractEntry lib/Server.js
+96 silly gunzTarPerm modified mode [ 'lib/Server.js', 438, 420 ]
+97 silly lockFile 3a8abb20-g-npm-cache-ee-net-0-1-3-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package
+98 silly lockFile 3a8abb20-g-npm-cache-ee-net-0-1-3-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package
+99 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+100 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+101 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz 644
+102 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+103 silly lockFile d41ad325-pmjs-org-ee-net-ee-net-0-1-3-tgz https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz
+104 silly lockFile d41ad325-pmjs-org-ee-net-ee-net-0-1-3-tgz https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz
+105 silly lockFile 06362a2d-ee-net-0-1-3 ee-net@0.1.3
+106 silly lockFile 06362a2d-ee-net-0-1-3 ee-net@0.1.3
+107 silly lockFile 94c95a25-ee-net ee-net@
+108 silly lockFile 94c95a25-ee-net ee-net@
+109 silly resolved [ { name: 'ee-net',
+109 silly resolved     description: 'simple tcp client / server for easy json objects / data transmission',
+109 silly resolved     version: '0.1.3',
+109 silly resolved     homepage: 'https://github.com/eventEmitter/ee-net',
+109 silly resolved     author:
+109 silly resolved      { name: 'Michael van der Weg',
+109 silly resolved        email: 'michael@eventemitter.com',
+109 silly resolved        url: 'http://eventemitter.com/' },
+109 silly resolved     licence: 'mit',
+109 silly resolved     repository:
+109 silly resolved      { url: 'https://github.com/eventEmitter/ee-net.git',
+109 silly resolved        type: 'git' },
+109 silly resolved     engines: { node: '>=v0.10.17' },
+109 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-net/issues' },
+109 silly resolved     dependencies:
+109 silly resolved      { 'ee-class': '*',
+109 silly resolved        'ee-event-emitter': '*',
+109 silly resolved        'ee-types': '*',
+109 silly resolved        'ee-options': '*',
+109 silly resolved        'ee-arguments': '*',
+109 silly resolved        'ee-log': '*',
+109 silly resolved        'ee-error': '*',
+109 silly resolved        'ee-protocol-json': '*' },
+109 silly resolved     devDependencies: {},
+109 silly resolved     optionalDependencies: {},
+109 silly resolved     keywords: [ 'client', 'server', 'json', 'net' ],
+109 silly resolved     scripts: { test: 'node test.js' },
+109 silly resolved     readme: '# ee-net\n\nSimple tcp client / server for easy json objects / data transmission supporting tls\n\n## installation\n\n\tnpm install ee-net\n\n\n## build status\n\n[![Build Status](https://travis-ci.org/eventEmitter/ee-net.png?branch=master)](https://travis-ci.org/eventEmitter/ee-net)\n\n\n## usage\n\nThe Server and Connection class do have almost all properties and events of the native node.js «net» API. see [net API](http://nodejs.org/docs/latest/api/net.html)\n\n### server\n\n#### constructor\n\nThe constructor of the server class takes the options described at [tls.createServer](http://nodejs.org/docs/latest/api/tls.html#tls_tls_createserver_options_secureconnectionlistener) for a tls enabled server and the options described at [net.createServer](http://nodejs.org/docs/latest/api/net.html#net_net_createserver_options_connectionlistener) for non tls mode. you may pass a port and a host option as well.\n\n\tvar net = require( "ee-net" );\n\n\tvar server = new net.Server( { port: 9999 } );\n\n#### «connection» event\n\nThe connection event is called when a client has established a new connection on the server\n\n\tserver.on( "connection", function( connection ){\n\t\t// see the «connection» chapter below for the docs on connections\n\t} );\n\n\n### connection\n\n#### constructor\n\nThe constructor of the connection class takes the options described at [tls.connect](http://nodejs.org/docs/latest/api/tls.html#tls_tls_connect_port_host_options_callback) for tls enabled connections and the options «port» and «host» for non tls enabled connections.\n\n\tvar connection = new net.Connection( { host: 10.0.1.2, port: 9999 } );\n\n#### «message» event\n\nThe message event is called when a message was received and decoeded successfully\n\n\tconnection.on( "message", function( message ){\n\t\tlog( message );\n\t} )\n\n#### send method\n\nYou may transmit messages using the «send» method\n\n\tconnection.send( { myJSON: "object" } );\n\n#### remote / local property\n\nThe remote and local property return the remote / local ip / host configuration of the connection\n\n\tlog( connection.remote ); // { address: 10.0.1.2, family: "IPv4", port: 9999 }\n\n\n### example of a super simple echo server running on localhost\n\n\tvar   net \t\t\t= require( "ee-net" )\n\t\t, server \t\t= new net.Server().listen();\n\n\n\tserver.on( "conenction", function( connection ){\n\t\tconnection.on( "message", function( msg ){\n\t\t\tlog( msg );  // { hi: "fabian" }\n\t\t\tconnection.send( msg );\n\t\t} );\n\t} );\n\n\t// wait until the server is online so we know its port\n\tserver.on( "listening", function(){\n\t\tvar client = new Connection( { \n\t\t\tport: server.address.port\n\t\t} );\n\n\t\tclient.on( "message", function( msg ){\n\t\t\tlog( msg ); // { hi: "fabian" }\n\t\t} );\n\n\t\tclient.send( { hi: "fabian" } );\n\t} );\n\n\n### cutom protocol implementation\n\nYou may implement custom protocol handlers, see [ee-protocol-json](https://npmjs.org/package/ee-protocol-json) for more information. You may pass an alternative protocol implementation to the constructors of the Server / Connection using the «protocol» property of the options object.',
+109 silly resolved     readmeFilename: 'README.md',
+109 silly resolved     _id: 'ee-net@0.1.3',
+109 silly resolved     dist: { shasum: '23a52b7b44ffb00e85d49f45adabae414d9ca261' },
+109 silly resolved     _from: 'ee-net@',
+109 silly resolved     _resolved: 'https://registry.npmjs.org/ee-net/-/ee-net-0.1.3.tgz' } ]
+110 info install ee-net@0.1.3 into d:\program\nodejs__prjs\mixa_node_site_template2
+111 info installOne ee-net@0.1.3
+112 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net unbuild
+113 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+114 silly lockFile 2746bcf5-te-template2-node-modules-ee-net tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+115 verbose lock tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net C:\Users\User\AppData\Roaming\npm-cache\2746bcf5-te-template2-node-modules-ee-net.lock
+116 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+117 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz C:\Users\User\AppData\Roaming\npm-cache\890949ee-m-cache-ee-net-0-1-3-package-tgz.lock
+118 silly gunzTarPerm modes [ '755', '644' ]
+119 silly gunzTarPerm extractEntry package.json
+120 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+121 silly gunzTarPerm extractEntry .npmignore
+122 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+123 silly gunzTarPerm extractEntry README.md
+124 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+125 silly gunzTarPerm extractEntry index.js
+126 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+127 silly gunzTarPerm extractEntry test.js
+128 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+129 silly gunzTarPerm extractEntry .travis.yml
+130 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+131 silly gunzTarPerm extractEntry lib/Connection.js
+132 silly gunzTarPerm modified mode [ 'lib/Connection.js', 438, 420 ]
+133 silly gunzTarPerm extractEntry lib/net.js
+134 silly gunzTarPerm modified mode [ 'lib/net.js', 438, 420 ]
+135 silly gunzTarPerm extractEntry lib/Server.js
+136 silly gunzTarPerm modified mode [ 'lib/Server.js', 438, 420 ]
+137 silly lockFile 2746bcf5-te-template2-node-modules-ee-net tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+138 silly lockFile 2746bcf5-te-template2-node-modules-ee-net tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+139 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+140 silly lockFile 890949ee-m-cache-ee-net-0-1-3-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-net\0.1.3\package.tgz
+141 info preinstall ee-net@0.1.3
+142 verbose readDependencies using package.json deps
+143 verbose readDependencies using package.json deps
+144 verbose cache add [ 'ee-class@*', null ]
+145 verbose cache add name=undefined spec="ee-class@*" args=["ee-class@*",null]
+146 verbose parsed url { protocol: null,
+146 verbose parsed url   slashes: null,
+146 verbose parsed url   auth: null,
+146 verbose parsed url   host: null,
+146 verbose parsed url   port: null,
+146 verbose parsed url   hostname: null,
+146 verbose parsed url   hash: null,
+146 verbose parsed url   search: null,
+146 verbose parsed url   query: null,
+146 verbose parsed url   pathname: 'ee-class@*',
+146 verbose parsed url   path: 'ee-class@*',
+146 verbose parsed url   href: 'ee-class@*' }
+147 verbose cache add name="ee-class" spec="*" args=["ee-class","*"]
+148 verbose parsed url { protocol: null,
+148 verbose parsed url   slashes: null,
+148 verbose parsed url   auth: null,
+148 verbose parsed url   host: null,
+148 verbose parsed url   port: null,
+148 verbose parsed url   hostname: null,
+148 verbose parsed url   hash: null,
+148 verbose parsed url   search: null,
+148 verbose parsed url   query: null,
+148 verbose parsed url   pathname: '*',
+148 verbose parsed url   path: '*',
+148 verbose parsed url   href: '*' }
+149 verbose addNamed [ 'ee-class', '*' ]
+150 verbose addNamed [ null, '*' ]
+151 silly lockFile 90ef2f92-ee-class ee-class@*
+152 verbose lock ee-class@* C:\Users\User\AppData\Roaming\npm-cache\90ef2f92-ee-class.lock
+153 verbose cache add [ 'ee-event-emitter@*', null ]
+154 verbose cache add name=undefined spec="ee-event-emitter@*" args=["ee-event-emitter@*",null]
+155 verbose parsed url { protocol: null,
+155 verbose parsed url   slashes: null,
+155 verbose parsed url   auth: null,
+155 verbose parsed url   host: null,
+155 verbose parsed url   port: null,
+155 verbose parsed url   hostname: null,
+155 verbose parsed url   hash: null,
+155 verbose parsed url   search: null,
+155 verbose parsed url   query: null,
+155 verbose parsed url   pathname: 'ee-event-emitter@*',
+155 verbose parsed url   path: 'ee-event-emitter@*',
+155 verbose parsed url   href: 'ee-event-emitter@*' }
+156 verbose cache add name="ee-event-emitter" spec="*" args=["ee-event-emitter","*"]
+157 verbose parsed url { protocol: null,
+157 verbose parsed url   slashes: null,
+157 verbose parsed url   auth: null,
+157 verbose parsed url   host: null,
+157 verbose parsed url   port: null,
+157 verbose parsed url   hostname: null,
+157 verbose parsed url   hash: null,
+157 verbose parsed url   search: null,
+157 verbose parsed url   query: null,
+157 verbose parsed url   pathname: '*',
+157 verbose parsed url   path: '*',
+157 verbose parsed url   href: '*' }
+158 verbose addNamed [ 'ee-event-emitter', '*' ]
+159 verbose addNamed [ null, '*' ]
+160 silly lockFile 5a660390-ee-event-emitter ee-event-emitter@*
+161 verbose lock ee-event-emitter@* C:\Users\User\AppData\Roaming\npm-cache\5a660390-ee-event-emitter.lock
+162 verbose cache add [ 'ee-types@*', null ]
+163 verbose cache add name=undefined spec="ee-types@*" args=["ee-types@*",null]
+164 verbose parsed url { protocol: null,
+164 verbose parsed url   slashes: null,
+164 verbose parsed url   auth: null,
+164 verbose parsed url   host: null,
+164 verbose parsed url   port: null,
+164 verbose parsed url   hostname: null,
+164 verbose parsed url   hash: null,
+164 verbose parsed url   search: null,
+164 verbose parsed url   query: null,
+164 verbose parsed url   pathname: 'ee-types@*',
+164 verbose parsed url   path: 'ee-types@*',
+164 verbose parsed url   href: 'ee-types@*' }
+165 verbose cache add name="ee-types" spec="*" args=["ee-types","*"]
+166 verbose parsed url { protocol: null,
+166 verbose parsed url   slashes: null,
+166 verbose parsed url   auth: null,
+166 verbose parsed url   host: null,
+166 verbose parsed url   port: null,
+166 verbose parsed url   hostname: null,
+166 verbose parsed url   hash: null,
+166 verbose parsed url   search: null,
+166 verbose parsed url   query: null,
+166 verbose parsed url   pathname: '*',
+166 verbose parsed url   path: '*',
+166 verbose parsed url   href: '*' }
+167 verbose addNamed [ 'ee-types', '*' ]
+168 verbose addNamed [ null, '*' ]
+169 silly lockFile eb64b70a-ee-types ee-types@*
+170 verbose lock ee-types@* C:\Users\User\AppData\Roaming\npm-cache\eb64b70a-ee-types.lock
+171 verbose cache add [ 'ee-options@*', null ]
+172 verbose cache add name=undefined spec="ee-options@*" args=["ee-options@*",null]
+173 verbose parsed url { protocol: null,
+173 verbose parsed url   slashes: null,
+173 verbose parsed url   auth: null,
+173 verbose parsed url   host: null,
+173 verbose parsed url   port: null,
+173 verbose parsed url   hostname: null,
+173 verbose parsed url   hash: null,
+173 verbose parsed url   search: null,
+173 verbose parsed url   query: null,
+173 verbose parsed url   pathname: 'ee-options@*',
+173 verbose parsed url   path: 'ee-options@*',
+173 verbose parsed url   href: 'ee-options@*' }
+174 verbose cache add name="ee-options" spec="*" args=["ee-options","*"]
+175 verbose parsed url { protocol: null,
+175 verbose parsed url   slashes: null,
+175 verbose parsed url   auth: null,
+175 verbose parsed url   host: null,
+175 verbose parsed url   port: null,
+175 verbose parsed url   hostname: null,
+175 verbose parsed url   hash: null,
+175 verbose parsed url   search: null,
+175 verbose parsed url   query: null,
+175 verbose parsed url   pathname: '*',
+175 verbose parsed url   path: '*',
+175 verbose parsed url   href: '*' }
+176 verbose addNamed [ 'ee-options', '*' ]
+177 verbose addNamed [ null, '*' ]
+178 silly lockFile 6aa8fb60-ee-options ee-options@*
+179 verbose lock ee-options@* C:\Users\User\AppData\Roaming\npm-cache\6aa8fb60-ee-options.lock
+180 verbose cache add [ 'ee-arguments@*', null ]
+181 verbose cache add name=undefined spec="ee-arguments@*" args=["ee-arguments@*",null]
+182 verbose parsed url { protocol: null,
+182 verbose parsed url   slashes: null,
+182 verbose parsed url   auth: null,
+182 verbose parsed url   host: null,
+182 verbose parsed url   port: null,
+182 verbose parsed url   hostname: null,
+182 verbose parsed url   hash: null,
+182 verbose parsed url   search: null,
+182 verbose parsed url   query: null,
+182 verbose parsed url   pathname: 'ee-arguments@*',
+182 verbose parsed url   path: 'ee-arguments@*',
+182 verbose parsed url   href: 'ee-arguments@*' }
+183 verbose cache add name="ee-arguments" spec="*" args=["ee-arguments","*"]
+184 verbose parsed url { protocol: null,
+184 verbose parsed url   slashes: null,
+184 verbose parsed url   auth: null,
+184 verbose parsed url   host: null,
+184 verbose parsed url   port: null,
+184 verbose parsed url   hostname: null,
+184 verbose parsed url   hash: null,
+184 verbose parsed url   search: null,
+184 verbose parsed url   query: null,
+184 verbose parsed url   pathname: '*',
+184 verbose parsed url   path: '*',
+184 verbose parsed url   href: '*' }
+185 verbose addNamed [ 'ee-arguments', '*' ]
+186 verbose addNamed [ null, '*' ]
+187 silly lockFile 56d7abf9-ee-arguments ee-arguments@*
+188 verbose lock ee-arguments@* C:\Users\User\AppData\Roaming\npm-cache\56d7abf9-ee-arguments.lock
+189 verbose cache add [ 'ee-log@*', null ]
+190 verbose cache add name=undefined spec="ee-log@*" args=["ee-log@*",null]
+191 verbose parsed url { protocol: null,
+191 verbose parsed url   slashes: null,
+191 verbose parsed url   auth: null,
+191 verbose parsed url   host: null,
+191 verbose parsed url   port: null,
+191 verbose parsed url   hostname: null,
+191 verbose parsed url   hash: null,
+191 verbose parsed url   search: null,
+191 verbose parsed url   query: null,
+191 verbose parsed url   pathname: 'ee-log@*',
+191 verbose parsed url   path: 'ee-log@*',
+191 verbose parsed url   href: 'ee-log@*' }
+192 verbose cache add name="ee-log" spec="*" args=["ee-log","*"]
+193 verbose parsed url { protocol: null,
+193 verbose parsed url   slashes: null,
+193 verbose parsed url   auth: null,
+193 verbose parsed url   host: null,
+193 verbose parsed url   port: null,
+193 verbose parsed url   hostname: null,
+193 verbose parsed url   hash: null,
+193 verbose parsed url   search: null,
+193 verbose parsed url   query: null,
+193 verbose parsed url   pathname: '*',
+193 verbose parsed url   path: '*',
+193 verbose parsed url   href: '*' }
+194 verbose addNamed [ 'ee-log', '*' ]
+195 verbose addNamed [ null, '*' ]
+196 silly lockFile 2557dc26-ee-log ee-log@*
+197 verbose lock ee-log@* C:\Users\User\AppData\Roaming\npm-cache\2557dc26-ee-log.lock
+198 verbose cache add [ 'ee-error@*', null ]
+199 verbose cache add name=undefined spec="ee-error@*" args=["ee-error@*",null]
+200 verbose parsed url { protocol: null,
+200 verbose parsed url   slashes: null,
+200 verbose parsed url   auth: null,
+200 verbose parsed url   host: null,
+200 verbose parsed url   port: null,
+200 verbose parsed url   hostname: null,
+200 verbose parsed url   hash: null,
+200 verbose parsed url   search: null,
+200 verbose parsed url   query: null,
+200 verbose parsed url   pathname: 'ee-error@*',
+200 verbose parsed url   path: 'ee-error@*',
+200 verbose parsed url   href: 'ee-error@*' }
+201 verbose cache add name="ee-error" spec="*" args=["ee-error","*"]
+202 verbose parsed url { protocol: null,
+202 verbose parsed url   slashes: null,
+202 verbose parsed url   auth: null,
+202 verbose parsed url   host: null,
+202 verbose parsed url   port: null,
+202 verbose parsed url   hostname: null,
+202 verbose parsed url   hash: null,
+202 verbose parsed url   search: null,
+202 verbose parsed url   query: null,
+202 verbose parsed url   pathname: '*',
+202 verbose parsed url   path: '*',
+202 verbose parsed url   href: '*' }
+203 verbose addNamed [ 'ee-error', '*' ]
+204 verbose addNamed [ null, '*' ]
+205 silly lockFile 055dca00-ee-error ee-error@*
+206 verbose lock ee-error@* C:\Users\User\AppData\Roaming\npm-cache\055dca00-ee-error.lock
+207 verbose cache add [ 'ee-protocol-json@*', null ]
+208 verbose cache add name=undefined spec="ee-protocol-json@*" args=["ee-protocol-json@*",null]
+209 verbose parsed url { protocol: null,
+209 verbose parsed url   slashes: null,
+209 verbose parsed url   auth: null,
+209 verbose parsed url   host: null,
+209 verbose parsed url   port: null,
+209 verbose parsed url   hostname: null,
+209 verbose parsed url   hash: null,
+209 verbose parsed url   search: null,
+209 verbose parsed url   query: null,
+209 verbose parsed url   pathname: 'ee-protocol-json@*',
+209 verbose parsed url   path: 'ee-protocol-json@*',
+209 verbose parsed url   href: 'ee-protocol-json@*' }
+210 verbose cache add name="ee-protocol-json" spec="*" args=["ee-protocol-json","*"]
+211 verbose parsed url { protocol: null,
+211 verbose parsed url   slashes: null,
+211 verbose parsed url   auth: null,
+211 verbose parsed url   host: null,
+211 verbose parsed url   port: null,
+211 verbose parsed url   hostname: null,
+211 verbose parsed url   hash: null,
+211 verbose parsed url   search: null,
+211 verbose parsed url   query: null,
+211 verbose parsed url   pathname: '*',
+211 verbose parsed url   path: '*',
+211 verbose parsed url   href: '*' }
+212 verbose addNamed [ 'ee-protocol-json', '*' ]
+213 verbose addNamed [ null, '*' ]
+214 silly lockFile 339746ff-ee-protocol-json ee-protocol-json@*
+215 verbose lock ee-protocol-json@* C:\Users\User\AppData\Roaming\npm-cache\339746ff-ee-protocol-json.lock
+216 silly addNameRange { name: 'ee-event-emitter', range: '*', hasData: false }
+217 silly addNameRange { name: 'ee-options', range: '*', hasData: false }
+218 silly addNameRange { name: 'ee-class', range: '*', hasData: false }
+219 silly addNameRange { name: 'ee-types', range: '*', hasData: false }
+220 silly addNameRange { name: 'ee-arguments', range: '*', hasData: false }
+221 silly addNameRange { name: 'ee-log', range: '*', hasData: false }
+222 silly addNameRange { name: 'ee-error', range: '*', hasData: false }
+223 verbose url raw ee-event-emitter
+224 verbose url resolving [ 'https://registry.npmjs.org/', './ee-event-emitter' ]
+225 verbose url resolved https://registry.npmjs.org/ee-event-emitter
+226 info trying registry request attempt 1 at 17:54:10
+227 http GET https://registry.npmjs.org/ee-event-emitter
+228 verbose url raw ee-options
+229 verbose url resolving [ 'https://registry.npmjs.org/', './ee-options' ]
+230 verbose url resolved https://registry.npmjs.org/ee-options
+231 info trying registry request attempt 1 at 17:54:10
+232 http GET https://registry.npmjs.org/ee-options
+233 verbose url raw ee-class
+234 verbose url resolving [ 'https://registry.npmjs.org/', './ee-class' ]
+235 verbose url resolved https://registry.npmjs.org/ee-class
+236 info trying registry request attempt 1 at 17:54:10
+237 http GET https://registry.npmjs.org/ee-class
+238 verbose url raw ee-types
+239 verbose url resolving [ 'https://registry.npmjs.org/', './ee-types' ]
+240 verbose url resolved https://registry.npmjs.org/ee-types
+241 info trying registry request attempt 1 at 17:54:10
+242 http GET https://registry.npmjs.org/ee-types
+243 verbose url raw ee-arguments
+244 verbose url resolving [ 'https://registry.npmjs.org/', './ee-arguments' ]
+245 verbose url resolved https://registry.npmjs.org/ee-arguments
+246 info trying registry request attempt 1 at 17:54:10
+247 http GET https://registry.npmjs.org/ee-arguments
+248 verbose url raw ee-log
+249 verbose url resolving [ 'https://registry.npmjs.org/', './ee-log' ]
+250 verbose url resolved https://registry.npmjs.org/ee-log
+251 info trying registry request attempt 1 at 17:54:10
+252 http GET https://registry.npmjs.org/ee-log
+253 verbose url raw ee-error
+254 verbose url resolving [ 'https://registry.npmjs.org/', './ee-error' ]
+255 verbose url resolved https://registry.npmjs.org/ee-error
+256 info trying registry request attempt 1 at 17:54:10
+257 http GET https://registry.npmjs.org/ee-error
+258 silly addNameRange { name: 'ee-protocol-json', range: '*', hasData: false }
+259 verbose url raw ee-protocol-json
+260 verbose url resolving [ 'https://registry.npmjs.org/', './ee-protocol-json' ]
+261 verbose url resolved https://registry.npmjs.org/ee-protocol-json
+262 info trying registry request attempt 1 at 17:54:10
+263 http GET https://registry.npmjs.org/ee-protocol-json
+264 http 200 https://registry.npmjs.org/ee-options
+265 silly registry.get cb [ 200,
+265 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:06 GMT',
+265 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+265 silly registry.get     etag: '"BOCTO7H13CRIK1FPHW85WTG42"',
+265 silly registry.get     'content-type': 'application/json',
+265 silly registry.get     via: '1.1 varnish',
+265 silly registry.get     'cache-control': 'max-age=1',
+265 silly registry.get     'content-length': '3248',
+265 silly registry.get     'accept-ranges': 'bytes',
+265 silly registry.get     age: '0',
+265 silly registry.get     'x-served-by': 'cache-v42-ASH, cache-fra1224-FRA',
+265 silly registry.get     'x-cache': 'MISS, MISS',
+265 silly registry.get     'x-cache-hits': '0, 0',
+265 silly registry.get     'x-timer': 'S1391522046.578007221,VS0,VS45,VE66,VE120',
+265 silly registry.get     vary: 'Accept',
+265 silly registry.get     'keep-alive': 'timeout=10, max=50',
+265 silly registry.get     connection: 'Keep-Alive' } ]
+266 silly addNameRange number 2 { name: 'ee-options', range: '*', hasData: true }
+267 silly addNameRange versions [ 'ee-options', [ '0.1.0' ] ]
+268 verbose addNamed [ 'ee-options', '0.1.0' ]
+269 verbose addNamed [ '0.1.0', '0.1.0' ]
+270 silly lockFile 2d032cb4-ee-options-0-1-0 ee-options@0.1.0
+271 verbose lock ee-options@0.1.0 C:\Users\User\AppData\Roaming\npm-cache\2d032cb4-ee-options-0-1-0.lock
+272 silly lockFile 9c8decb6--ee-options-ee-options-0-1-0-tgz https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz
+273 verbose lock https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz C:\Users\User\AppData\Roaming\npm-cache\9c8decb6--ee-options-ee-options-0-1-0-tgz.lock
+274 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz',
+274 verbose addRemoteTarball   'df2ce49f11953dd48073b26e3c358b3a2b594644' ]
+275 info retry fetch attempt 1 at 17:54:10
+276 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\tmp.tgz
+277 http GET https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz
+278 http 200 https://registry.npmjs.org/ee-class
+279 silly registry.get cb [ 200,
+279 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:06 GMT',
+279 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+279 silly registry.get     etag: '"CRCVHSZAESAYKZNGQZWWYWK8C"',
+279 silly registry.get     'content-type': 'application/json',
+279 silly registry.get     via: '1.1 varnish',
+279 silly registry.get     'cache-control': 'max-age=1',
+279 silly registry.get     'content-length': '16141',
+279 silly registry.get     'accept-ranges': 'bytes',
+279 silly registry.get     age: '0',
+279 silly registry.get     'x-served-by': 'cache-v42-ASH, cache-fra1228-FRA',
+279 silly registry.get     'x-cache': 'MISS, MISS',
+279 silly registry.get     'x-cache-hits': '0, 0',
+279 silly registry.get     'x-timer': 'S1391522046.574386835,VS0,VS47,VE80,VE132',
+279 silly registry.get     vary: 'Accept',
+279 silly registry.get     'keep-alive': 'timeout=10, max=50',
+279 silly registry.get     connection: 'Keep-Alive' } ]
+280 silly addNameRange number 2 { name: 'ee-class', range: '*', hasData: true }
+281 silly addNameRange versions [ 'ee-class',
+281 silly addNameRange   [ '0.1.0',
+281 silly addNameRange     '0.1.2',
+281 silly addNameRange     '0.1.1',
+281 silly addNameRange     '0.1.3',
+281 silly addNameRange     '0.1.5',
+281 silly addNameRange     '0.2.0',
+281 silly addNameRange     '0.2.1',
+281 silly addNameRange     '0.2.2',
+281 silly addNameRange     '0.2.3',
+281 silly addNameRange     '0.2.4',
+281 silly addNameRange     '0.2.5',
+281 silly addNameRange     '0.2.6',
+281 silly addNameRange     '0.2.7' ] ]
+282 verbose addNamed [ 'ee-class', '0.2.7' ]
+283 verbose addNamed [ '0.2.7', '0.2.7' ]
+284 silly lockFile a2afb7cd-ee-class-0-2-7 ee-class@0.2.7
+285 verbose lock ee-class@0.2.7 C:\Users\User\AppData\Roaming\npm-cache\a2afb7cd-ee-class-0-2-7.lock
+286 silly lockFile 7c9111c0--org-ee-class-ee-class-0-2-7-tgz https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz
+287 verbose lock https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz C:\Users\User\AppData\Roaming\npm-cache\7c9111c0--org-ee-class-ee-class-0-2-7-tgz.lock
+288 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz',
+288 verbose addRemoteTarball   '05ba15eefb0f86a308365af3ef13758f08719437' ]
+289 info retry fetch attempt 1 at 17:54:10
+290 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\tmp.tgz
+291 http GET https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz
+292 http 200 https://registry.npmjs.org/ee-error
+293 silly registry.get cb [ 200,
+293 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:07 GMT',
+293 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+293 silly registry.get     etag: '"7BSSDZ1R74JAFJIBOD1M0R6QK"',
+293 silly registry.get     'content-type': 'application/json',
+293 silly registry.get     via: '1.1 varnish',
+293 silly registry.get     'cache-control': 'max-age=1',
+293 silly registry.get     'content-length': '5202',
+293 silly registry.get     'accept-ranges': 'bytes',
+293 silly registry.get     age: '0',
+293 silly registry.get     'x-served-by': 'cache-v37-ASH, cache-fra1228-FRA',
+293 silly registry.get     'x-cache': 'MISS, MISS',
+293 silly registry.get     'x-cache-hits': '0, 0',
+293 silly registry.get     'x-timer': 'S1391522046.884317398,VS0,VS49,VE82,VE127',
+293 silly registry.get     vary: 'Accept',
+293 silly registry.get     'keep-alive': 'timeout=10, max=49',
+293 silly registry.get     connection: 'Keep-Alive' } ]
+294 silly addNameRange number 2 { name: 'ee-error', range: '*', hasData: true }
+295 silly addNameRange versions [ 'ee-error', [ '0.1.0' ] ]
+296 verbose addNamed [ 'ee-error', '0.1.0' ]
+297 verbose addNamed [ '0.1.0', '0.1.0' ]
+298 silly lockFile ba21d3f0-ee-error-0-1-0 ee-error@0.1.0
+299 verbose lock ee-error@0.1.0 C:\Users\User\AppData\Roaming\npm-cache\ba21d3f0-ee-error-0-1-0.lock
+300 silly lockFile 4552a0f0--org-ee-error-ee-error-0-1-0-tgz https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz
+301 verbose lock https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz C:\Users\User\AppData\Roaming\npm-cache\4552a0f0--org-ee-error-ee-error-0-1-0-tgz.lock
+302 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz',
+302 verbose addRemoteTarball   'd4dc703e02a581ac8904df3d29f95d0e73d4eb1e' ]
+303 info retry fetch attempt 1 at 17:54:10
+304 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\tmp.tgz
+305 http GET https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz
+306 http 200 https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz
+307 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\tmp.tgz
+308 silly lockFile cb1bef5e-0655-0-12250665668398142-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package
+309 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package C:\Users\User\AppData\Roaming\npm-cache\cb1bef5e-0655-0-12250665668398142-package.lock
+310 silly lockFile a9ae9c78-0655-0-12250665668398142-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\tmp.tgz
+311 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\a9ae9c78-0655-0-12250665668398142-tmp-tgz.lock
+312 silly gunzTarPerm modes [ '755', '644' ]
+313 silly gunzTarPerm extractEntry package.json
+314 silly gunzTarPerm extractEntry .npmignore
+315 silly gunzTarPerm extractEntry README.md
+316 silly gunzTarPerm extractEntry index.js
+317 silly gunzTarPerm extractEntry test.js
+318 silly gunzTarPerm extractEntry lib/Options.js
+319 silly lockFile cb1bef5e-0655-0-12250665668398142-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package
+320 silly lockFile cb1bef5e-0655-0-12250665668398142-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package
+321 silly lockFile a9ae9c78-0655-0-12250665668398142-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\tmp.tgz
+322 silly lockFile a9ae9c78-0655-0-12250665668398142-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\tmp.tgz
+323 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-options\\0.1.0\\package.tgz',
+323 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522050655-0.12250665668398142\\package' ]
+324 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+325 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package
+326 silly lockFile cb1bef5e-0655-0-12250665668398142-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package
+327 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package C:\Users\User\AppData\Roaming\npm-cache\cb1bef5e-0655-0-12250665668398142-package.lock
+328 silly lockFile e1e74541-che-ee-options-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+329 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\e1e74541-che-ee-options-0-1-0-package-tgz.lock
+330 silly lockFile cb1bef5e-0655-0-12250665668398142-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package
+331 silly lockFile cb1bef5e-0655-0-12250665668398142-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050655-0.12250665668398142\package
+332 silly lockFile e1e74541-che-ee-options-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+333 silly lockFile e1e74541-che-ee-options-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+334 http 200 https://registry.npmjs.org/ee-protocol-json
+335 silly registry.get cb [ 200,
+335 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:07 GMT',
+335 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+335 silly registry.get     etag: '"21NXHA61I12DYC3MMMWCLGAMC"',
+335 silly registry.get     'content-type': 'application/json',
+335 silly registry.get     via: '1.1 varnish',
+335 silly registry.get     'cache-control': 'max-age=1',
+335 silly registry.get     'content-length': '4729',
+335 silly registry.get     'accept-ranges': 'bytes',
+335 silly registry.get     age: '0',
+335 silly registry.get     'x-served-by': 'cache-v44-ASH, cache-fra1228-FRA',
+335 silly registry.get     'x-cache': 'MISS, MISS',
+335 silly registry.get     'x-cache-hits': '0, 0',
+335 silly registry.get     'x-timer': 'S1391522047.103132963,VS0,VS48,VE82,VE134',
+335 silly registry.get     vary: 'Accept',
+335 silly registry.get     'keep-alive': 'timeout=10, max=48',
+335 silly registry.get     connection: 'Keep-Alive' } ]
+336 silly lockFile dd4d2d57-m-cache-ee-options-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package
+337 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\dd4d2d57-m-cache-ee-options-0-1-0-package.lock
+338 silly addNameRange number 2 { name: 'ee-protocol-json', range: '*', hasData: true }
+339 silly addNameRange versions [ 'ee-protocol-json', [ '0.1.0' ] ]
+340 verbose addNamed [ 'ee-protocol-json', '0.1.0' ]
+341 verbose addNamed [ '0.1.0', '0.1.0' ]
+342 silly lockFile a15873c3-ee-protocol-json-0-1-0 ee-protocol-json@0.1.0
+343 verbose lock ee-protocol-json@0.1.0 C:\Users\User\AppData\Roaming\npm-cache\a15873c3-ee-protocol-json-0-1-0.lock
+344 silly lockFile dd4d2d57-m-cache-ee-options-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package
+345 silly lockFile dd4d2d57-m-cache-ee-options-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package
+346 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+347 silly lockFile cafbb513-m-cache-ee-options-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package
+348 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\cafbb513-m-cache-ee-options-0-1-0-package.lock
+349 silly lockFile e1e74541-che-ee-options-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+350 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\e1e74541-che-ee-options-0-1-0-package-tgz.lock
+351 silly lockFile 6617799d--json-ee-protocol-json-0-1-0-tgz https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz
+352 verbose lock https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz C:\Users\User\AppData\Roaming\npm-cache\6617799d--json-ee-protocol-json-0-1-0-tgz.lock
+353 silly gunzTarPerm modes [ '755', '644' ]
+354 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz',
+354 verbose addRemoteTarball   'b98b00b8b16ba18101419d2a4cca5cf8731fdceb' ]
+355 info retry fetch attempt 1 at 17:54:11
+356 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\tmp.tgz
+357 http GET https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz
+358 silly gunzTarPerm extractEntry package.json
+359 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+360 silly gunzTarPerm extractEntry .npmignore
+361 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+362 silly gunzTarPerm extractEntry README.md
+363 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+364 silly gunzTarPerm extractEntry index.js
+365 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+366 silly gunzTarPerm extractEntry test.js
+367 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+368 silly gunzTarPerm extractEntry lib/Options.js
+369 silly gunzTarPerm modified mode [ 'lib/Options.js', 438, 420 ]
+370 http 200 https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz
+371 silly lockFile cafbb513-m-cache-ee-options-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package
+372 silly lockFile cafbb513-m-cache-ee-options-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package
+373 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\tmp.tgz
+374 silly lockFile 7a2053e6-50752-0-5228468142449856-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package
+375 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package C:\Users\User\AppData\Roaming\npm-cache\7a2053e6-50752-0-5228468142449856-package.lock
+376 silly lockFile ac6f0f6b-50752-0-5228468142449856-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\tmp.tgz
+377 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\ac6f0f6b-50752-0-5228468142449856-tmp-tgz.lock
+378 silly lockFile e1e74541-che-ee-options-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+379 silly lockFile e1e74541-che-ee-options-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+380 silly gunzTarPerm modes [ '755', '644' ]
+381 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz 644
+382 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-options\0.1.0\package.tgz
+383 silly lockFile 9c8decb6--ee-options-ee-options-0-1-0-tgz https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz
+384 silly lockFile 9c8decb6--ee-options-ee-options-0-1-0-tgz https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz
+385 silly lockFile 2d032cb4-ee-options-0-1-0 ee-options@0.1.0
+386 silly lockFile 2d032cb4-ee-options-0-1-0 ee-options@0.1.0
+387 silly lockFile 6aa8fb60-ee-options ee-options@*
+388 silly lockFile 6aa8fb60-ee-options ee-options@*
+389 silly gunzTarPerm extractEntry package.json
+390 silly gunzTarPerm extractEntry .npmignore
+391 silly gunzTarPerm extractEntry README.md
+392 silly gunzTarPerm extractEntry LICENCE
+393 silly gunzTarPerm extractEntry index.js
+394 silly gunzTarPerm extractEntry test.js
+395 silly gunzTarPerm extractEntry .client.json
+396 silly gunzTarPerm extractEntry .travis.yml
+397 silly gunzTarPerm extractEntry lib/class.js
+398 silly lockFile 7a2053e6-50752-0-5228468142449856-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package
+399 silly lockFile 7a2053e6-50752-0-5228468142449856-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package
+400 silly lockFile ac6f0f6b-50752-0-5228468142449856-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\tmp.tgz
+401 silly lockFile ac6f0f6b-50752-0-5228468142449856-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\tmp.tgz
+402 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-class\\0.2.7\\package.tgz',
+402 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522050752-0.5228468142449856\\package' ]
+403 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+404 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package
+405 silly lockFile 7a2053e6-50752-0-5228468142449856-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package
+406 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package C:\Users\User\AppData\Roaming\npm-cache\7a2053e6-50752-0-5228468142449856-package.lock
+407 silly lockFile 97f9aaea-cache-ee-class-0-2-7-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+408 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz C:\Users\User\AppData\Roaming\npm-cache\97f9aaea-cache-ee-class-0-2-7-package-tgz.lock
+409 silly lockFile 7a2053e6-50752-0-5228468142449856-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package
+410 silly lockFile 7a2053e6-50752-0-5228468142449856-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050752-0.5228468142449856\package
+411 silly lockFile 97f9aaea-cache-ee-class-0-2-7-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+412 silly lockFile 97f9aaea-cache-ee-class-0-2-7-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+413 silly lockFile 4daeff62-npm-cache-ee-class-0-2-7-package C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package
+414 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package C:\Users\User\AppData\Roaming\npm-cache\4daeff62-npm-cache-ee-class-0-2-7-package.lock
+415 silly lockFile 4daeff62-npm-cache-ee-class-0-2-7-package C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package
+416 silly lockFile 4daeff62-npm-cache-ee-class-0-2-7-package C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package
+417 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+418 silly lockFile 2c2c0d12-npm-cache-ee-class-0-2-7-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package
+419 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package C:\Users\User\AppData\Roaming\npm-cache\2c2c0d12-npm-cache-ee-class-0-2-7-package.lock
+420 silly lockFile 97f9aaea-cache-ee-class-0-2-7-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+421 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz C:\Users\User\AppData\Roaming\npm-cache\97f9aaea-cache-ee-class-0-2-7-package-tgz.lock
+422 silly gunzTarPerm modes [ '755', '644' ]
+423 silly gunzTarPerm extractEntry package.json
+424 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+425 silly gunzTarPerm extractEntry .npmignore
+426 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+427 silly gunzTarPerm extractEntry README.md
+428 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+429 silly gunzTarPerm extractEntry LICENCE
+430 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+431 silly gunzTarPerm extractEntry index.js
+432 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+433 silly gunzTarPerm extractEntry test.js
+434 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+435 silly gunzTarPerm extractEntry .client.json
+436 silly gunzTarPerm modified mode [ '.client.json', 438, 420 ]
+437 silly gunzTarPerm extractEntry .travis.yml
+438 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+439 silly gunzTarPerm extractEntry lib/class.js
+440 silly gunzTarPerm modified mode [ 'lib/class.js', 438, 420 ]
+441 silly lockFile 2c2c0d12-npm-cache-ee-class-0-2-7-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package
+442 silly lockFile 2c2c0d12-npm-cache-ee-class-0-2-7-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package
+443 silly lockFile 97f9aaea-cache-ee-class-0-2-7-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+444 silly lockFile 97f9aaea-cache-ee-class-0-2-7-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+445 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz 644
+446 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+447 silly lockFile 7c9111c0--org-ee-class-ee-class-0-2-7-tgz https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz
+448 silly lockFile 7c9111c0--org-ee-class-ee-class-0-2-7-tgz https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz
+449 silly lockFile a2afb7cd-ee-class-0-2-7 ee-class@0.2.7
+450 silly lockFile a2afb7cd-ee-class-0-2-7 ee-class@0.2.7
+451 silly lockFile 90ef2f92-ee-class ee-class@*
+452 silly lockFile 90ef2f92-ee-class ee-class@*
+453 http 200 https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz
+454 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\tmp.tgz
+455 silly lockFile e3b39137-50970-0-2243960762862116-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package
+456 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package C:\Users\User\AppData\Roaming\npm-cache\e3b39137-50970-0-2243960762862116-package.lock
+457 silly lockFile e0bbfb00-50970-0-2243960762862116-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\tmp.tgz
+458 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\e0bbfb00-50970-0-2243960762862116-tmp-tgz.lock
+459 silly gunzTarPerm modes [ '755', '644' ]
+460 silly gunzTarPerm extractEntry package.json
+461 silly gunzTarPerm extractEntry .npmignore
+462 silly gunzTarPerm extractEntry README.md
+463 silly gunzTarPerm extractEntry LICENCE
+464 silly gunzTarPerm extractEntry index.js
+465 silly gunzTarPerm extractEntry test.js
+466 silly gunzTarPerm extractEntry lib/Error.js
+467 silly lockFile e3b39137-50970-0-2243960762862116-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package
+468 silly lockFile e3b39137-50970-0-2243960762862116-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package
+469 silly lockFile e0bbfb00-50970-0-2243960762862116-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\tmp.tgz
+470 silly lockFile e0bbfb00-50970-0-2243960762862116-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\tmp.tgz
+471 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-error\\0.1.0\\package.tgz',
+471 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522050970-0.2243960762862116\\package' ]
+472 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+473 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package
+474 silly lockFile e3b39137-50970-0-2243960762862116-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package
+475 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package C:\Users\User\AppData\Roaming\npm-cache\e3b39137-50970-0-2243960762862116-package.lock
+476 silly lockFile b65500fc-cache-ee-error-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+477 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\b65500fc-cache-ee-error-0-1-0-package-tgz.lock
+478 silly lockFile e3b39137-50970-0-2243960762862116-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package
+479 silly lockFile e3b39137-50970-0-2243960762862116-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522050970-0.2243960762862116\package
+480 silly lockFile b65500fc-cache-ee-error-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+481 silly lockFile b65500fc-cache-ee-error-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+482 silly lockFile 73352030-npm-cache-ee-error-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package
+483 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\73352030-npm-cache-ee-error-0-1-0-package.lock
+484 silly lockFile 73352030-npm-cache-ee-error-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package
+485 silly lockFile 73352030-npm-cache-ee-error-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package
+486 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+487 silly lockFile df9c4202-npm-cache-ee-error-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package
+488 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\df9c4202-npm-cache-ee-error-0-1-0-package.lock
+489 silly lockFile b65500fc-cache-ee-error-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+490 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\b65500fc-cache-ee-error-0-1-0-package-tgz.lock
+491 silly gunzTarPerm modes [ '755', '644' ]
+492 silly gunzTarPerm extractEntry package.json
+493 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+494 silly gunzTarPerm extractEntry .npmignore
+495 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+496 silly gunzTarPerm extractEntry README.md
+497 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+498 silly gunzTarPerm extractEntry LICENCE
+499 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+500 silly gunzTarPerm extractEntry index.js
+501 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+502 silly gunzTarPerm extractEntry test.js
+503 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+504 silly gunzTarPerm extractEntry lib/Error.js
+505 silly gunzTarPerm modified mode [ 'lib/Error.js', 438, 420 ]
+506 silly lockFile df9c4202-npm-cache-ee-error-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package
+507 silly lockFile df9c4202-npm-cache-ee-error-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package
+508 silly lockFile b65500fc-cache-ee-error-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+509 silly lockFile b65500fc-cache-ee-error-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+510 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz 644
+511 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+512 silly lockFile 4552a0f0--org-ee-error-ee-error-0-1-0-tgz https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz
+513 silly lockFile 4552a0f0--org-ee-error-ee-error-0-1-0-tgz https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz
+514 silly lockFile ba21d3f0-ee-error-0-1-0 ee-error@0.1.0
+515 silly lockFile ba21d3f0-ee-error-0-1-0 ee-error@0.1.0
+516 silly lockFile 055dca00-ee-error ee-error@*
+517 silly lockFile 055dca00-ee-error ee-error@*
+518 http 200 https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz
+519 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\tmp.tgz
+520 silly lockFile 2f8d9879-51197-0-5742699652910233-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package
+521 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package C:\Users\User\AppData\Roaming\npm-cache\2f8d9879-51197-0-5742699652910233-package.lock
+522 silly lockFile d742199e-51197-0-5742699652910233-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\tmp.tgz
+523 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\d742199e-51197-0-5742699652910233-tmp-tgz.lock
+524 silly gunzTarPerm modes [ '755', '644' ]
+525 silly gunzTarPerm extractEntry package.json
+526 silly gunzTarPerm extractEntry .npmignore
+527 silly gunzTarPerm extractEntry README.md
+528 silly gunzTarPerm extractEntry index.js
+529 silly gunzTarPerm extractEntry test.js
+530 silly gunzTarPerm extractEntry .travis.yml
+531 silly gunzTarPerm extractEntry lib/JSONProtocol.js
+532 silly lockFile 2f8d9879-51197-0-5742699652910233-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package
+533 silly lockFile 2f8d9879-51197-0-5742699652910233-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package
+534 silly lockFile d742199e-51197-0-5742699652910233-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\tmp.tgz
+535 silly lockFile d742199e-51197-0-5742699652910233-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\tmp.tgz
+536 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-protocol-json\\0.1.0\\package.tgz',
+536 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522051197-0.5742699652910233\\package' ]
+537 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+538 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package
+539 silly lockFile 2f8d9879-51197-0-5742699652910233-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package
+540 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package C:\Users\User\AppData\Roaming\npm-cache\2f8d9879-51197-0-5742699652910233-package.lock
+541 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+542 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\9326a133--protocol-json-0-1-0-package-tgz.lock
+543 silly lockFile 2f8d9879-51197-0-5742699652910233-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package
+544 silly lockFile 2f8d9879-51197-0-5742699652910233-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051197-0.5742699652910233\package
+545 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+546 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+547 silly lockFile c4073bbf-e-ee-protocol-json-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package
+548 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\c4073bbf-e-ee-protocol-json-0-1-0-package.lock
+549 silly lockFile c4073bbf-e-ee-protocol-json-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package
+550 silly lockFile c4073bbf-e-ee-protocol-json-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package
+551 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+552 silly lockFile e474ba4b-e-ee-protocol-json-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package
+553 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\e474ba4b-e-ee-protocol-json-0-1-0-package.lock
+554 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+555 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\9326a133--protocol-json-0-1-0-package-tgz.lock
+556 silly gunzTarPerm modes [ '755', '644' ]
+557 silly gunzTarPerm extractEntry package.json
+558 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+559 silly gunzTarPerm extractEntry .npmignore
+560 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+561 silly gunzTarPerm extractEntry README.md
+562 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+563 silly gunzTarPerm extractEntry index.js
+564 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+565 silly gunzTarPerm extractEntry test.js
+566 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+567 silly gunzTarPerm extractEntry .travis.yml
+568 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+569 silly gunzTarPerm extractEntry lib/JSONProtocol.js
+570 silly gunzTarPerm modified mode [ 'lib/JSONProtocol.js', 438, 420 ]
+571 silly lockFile e474ba4b-e-ee-protocol-json-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package
+572 silly lockFile e474ba4b-e-ee-protocol-json-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package
+573 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+574 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+575 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz 644
+576 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+577 silly lockFile 6617799d--json-ee-protocol-json-0-1-0-tgz https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz
+578 silly lockFile 6617799d--json-ee-protocol-json-0-1-0-tgz https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz
+579 silly lockFile a15873c3-ee-protocol-json-0-1-0 ee-protocol-json@0.1.0
+580 silly lockFile a15873c3-ee-protocol-json-0-1-0 ee-protocol-json@0.1.0
+581 silly lockFile 339746ff-ee-protocol-json ee-protocol-json@*
+582 silly lockFile 339746ff-ee-protocol-json ee-protocol-json@*
+583 http 200 https://registry.npmjs.org/ee-arguments
+584 silly registry.get cb [ 200,
+584 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:07 GMT',
+584 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+584 silly registry.get     etag: '"CD5P72OD3KTLVQKRDKKEGZV7V"',
+584 silly registry.get     'content-type': 'application/json',
+584 silly registry.get     via: '1.1 varnish',
+584 silly registry.get     'cache-control': 'max-age=1',
+584 silly registry.get     'content-length': '4628',
+584 silly registry.get     'accept-ranges': 'bytes',
+584 silly registry.get     age: '0',
+584 silly registry.get     'x-served-by': 'cache-v43-ASH, cache-fra1222-FRA',
+584 silly registry.get     'x-cache': 'MISS, MISS',
+584 silly registry.get     'x-cache-hits': '0, 0',
+584 silly registry.get     'x-timer': 'S1391522046.567004442,VS0,VS44,VE1272,VE1327',
+584 silly registry.get     vary: 'Accept',
+584 silly registry.get     'keep-alive': 'timeout=10, max=50',
+584 silly registry.get     connection: 'Keep-Alive' } ]
+585 silly addNameRange number 2 { name: 'ee-arguments', range: '*', hasData: true }
+586 silly addNameRange versions [ 'ee-arguments', [ '0.1.0', '0.1.1', '0.1.4' ] ]
+587 verbose addNamed [ 'ee-arguments', '0.1.4' ]
+588 verbose addNamed [ '0.1.4', '0.1.4' ]
+589 silly lockFile 224e2c6b-ee-arguments-0-1-4 ee-arguments@0.1.4
+590 verbose lock ee-arguments@0.1.4 C:\Users\User\AppData\Roaming\npm-cache\224e2c6b-ee-arguments-0-1-4.lock
+591 silly lockFile 39c853ba-arguments-ee-arguments-0-1-4-tgz https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz
+592 verbose lock https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz C:\Users\User\AppData\Roaming\npm-cache\39c853ba-arguments-ee-arguments-0-1-4-tgz.lock
+593 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz',
+593 verbose addRemoteTarball   'a7ac3a4b5af866f46acb499a882aebbdac663ee5' ]
+594 info retry fetch attempt 1 at 17:54:11
+595 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\tmp.tgz
+596 http GET https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz
+597 http 200 https://registry.npmjs.org/ee-event-emitter
+598 silly registry.get cb [ 200,
+598 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:07 GMT',
+598 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+598 silly registry.get     etag: '"4RJ8OV5J2EN5P5484SWZRG2XC"',
+598 silly registry.get     'content-type': 'application/json',
+598 silly registry.get     via: '1.1 varnish',
+598 silly registry.get     'cache-control': 'max-age=1',
+598 silly registry.get     'content-length': '7267',
+598 silly registry.get     'accept-ranges': 'bytes',
+598 silly registry.get     age: '0',
+598 silly registry.get     'x-served-by': 'cache-v42-ASH, cache-fra1221-FRA',
+598 silly registry.get     'x-cache': 'MISS, MISS',
+598 silly registry.get     'x-cache-hits': '0, 0',
+598 silly registry.get     'x-timer': 'S1391522046.566218376,VS0,VS46,VE1306,VE1359',
+598 silly registry.get     vary: 'Accept',
+598 silly registry.get     'keep-alive': 'timeout=10, max=50',
+598 silly registry.get     connection: 'Keep-Alive' } ]
+599 silly addNameRange number 2 { name: 'ee-event-emitter', range: '*', hasData: true }
+600 silly addNameRange versions [ 'ee-event-emitter', [ '0.1.0' ] ]
+601 verbose addNamed [ 'ee-event-emitter', '0.1.0' ]
+602 verbose addNamed [ '0.1.0', '0.1.0' ]
+603 silly lockFile 5dbb49fd-ee-event-emitter-0-1-0 ee-event-emitter@0.1.0
+604 verbose lock ee-event-emitter@0.1.0 C:\Users\User\AppData\Roaming\npm-cache\5dbb49fd-ee-event-emitter-0-1-0.lock
+605 silly lockFile e8886349-itter-ee-event-emitter-0-1-0-tgz https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz
+606 verbose lock https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz C:\Users\User\AppData\Roaming\npm-cache\e8886349-itter-ee-event-emitter-0-1-0-tgz.lock
+607 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz',
+607 verbose addRemoteTarball   '0a6c7b6c46e6f12e34b13fb41ba570422eb92cc0' ]
+608 info retry fetch attempt 1 at 17:54:11
+609 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\tmp.tgz
+610 http GET https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz
+611 http 200 https://registry.npmjs.org/ee-types
+612 silly registry.get cb [ 200,
+612 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:07 GMT',
+612 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+612 silly registry.get     etag: '"B2P9GHWT3WR549IVPMQ90F5TB"',
+612 silly registry.get     'content-type': 'application/json',
+612 silly registry.get     via: '1.1 varnish',
+612 silly registry.get     'cache-control': 'max-age=1',
+612 silly registry.get     'content-length': '8612',
+612 silly registry.get     'accept-ranges': 'bytes',
+612 silly registry.get     age: '0',
+612 silly registry.get     'x-served-by': 'cache-v37-ASH, cache-fra1234-FRA',
+612 silly registry.get     'x-cache': 'MISS, MISS',
+612 silly registry.get     'x-cache-hits': '0, 0',
+612 silly registry.get     'x-timer': 'S1391522046.562844515,VS0,VS49,VE1289,VE1333',
+612 silly registry.get     vary: 'Accept',
+612 silly registry.get     'keep-alive': 'timeout=10, max=50',
+612 silly registry.get     connection: 'Keep-Alive' } ]
+613 silly addNameRange number 2 { name: 'ee-types', range: '*', hasData: true }
+614 silly addNameRange versions [ 'ee-types', [ '0.1.0', '0.1.1', '0.1.2' ] ]
+615 verbose addNamed [ 'ee-types', '0.1.2' ]
+616 verbose addNamed [ '0.1.2', '0.1.2' ]
+617 silly lockFile a8e7810a-ee-types-0-1-2 ee-types@0.1.2
+618 verbose lock ee-types@0.1.2 C:\Users\User\AppData\Roaming\npm-cache\a8e7810a-ee-types-0-1-2.lock
+619 silly lockFile b7154479--org-ee-types-ee-types-0-1-2-tgz https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz
+620 verbose lock https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz C:\Users\User\AppData\Roaming\npm-cache\b7154479--org-ee-types-ee-types-0-1-2-tgz.lock
+621 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz',
+621 verbose addRemoteTarball   'd3ea93c916b3db59d576f911ad190e13b3dc18f9' ]
+622 info retry fetch attempt 1 at 17:54:11
+623 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\tmp.tgz
+624 http GET https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz
+625 http 200 https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz
+626 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\tmp.tgz
+627 silly lockFile 41fb9a58-51851-0-6827365218196064-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package
+628 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package C:\Users\User\AppData\Roaming\npm-cache\41fb9a58-51851-0-6827365218196064-package.lock
+629 silly lockFile 2d37877b-51851-0-6827365218196064-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\tmp.tgz
+630 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\2d37877b-51851-0-6827365218196064-tmp-tgz.lock
+631 silly gunzTarPerm modes [ '755', '644' ]
+632 http 200 https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz
+633 silly gunzTarPerm extractEntry package.json
+634 silly gunzTarPerm extractEntry .npmignore
+635 silly gunzTarPerm extractEntry README.md
+636 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\tmp.tgz
+637 silly lockFile 394f1b48-51881-0-4550305788870901-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package
+638 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package C:\Users\User\AppData\Roaming\npm-cache\394f1b48-51881-0-4550305788870901-package.lock
+639 silly lockFile f1dca338-51881-0-4550305788870901-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\tmp.tgz
+640 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\f1dca338-51881-0-4550305788870901-tmp-tgz.lock
+641 silly gunzTarPerm modes [ '755', '644' ]
+642 silly gunzTarPerm extractEntry package.json
+643 silly gunzTarPerm extractEntry LICENCE
+644 silly gunzTarPerm extractEntry index.js
+645 silly gunzTarPerm extractEntry .npmignore
+646 silly gunzTarPerm extractEntry README.md
+647 silly gunzTarPerm extractEntry test.js
+648 silly gunzTarPerm extractEntry lib/arguments.js
+649 silly gunzTarPerm extractEntry LICENCE
+650 silly gunzTarPerm extractEntry index.js
+651 silly gunzTarPerm extractEntry test.js
+652 silly gunzTarPerm extractEntry lib/EventEmitter.js
+653 silly lockFile 394f1b48-51881-0-4550305788870901-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package
+654 silly lockFile 394f1b48-51881-0-4550305788870901-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package
+655 silly lockFile f1dca338-51881-0-4550305788870901-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\tmp.tgz
+656 silly lockFile f1dca338-51881-0-4550305788870901-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\tmp.tgz
+657 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-event-emitter\\0.1.0\\package.tgz',
+657 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522051881-0.4550305788870901\\package' ]
+658 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+659 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package
+660 silly lockFile 394f1b48-51881-0-4550305788870901-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package
+661 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package C:\Users\User\AppData\Roaming\npm-cache\394f1b48-51881-0-4550305788870901-package.lock
+662 silly lockFile 037b7500--event-emitter-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+663 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\037b7500--event-emitter-0-1-0-package-tgz.lock
+664 silly lockFile 394f1b48-51881-0-4550305788870901-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package
+665 silly lockFile 394f1b48-51881-0-4550305788870901-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051881-0.4550305788870901\package
+666 silly lockFile 037b7500--event-emitter-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+667 silly lockFile 037b7500--event-emitter-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+668 silly lockFile f960154b-e-ee-event-emitter-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package
+669 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\f960154b-e-ee-event-emitter-0-1-0-package.lock
+670 silly lockFile f960154b-e-ee-event-emitter-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package
+671 silly lockFile f960154b-e-ee-event-emitter-0-1-0-package C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package
+672 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+673 silly lockFile 12b644bc-e-ee-event-emitter-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package
+674 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package C:\Users\User\AppData\Roaming\npm-cache\12b644bc-e-ee-event-emitter-0-1-0-package.lock
+675 silly lockFile 037b7500--event-emitter-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+676 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\037b7500--event-emitter-0-1-0-package-tgz.lock
+677 silly gunzTarPerm modes [ '755', '644' ]
+678 silly gunzTarPerm extractEntry package.json
+679 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+680 silly gunzTarPerm extractEntry .npmignore
+681 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+682 silly gunzTarPerm extractEntry README.md
+683 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+684 silly gunzTarPerm extractEntry LICENCE
+685 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+686 silly gunzTarPerm extractEntry index.js
+687 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+688 silly gunzTarPerm extractEntry test.js
+689 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+690 silly gunzTarPerm extractEntry lib/EventEmitter.js
+691 silly gunzTarPerm modified mode [ 'lib/EventEmitter.js', 438, 420 ]
+692 silly lockFile 12b644bc-e-ee-event-emitter-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package
+693 silly lockFile 12b644bc-e-ee-event-emitter-0-1-0-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package
+694 silly lockFile 037b7500--event-emitter-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+695 silly lockFile 037b7500--event-emitter-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+696 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz 644
+697 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+698 silly lockFile e8886349-itter-ee-event-emitter-0-1-0-tgz https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz
+699 silly lockFile e8886349-itter-ee-event-emitter-0-1-0-tgz https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz
+700 silly lockFile 5dbb49fd-ee-event-emitter-0-1-0 ee-event-emitter@0.1.0
+701 silly lockFile 5dbb49fd-ee-event-emitter-0-1-0 ee-event-emitter@0.1.0
+702 silly lockFile 5a660390-ee-event-emitter ee-event-emitter@*
+703 silly lockFile 5a660390-ee-event-emitter ee-event-emitter@*
+704 silly lockFile 41fb9a58-51851-0-6827365218196064-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package
+705 silly lockFile 41fb9a58-51851-0-6827365218196064-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package
+706 silly lockFile 2d37877b-51851-0-6827365218196064-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\tmp.tgz
+707 silly lockFile 2d37877b-51851-0-6827365218196064-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\tmp.tgz
+708 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-arguments\\0.1.4\\package.tgz',
+708 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522051851-0.6827365218196064\\package' ]
+709 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+710 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package
+711 silly lockFile 41fb9a58-51851-0-6827365218196064-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package
+712 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package C:\Users\User\AppData\Roaming\npm-cache\41fb9a58-51851-0-6827365218196064-package.lock
+713 silly lockFile f9476e38-e-ee-arguments-0-1-4-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+714 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz C:\Users\User\AppData\Roaming\npm-cache\f9476e38-e-ee-arguments-0-1-4-package-tgz.lock
+715 silly lockFile 41fb9a58-51851-0-6827365218196064-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package
+716 silly lockFile 41fb9a58-51851-0-6827365218196064-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051851-0.6827365218196064\package
+717 silly lockFile f9476e38-e-ee-arguments-0-1-4-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+718 silly lockFile f9476e38-e-ee-arguments-0-1-4-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+719 silly lockFile 0dafca0c-cache-ee-arguments-0-1-4-package C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package
+720 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package C:\Users\User\AppData\Roaming\npm-cache\0dafca0c-cache-ee-arguments-0-1-4-package.lock
+721 silly lockFile 0dafca0c-cache-ee-arguments-0-1-4-package C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package
+722 silly lockFile 0dafca0c-cache-ee-arguments-0-1-4-package C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package
+723 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+724 silly lockFile dce766db-cache-ee-arguments-0-1-4-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package
+725 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package C:\Users\User\AppData\Roaming\npm-cache\dce766db-cache-ee-arguments-0-1-4-package.lock
+726 silly lockFile f9476e38-e-ee-arguments-0-1-4-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+727 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz C:\Users\User\AppData\Roaming\npm-cache\f9476e38-e-ee-arguments-0-1-4-package-tgz.lock
+728 silly gunzTarPerm modes [ '755', '644' ]
+729 silly gunzTarPerm extractEntry package.json
+730 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+731 silly gunzTarPerm extractEntry .npmignore
+732 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+733 silly gunzTarPerm extractEntry README.md
+734 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+735 silly gunzTarPerm extractEntry LICENCE
+736 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+737 silly gunzTarPerm extractEntry index.js
+738 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+739 silly gunzTarPerm extractEntry test.js
+740 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+741 silly gunzTarPerm extractEntry lib/arguments.js
+742 silly gunzTarPerm modified mode [ 'lib/arguments.js', 438, 420 ]
+743 silly lockFile dce766db-cache-ee-arguments-0-1-4-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package
+744 silly lockFile dce766db-cache-ee-arguments-0-1-4-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package
+745 silly lockFile f9476e38-e-ee-arguments-0-1-4-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+746 silly lockFile f9476e38-e-ee-arguments-0-1-4-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+747 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz 644
+748 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-arguments\0.1.4\package.tgz
+749 silly lockFile 39c853ba-arguments-ee-arguments-0-1-4-tgz https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz
+750 silly lockFile 39c853ba-arguments-ee-arguments-0-1-4-tgz https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz
+751 silly lockFile 224e2c6b-ee-arguments-0-1-4 ee-arguments@0.1.4
+752 silly lockFile 224e2c6b-ee-arguments-0-1-4 ee-arguments@0.1.4
+753 silly lockFile 56d7abf9-ee-arguments ee-arguments@*
+754 silly lockFile 56d7abf9-ee-arguments ee-arguments@*
+755 http 200 https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz
+756 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\tmp.tgz
+757 silly lockFile 989e33af-51937-0-9797337541822344-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package
+758 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package C:\Users\User\AppData\Roaming\npm-cache\989e33af-51937-0-9797337541822344-package.lock
+759 silly lockFile 08de0828-51937-0-9797337541822344-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\tmp.tgz
+760 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\08de0828-51937-0-9797337541822344-tmp-tgz.lock
+761 silly gunzTarPerm modes [ '755', '644' ]
+762 silly gunzTarPerm extractEntry package.json
+763 silly gunzTarPerm extractEntry .npmignore
+764 silly gunzTarPerm extractEntry README.md
+765 silly gunzTarPerm extractEntry LICENCE
+766 silly gunzTarPerm extractEntry index.js
+767 silly gunzTarPerm extractEntry test.js
+768 silly gunzTarPerm extractEntry lib/types.js
+769 silly lockFile 989e33af-51937-0-9797337541822344-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package
+770 silly lockFile 989e33af-51937-0-9797337541822344-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package
+771 silly lockFile 08de0828-51937-0-9797337541822344-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\tmp.tgz
+772 silly lockFile 08de0828-51937-0-9797337541822344-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\tmp.tgz
+773 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-types\\0.1.2\\package.tgz',
+773 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522051937-0.9797337541822344\\package' ]
+774 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+775 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package
+776 silly lockFile 989e33af-51937-0-9797337541822344-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package
+777 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package C:\Users\User\AppData\Roaming\npm-cache\989e33af-51937-0-9797337541822344-package.lock
+778 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+779 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz C:\Users\User\AppData\Roaming\npm-cache\b6fd6cf8-cache-ee-types-0-1-2-package-tgz.lock
+780 silly lockFile 989e33af-51937-0-9797337541822344-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package
+781 silly lockFile 989e33af-51937-0-9797337541822344-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522051937-0.9797337541822344\package
+782 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+783 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+784 silly lockFile 039d0b0f-npm-cache-ee-types-0-1-2-package C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package
+785 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package C:\Users\User\AppData\Roaming\npm-cache\039d0b0f-npm-cache-ee-types-0-1-2-package.lock
+786 silly lockFile 039d0b0f-npm-cache-ee-types-0-1-2-package C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package
+787 silly lockFile 039d0b0f-npm-cache-ee-types-0-1-2-package C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package
+788 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+789 silly lockFile 1c564f35-npm-cache-ee-types-0-1-2-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package
+790 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package C:\Users\User\AppData\Roaming\npm-cache\1c564f35-npm-cache-ee-types-0-1-2-package.lock
+791 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+792 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz C:\Users\User\AppData\Roaming\npm-cache\b6fd6cf8-cache-ee-types-0-1-2-package-tgz.lock
+793 silly gunzTarPerm modes [ '755', '644' ]
+794 silly gunzTarPerm extractEntry package.json
+795 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+796 silly gunzTarPerm extractEntry .npmignore
+797 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+798 silly gunzTarPerm extractEntry README.md
+799 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+800 silly gunzTarPerm extractEntry LICENCE
+801 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+802 silly gunzTarPerm extractEntry index.js
+803 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+804 silly gunzTarPerm extractEntry test.js
+805 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+806 silly gunzTarPerm extractEntry lib/types.js
+807 silly gunzTarPerm modified mode [ 'lib/types.js', 438, 420 ]
+808 silly lockFile 1c564f35-npm-cache-ee-types-0-1-2-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package
+809 silly lockFile 1c564f35-npm-cache-ee-types-0-1-2-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package
+810 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+811 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+812 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz 644
+813 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+814 silly lockFile b7154479--org-ee-types-ee-types-0-1-2-tgz https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz
+815 silly lockFile b7154479--org-ee-types-ee-types-0-1-2-tgz https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz
+816 silly lockFile a8e7810a-ee-types-0-1-2 ee-types@0.1.2
+817 silly lockFile a8e7810a-ee-types-0-1-2 ee-types@0.1.2
+818 silly lockFile eb64b70a-ee-types ee-types@*
+819 silly lockFile eb64b70a-ee-types ee-types@*
+820 http 200 https://registry.npmjs.org/ee-log
+821 silly registry.get cb [ 200,
+821 silly registry.get   { date: 'Tue, 04 Feb 2014 13:54:08 GMT',
+821 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+821 silly registry.get     etag: '"1UK561VVN28SVSIVPGR3Y80BH"',
+821 silly registry.get     'content-type': 'application/json',
+821 silly registry.get     via: '1.1 varnish',
+821 silly registry.get     'cache-control': 'max-age=1',
+821 silly registry.get     'content-length': '84617',
+821 silly registry.get     'accept-ranges': 'bytes',
+821 silly registry.get     age: '0',
+821 silly registry.get     'x-served-by': 'cache-v36-ASH, cache-fra1224-FRA',
+821 silly registry.get     'x-cache': 'MISS, MISS',
+821 silly registry.get     'x-cache-hits': '0, 0',
+821 silly registry.get     'x-timer': 'S1391522046.790310144,VS0,VS48,VE1538,VE1674',
+821 silly registry.get     vary: 'Accept',
+821 silly registry.get     'keep-alive': 'timeout=10, max=49',
+821 silly registry.get     connection: 'Keep-Alive' } ]
+822 silly addNameRange number 2 { name: 'ee-log', range: '*', hasData: true }
+823 silly addNameRange versions [ 'ee-log',
+823 silly addNameRange   [ '0.1.0',
+823 silly addNameRange     '0.1.1',
+823 silly addNameRange     '0.1.2',
+823 silly addNameRange     '0.1.3',
+823 silly addNameRange     '0.1.4',
+823 silly addNameRange     '0.1.5',
+823 silly addNameRange     '0.1.6',
+823 silly addNameRange     '0.1.7',
+823 silly addNameRange     '0.1.8',
+823 silly addNameRange     '0.1.9',
+823 silly addNameRange     '0.2.0',
+823 silly addNameRange     '0.2.1',
+823 silly addNameRange     '0.2.2',
+823 silly addNameRange     '0.2.3',
+823 silly addNameRange     '0.2.4',
+823 silly addNameRange     '0.2.5',
+823 silly addNameRange     '0.2.6',
+823 silly addNameRange     '0.2.7',
+823 silly addNameRange     '0.2.8',
+823 silly addNameRange     '0.2.9',
+823 silly addNameRange     '0.2.11',
+823 silly addNameRange     '0.2.14',
+823 silly addNameRange     '0.2.15',
+823 silly addNameRange     '0.2.16' ] ]
+824 verbose addNamed [ 'ee-log', '0.2.16' ]
+825 verbose addNamed [ '0.2.16', '0.2.16' ]
+826 silly lockFile 85854b9d-ee-log-0-2-16 ee-log@0.2.16
+827 verbose lock ee-log@0.2.16 C:\Users\User\AppData\Roaming\npm-cache\85854b9d-ee-log-0-2-16.lock
+828 silly lockFile a544375d-mjs-org-ee-log-ee-log-0-2-16-tgz https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz
+829 verbose lock https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz C:\Users\User\AppData\Roaming\npm-cache\a544375d-mjs-org-ee-log-ee-log-0-2-16-tgz.lock
+830 verbose addRemoteTarball [ 'https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz',
+830 verbose addRemoteTarball   '3be83cf4580d7b93969fbc630dd18f4f416b4b87' ]
+831 info retry fetch attempt 1 at 17:54:12
+832 verbose fetch to= C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\tmp.tgz
+833 http GET https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz
+834 http 200 https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz
+835 verbose tar unpack C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\tmp.tgz
+836 silly lockFile c8fc6b53-943-0-027870313497260213-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package
+837 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package C:\Users\User\AppData\Roaming\npm-cache\c8fc6b53-943-0-027870313497260213-package.lock
+838 silly lockFile 39daa0b8-943-0-027870313497260213-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\tmp.tgz
+839 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\tmp.tgz C:\Users\User\AppData\Roaming\npm-cache\39daa0b8-943-0-027870313497260213-tmp-tgz.lock
+840 silly gunzTarPerm modes [ '755', '644' ]
+841 silly gunzTarPerm extractEntry package.json
+842 silly gunzTarPerm extractEntry .npmignore
+843 silly gunzTarPerm extractEntry README.md
+844 silly gunzTarPerm extractEntry LICENCE
+845 silly gunzTarPerm extractEntry index.js
+846 silly gunzTarPerm extractEntry test.js
+847 silly gunzTarPerm extractEntry .travis.yml
+848 silly gunzTarPerm extractEntry lib/Log.js
+849 silly gunzTarPerm extractEntry lib/LogCollector.js
+850 silly gunzTarPerm extractEntry lib/LogPrinter.js
+851 silly gunzTarPerm extractEntry lib/Logger.js
+852 silly gunzTarPerm extractEntry lib/log.js
+853 silly gunzTarPerm extractEntry lib/out/LogRotation.js
+854 silly gunzTarPerm extractEntry lib/out/Logfile.js
+855 silly gunzTarPerm extractEntry lib/out/RingBuffer.js
+856 silly lockFile c8fc6b53-943-0-027870313497260213-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package
+857 silly lockFile c8fc6b53-943-0-027870313497260213-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package
+858 silly lockFile 39daa0b8-943-0-027870313497260213-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\tmp.tgz
+859 silly lockFile 39daa0b8-943-0-027870313497260213-tmp-tgz tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\tmp.tgz
+860 verbose tar pack [ 'C:\\Users\\User\\AppData\\Roaming\\npm-cache\\ee-log\\0.2.16\\package.tgz',
+860 verbose tar pack   'C:\\TEMP\\npm-1288-YkXRk_Fm\\1391522052943-0.027870313497260213\\package' ]
+861 verbose tarball C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+862 verbose folder C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package
+863 silly lockFile c8fc6b53-943-0-027870313497260213-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package
+864 verbose lock tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package C:\Users\User\AppData\Roaming\npm-cache\c8fc6b53-943-0-027870313497260213-package.lock
+865 silly lockFile f175dbe1--cache-ee-log-0-2-16-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+866 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz C:\Users\User\AppData\Roaming\npm-cache\f175dbe1--cache-ee-log-0-2-16-package-tgz.lock
+867 silly lockFile c8fc6b53-943-0-027870313497260213-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package
+868 silly lockFile c8fc6b53-943-0-027870313497260213-package tar://C:\TEMP\npm-1288-YkXRk_Fm\1391522052943-0.027870313497260213\package
+869 silly lockFile f175dbe1--cache-ee-log-0-2-16-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+870 silly lockFile f175dbe1--cache-ee-log-0-2-16-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+871 silly lockFile 3d990936--npm-cache-ee-log-0-2-16-package C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package
+872 verbose lock C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package C:\Users\User\AppData\Roaming\npm-cache\3d990936--npm-cache-ee-log-0-2-16-package.lock
+873 silly lockFile 3d990936--npm-cache-ee-log-0-2-16-package C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package
+874 silly lockFile 3d990936--npm-cache-ee-log-0-2-16-package C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package
+875 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+876 silly lockFile 82f75be5--npm-cache-ee-log-0-2-16-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package
+877 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package C:\Users\User\AppData\Roaming\npm-cache\82f75be5--npm-cache-ee-log-0-2-16-package.lock
+878 silly lockFile f175dbe1--cache-ee-log-0-2-16-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+879 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz C:\Users\User\AppData\Roaming\npm-cache\f175dbe1--cache-ee-log-0-2-16-package-tgz.lock
+880 silly gunzTarPerm modes [ '755', '644' ]
+881 silly gunzTarPerm extractEntry package.json
+882 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+883 silly gunzTarPerm extractEntry .npmignore
+884 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+885 silly gunzTarPerm extractEntry README.md
+886 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+887 silly gunzTarPerm extractEntry LICENCE
+888 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+889 silly gunzTarPerm extractEntry index.js
+890 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+891 silly gunzTarPerm extractEntry test.js
+892 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+893 silly gunzTarPerm extractEntry .travis.yml
+894 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+895 silly gunzTarPerm extractEntry lib/Log.js
+896 silly gunzTarPerm modified mode [ 'lib/Log.js', 438, 420 ]
+897 silly gunzTarPerm extractEntry lib/LogCollector.js
+898 silly gunzTarPerm modified mode [ 'lib/LogCollector.js', 438, 420 ]
+899 silly gunzTarPerm extractEntry lib/Logger.js
+900 silly gunzTarPerm modified mode [ 'lib/Logger.js', 438, 420 ]
+901 silly gunzTarPerm extractEntry lib/LogPrinter.js
+902 silly gunzTarPerm modified mode [ 'lib/LogPrinter.js', 438, 420 ]
+903 silly gunzTarPerm extractEntry lib/out/Logfile.js
+904 silly gunzTarPerm modified mode [ 'lib/out/Logfile.js', 438, 420 ]
+905 silly gunzTarPerm extractEntry lib/out/LogRotation.js
+906 silly gunzTarPerm modified mode [ 'lib/out/LogRotation.js', 438, 420 ]
+907 silly gunzTarPerm extractEntry lib/out/RingBuffer.js
+908 silly gunzTarPerm modified mode [ 'lib/out/RingBuffer.js', 438, 420 ]
+909 silly lockFile 82f75be5--npm-cache-ee-log-0-2-16-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package
+910 silly lockFile 82f75be5--npm-cache-ee-log-0-2-16-package tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package
+911 silly lockFile f175dbe1--cache-ee-log-0-2-16-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+912 silly lockFile f175dbe1--cache-ee-log-0-2-16-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+913 verbose chmod C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz 644
+914 silly chown skipping for windows C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+915 silly lockFile a544375d-mjs-org-ee-log-ee-log-0-2-16-tgz https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz
+916 silly lockFile a544375d-mjs-org-ee-log-ee-log-0-2-16-tgz https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz
+917 silly lockFile 85854b9d-ee-log-0-2-16 ee-log@0.2.16
+918 silly lockFile 85854b9d-ee-log-0-2-16 ee-log@0.2.16
+919 silly lockFile 2557dc26-ee-log ee-log@*
+920 silly lockFile 2557dc26-ee-log ee-log@*
+921 silly resolved [ { name: 'ee-options',
+921 silly resolved     description: 'simple options parser for ee-class',
+921 silly resolved     version: '0.1.0',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-options',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     licence: 'mit',
+921 silly resolved     os: 'linux',
+921 silly resolved     repository:
+921 silly resolved      { url: 'https://github.com/eventEmitter/ee-options.git',
+921 silly resolved        type: 'git' },
+921 silly resolved     engines: { node: '>=v0.10.17' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-options/issues' },
+921 silly resolved     dependencies: { 'ee-class': '*', 'ee-types': '*', 'ee-log': '*' },
+921 silly resolved     devDependencies: {},
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     readme: '# ee-options\n\nsimple options parser for ee-class\n\n## installation\n\n\tnpm install ee-options\n\n## usage\n\n\t\n\tvar Options \t\t= require( "./" );\n\n\n\tvar MyClass = new Class( {\n\n\t\tinit: function( options ){\n\t\t\tvar options = new Options( this, options );\n\t\t\toptions( "max", "number", 10 );\n\t\t\toptions( "min", "number", 1 );\n\n\t\t\tlog.info( this.min, this.max );\n\t\t}\n\t} );\n\n\n\n\tnew MyClass( {} ); \t\t\t\t\t\t// 1, 10\n\tnew MyClass( { min: 3 } );\t\t\t\t// 3, 10 \n\tnew MyClass( { max: 6 } ); \t\t\t\t// 1, 6\n\tnew MyClass( { min: 0, max: 100 } ); \t// 0, 100',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-options@0.1.0',
+921 silly resolved     dist: { shasum: 'dc2bf39ac8c349c4b8f2aef341fb240a5bb1d979' },
+921 silly resolved     _from: 'ee-options@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-options/-/ee-options-0.1.0.tgz' },
+921 silly resolved   { name: 'ee-class',
+921 silly resolved     description: 'Javascript Class implementation for node.js',
+921 silly resolved     version: '0.2.7',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-class',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     licence: 'mit',
+921 silly resolved     repository:
+921 silly resolved      { url: 'https://github.com/eventEmitter/ee-class.git',
+921 silly resolved        type: 'git' },
+921 silly resolved     engines: { node: '>=v0.10.0' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-class/issues' },
+921 silly resolved     dependencies: {},
+921 silly resolved     devDependencies: {},
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     keywords: [ 'class' ],
+921 silly resolved     scripts: { test: 'node test.js' },
+921 silly resolved     readme: '# ee-class\n\nJavascript Class implementation for node.js\n\n## installation\n\n    npm install ee-class\n\n\n## build status\n\n[![Build Status](https://travis-ci.org/eventEmitter/ee-class.png?branch=master)](https://travis-ci.org/eventEmitter/ee-class)\n\n\n## usage\n\n    var Class = require( "ee-class" );\n\n\n    var LifeForm = new Class( {\n        isAlive: false\n\n        , init: function( options ){\n            this.isAlive = !!options.isAlive;\n        }\n    } );\n\n\n\n    var Human = new Class( {\n        inherits: LifeForm\n        \n        , name: ""\n\n        // pay attention to give the function a name so you can reference it when you are calling the parent function\n        , init: function myInitFunction( options ){\n            myInitFunction.parent( options );\n            this.name = options.name;\n        }\n    } );\n\n\n\n    var Boy = new Class( {\n        inherits: Human\n\n        , age: 0\n\n        // pay attention to give the function a name so you can reference it when you are calling the parent function\n        , init: function myInitFunction( options ){\n            myInitFunction.parent( options );\n            if ( options.age > 18 ) throw new Error( "Too old to be a boy!" )\n            this.age = options.age;\n        }\n\n\n        , describe: function(){\n            console.log( "Hi, my name is %s, i\'m %s years old and i\'m " + ( this.isAlive ? "alive :)" : "dead :(" ), this.name, this.age );\n        }\n    } );\n\n\n\n    var fabian = new Boy( {\n          name:     "fabian"\n        , age:      15\n        , isAlive:  true\n    } );\n\n    fabian.describe(); // Hi, my name is fabian, i\'m 15 years old and i\'m alive :)\n\n\n\n# working with propertiy definers\n\nsince version 0.2.7 you may pass an object with object property defintions to the class module.\n\n    var MyClass = new Class({\n        init: function(){\n\n        }\n    }, \n    { \n        _values: {\n            value: {\n                name: \'john doe\'\n            }\n        }\n        , name: {\n            get: function(){\n                return this._values.name;\n            }\n            , set: function(newValue){\n                this._values.name = newValue;\n            }\n            , enumerable: true\n        }\n    });\n\n    var x = new MyClass();\n\n    x.name = \'michael\';\n    console.log(x.name); // michael\n\n\n# Version History\n\n- 0.1.0: initial version\n- 0.1.3: fixed integration with eventemitter objects\n- 0.2.0: Added proper implementation for calling super functions, deprecated the «parent» property\n- 0.2.1: Bugfix for the «super implementation»\n- 0.2.2: Deprecated the «super» property and replaced it with the «parent» property beacuse super is a javascript reserved keyword\n- 0.2.3: The constructor takes now n instead of 1 arguments\n- 0.2.4: The constructor may now return a function when overriding the class implementation\n- 0.2.6: Classes expose their defintion now via the «Class.definition» proroperty\n- 0.2.7: Added support fo Object.defineProperties()',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-class@0.2.7',
+921 silly resolved     dist: { shasum: '80e241fe58876bfb69f3b3e01097965e1f4ef703' },
+921 silly resolved     _from: 'ee-class@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-class/-/ee-class-0.2.7.tgz' },
+921 silly resolved   { name: 'ee-error',
+921 silly resolved     description: 'Extends the native error object with a setName & setDescription method',
+921 silly resolved     version: '0.1.0',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-error',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     licence: 'MIT',
+921 silly resolved     repository: { url: 'https://github.com/eventEmitter/ee-error' },
+921 silly resolved     engines: { node: '*' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-error/issues' },
+921 silly resolved     dependencies: {},
+921 silly resolved     devDependencies: { 'ee-log': '*' },
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     readme: '# ee-error\n\nExtends the native error object with a setName & setDescription method\n\n## installation\n\nnpm install ee-error\n\n## usage\n\t\n\t// load the module in the root of your project\n\trequire( "ee-error" );\n\n\n\ttry{\n\t\tthrow new Error( "not good! you created a try catch block without any useful functionality!" ).setName( "NotGoodException" );\n\t}\n\tcatch ( err ) {\n\t\tif ( err.name === "NotGoodException" ){\n\t\t\tconsole.log( err ); // { [NotGoodException: not good! you created a try catch block without any useful functionality!] name: \'NotGoodException\' }\n\t\t}\n\t}\n\n\nif you\'re using the ee-log class the output of log.trace( err ) would look like this:\n\n\t23 11:11:32.159 > /test.js 12:6, Object.<anonymous>             >>> [Trace]\n\t--------------------------------------------------------------------------------\n\tNotGoodException: not good! you created a try catch block without any useful functionality!\n\t--------------------------------------------------------------------------------\n\t                      /test.js   12:13  Object.<anonymous>\n\t                     module.js  456:26  Module._compile\n\t                     module.js  474:10  Object.Module._extensions..js\n\t                     module.js  356:32  Module.load\n\t                     module.js  312:12  Function.Module._load\n\t                     module.js  497:10  Function.Module.runMain\n\t                       node.js  119:16  startup\n\t                       node.js  901:3   \n\t--------------------------------------------------------------------------------\n\n\n\n',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-error@0.1.0',
+921 silly resolved     dist: { shasum: '6583d8b10d2905cdb6652af10bab804d14964714' },
+921 silly resolved     _from: 'ee-error@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-error/-/ee-error-0.1.0.tgz' },
+921 silly resolved   { name: 'ee-protocol-json',
+921 silly resolved     description: 'simple JSON streaming protocol. transmitts & receives JSON objects.',
+921 silly resolved     version: '0.1.0',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-protocol-json',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     licence: 'mit',
+921 silly resolved     repository:
+921 silly resolved      { url: 'https://github.com/eventEmitter/ee-protocol-json.git',
+921 silly resolved        type: 'git' },
+921 silly resolved     engines: { node: '>=v0.10.17' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-protocol-json/issues' },
+921 silly resolved     dependencies:
+921 silly resolved      { 'ee-class': '*',
+921 silly resolved        'ee-error': '*',
+921 silly resolved        'ee-types': '*',
+921 silly resolved        'ee-log': '*' },
+921 silly resolved     devDependencies: {},
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     keywords: [ 'protocol', 'json', 'net' ],
+921 silly resolved     scripts: { test: 'node test.js' },
+921 silly resolved     readme: '# ee-protocol-json\n\nsimple JSON streaming protocol. transmitts & receives JSON objects.\n\n## build status\n\n[![Build Status](https://travis-ci.org/eventEmitter/ee-protocol-json.png?branch=master)](https://travis-ci.org/eventEmitter/ee-protocol-json)\n\n## installation\n\t\n\tnpm install ee-protocol-json\n\n## usage\n\t\non the receiving end of the line\n\n\tvar   JSONProtocolHandler \t= require( "ee-protocol-json" )\n\t\t, decoder \t\t\t\t= new JSONProtocolHandler()\n\t\t, incomingPacketData \t= new Buffer( [ 15, 0, 0, 0, 7b, 22, 66, 61, 62, 69, 61, 6e, 22, 3a, 22, 74, 68, 65, 20, 6b, 69, 6e, 67, 22, 7d ] );\n\n\tdecoder.wirte( incomingPacketData );\n\n\tdecoder.on( "data", function( JSONObject ){\n\t\tlog( JSONObject ) // { fabian: "the king" }\n\t} )\n\non the transmitting end of the line you must pass true to the contructor!\n\t\n\tvar   JSONProtocolHandler \t= require( "ee-protocol-json" )\n\t\t, encoder \t\t\t\t= new JSONProtocolHandler( true )\n\t\t, outgoingPacketData \t= new Buffer( { fabian: "the king" } );\n\n\tencoder.wirte( outgoingPacketData );\n\n\tinstance.on( "data", function( data ){\n\t\tlog( data ) // 15 0 0 0 7b 22 66 61 62 69 61 6e 22 3a 22 74 68 65 20 6b 69 6e 67 22 7d\n\t} )\n\n\n',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-protocol-json@0.1.0',
+921 silly resolved     dist: { shasum: '39b590e2bbff1622250d360236980638a111aab7' },
+921 silly resolved     _from: 'ee-protocol-json@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-protocol-json/-/ee-protocol-json-0.1.0.tgz' },
+921 silly resolved   { name: 'ee-event-emitter',
+921 silly resolved     description: 'event handler similar to the node.js eventEmitter class',
+921 silly resolved     version: '0.1.0',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-event-emitter',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     repository: { url: 'https://github.com/eventEmitter/ee-event-emitter' },
+921 silly resolved     engines: { node: '*' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-event-emitter/issues' },
+921 silly resolved     dependencies: { 'ee-class': '>=0.1.3', 'ee-log': '*' },
+921 silly resolved     devDependencies: {},
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     readme: '# ee-events\n\n## installation\n\n\tnpm install ee-events\n\n\tif an «error» event is emitted and there is no listenr for the error event a stacktrace is printed and the application exits.\n\n\n## API\n\n\tvar EventEmitter = require( "ee-event-emitter" );\n\tvar eventEmitter = new EventEmitter();\n\n\t// attach listener\n\teventEmitter.on( "eventName", cb );\n\n\t// attach listsner which is called once\n\teventEmitter.once( "eventName", cb );\n\n\t// remove all listeners for all events\n\teventEmitter.off();\n\n\t// remove listeners for specific event\n\teventEmitter.off( "eventName" );\n\n\t// remove a single listener\n\teventEmitter.off( "eventName", listener );\n\n\t// emit an event\n\teventEmitter.emit( "eventName", arg, arg, .... );\n\n\t// get all listeners\n\teventEmitter.listener();\n\n\t// get lsisteners for a specific event\n\teventEmitter.listsner( "eventName" );\n\n\t// event which is emitted when an event listener is added\n\teventEmitter.on( "listener", function( eventName, listener ){} );\n\n\t// event which is emitted when an event listener is removed\n\teventEmitter.on( "removeListener", function( eventName, listener ){} );\n\n\n## usage\n\n\n\tvar   Class     \t\t= require( "ee-class" )\n    \t, EventEmitter    \t= require( "ee-event-emitter" );\n\n\n\tvar Human = new Class( {\n\t    inherits: EventEmitter\n\t    , name: ""\n\t    , age: 29\n\n\t    , init: function( options ){\n\t        this.name = options.name;\n\t    }\n\n\n\t    , sayHello: function( to ){\n\t        this.emit( "startHello" );\n\t        console.log( "Hi %s, my name is %s, i\'m %s years old.", to, this.name, this.age );\n\t        this.emit( "endHello" );\n\t    }\n\t} );\n\n\n\n\tvar Boy = new Class( {\n\t    inherits: Human\n\t    , age: 12\n\t} );\n\n\n\tvar fabian = new Boy( { \n\t    name: "Fabian" \n\t    , on: {\n\t          startHello: function(){ console.log( "starting console output:" ); }\n\t        , endHello: function(){ console.log( "finished console output!" ); }\n\t    }\n\t} );\n\n\n\tfabian.sayHello( "michael" );  // starting console output:\n\t                    // Hi my name is Fabian and i\'m 12 years old.\n\t                    // finished console output!\n\n\n\n# Version History\n\n- 0.1.0: initial version',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-event-emitter@0.1.0',
+921 silly resolved     dist: { shasum: '35ee9bccaeee2225d1c90aaed7dc896a2ad77bd8' },
+921 silly resolved     _from: 'ee-event-emitter@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-event-emitter/-/ee-event-emitter-0.1.0.tgz' },
+921 silly resolved   { name: 'ee-arguments',
+921 silly resolved     description: 'assign values passed to a function to a variable by their type and optional by their index',
+921 silly resolved     version: '0.1.4',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-arguments',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     licence: 'MIT',
+921 silly resolved     os: 'linux',
+921 silly resolved     repository:
+921 silly resolved      { url: 'https://github.com/eventEmitter/ee-arguments.git',
+921 silly resolved        type: 'git' },
+921 silly resolved     engines: { node: '>=0.10.7' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-arguments/issues' },
+921 silly resolved     dependencies: { 'ee-log': '*', 'ee-types': '*' },
+921 silly resolved     devDependencies: {},
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     readme: '# ee-arguments\n\nassign values passed to a function to a variable by their type and optional by their index. you may pass also a default value for each variable\n\n## installation\n\n\tnpm install ee-arguments\n\n## usage\n\n\n\t// syntax\n\tvar myVariable = arg( arguments, expectedType, [defaultValue], [index] );\n\n\tvar   arg = require( "ee-arguments" )\n\t\t, log = require( "ee-log" );\n\n\n\tvar test = function(){\n\t\tvar callback = arg( arguments, "function", function(){ log.info( "default function" ); } );\n\t\tcallback();\n\t}\n\n\n\t// prints «default function»\n\ttest(); \n\n\t// prints «custom function»\n\ttest( function(){ log.info( "custom function" ); } );\n\n\t// prints «custom function»\n\ttest( 1, null, new Error(), function(){ log.info( "custom function" ); }, "fancy_string" ); \n\n\n\n\n\n',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-arguments@0.1.4',
+921 silly resolved     dist: { shasum: '6db96cfe254020fd64dfa8668de48bfdf268bd12' },
+921 silly resolved     _from: 'ee-arguments@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-arguments/-/ee-arguments-0.1.4.tgz' },
+921 silly resolved   { name: 'ee-types',
+921 silly resolved     description: 'Reliabale type detection',
+921 silly resolved     version: '0.1.2',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-types',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     licence: 'MIT',
+921 silly resolved     repository: { url: 'https://github.com/eventEmitter/ee-types' },
+921 silly resolved     engines: { node: '*' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-types/issues' },
+921 silly resolved     dependencies: { 'ee-class': '*' },
+921 silly resolved     devDependencies: {},
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     readme: '# ee-types\n\nReliabale type detection\n\n## installation\n\t\n\tnpm install ee-types\n\n## usage\n\n\n\tvar type = require( "ee-types" );\n\n\n\ttype.string( "nope" ); \t\t\t\t\t// true\n\ttype.strign( new String( "yeah" ) ); \t// true\n\ttype.s( "michael" ); \t\t\t\t\t// true\n\n\n\ttype( 2 ) // number\n\n\n## API\n\n\ttype() // returns the loawercase type\n\n\ttype.string()\n\ttype.number()\n\ttype.boolean()\n\ttype.function()\n\ttype.object() \t\t\t// array, dates, erors, regexps & sometimes strings, numbers and bools are objects\n\ttype.date()\n\ttype.error()\n\ttype.regexp()\n\ttype.array()\n\ttype.buffer()\n\ttype.null()\n\ttype.undefined()\n\nshortcut methods\n\n\ttype.s() // string\n\ttype.n() // number\n\ttype.b() // boolean\n\ttype.u() // undefined\n\ncheck array and their contents. for every type above there is an array method like the one below.\n\n\ttype.stringArray( [ "hi", new String( "name" ), "is", "michael" ] )\t // true\n\ttype.sa( [ "hi", new String( "name" ), "is", "michael" ] )\t \t\t // true',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-types@0.1.2',
+921 silly resolved     dist: { shasum: '66de0b0c65c2a7ed435f27976dc6442927f12e44' },
+921 silly resolved     _from: 'ee-types@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-types/-/ee-types-0.1.2.tgz' },
+921 silly resolved   { name: 'ee-log',
+921 silly resolved     description: 'simple, helpful & colorful logs',
+921 silly resolved     version: '0.2.16',
+921 silly resolved     homepage: 'https://github.com/eventEmitter/ee-log',
+921 silly resolved     author:
+921 silly resolved      { name: 'Michael van der Weg',
+921 silly resolved        email: 'michael@eventemitter.com',
+921 silly resolved        url: 'http://eventemitter.com/' },
+921 silly resolved     licence: 'mit',
+921 silly resolved     repository:
+921 silly resolved      { url: 'https://github.com/eventEmitter/ee-log.git',
+921 silly resolved        type: 'git' },
+921 silly resolved     engines: { node: '*' },
+921 silly resolved     bugs: { url: 'https://github.com/eventEmitter/ee-log/issues' },
+921 silly resolved     dependencies: { 'ee-class': '*', 'ee-project': '*', 'ee-types': '*' },
+921 silly resolved     devDependencies: {},
+921 silly resolved     optionalDependencies: {},
+921 silly resolved     keywords: [ 'log', 'logging', 'trace', 'colorful' ],
+921 silly resolved     scripts: { test: 'node test.js' },
+921 silly resolved     readme: '# ee-log\n\ncolorful, nice formatted logs for node.js\n\nATTENTION: this library should only be used when developing - it makes use of the sysnchronous logging funtionality ( like console.log itself ). you should never use synchronous logging in a live environment, it will slow down your application heavily! The library will be updated soon with asynchronous logging support for live applicaions.\n\n## installation\n\n\tnpm install ee-log\n\n## build status\n\n[![Build Status](https://travis-ci.org/eventEmitter/ee-log.png?branch=master)](https://travis-ci.org/eventEmitter/ee-log)\n\n\n## usage\n\n    var log = require( "ee-log" );\n\n\n### debug\n\nprints grey text\n\n    log.debug( "debug %s ==> %s", 1, new Buffer( "whoa!" ), { go: "is a cool language!"} );\n\n    // output: \n    22 13:06:34.935 > test.js:6, Object.<anonymous>                 >>> debug 1 ==> 77 68 6f 61 21 \n\t{\n\t    go: "is a cool language!"\n\t}\n\n\n\n\n### info\n\nprints white text\n\n\tlog.info( "info" );\n\n\t// output\n\t22 13:06:34.939 > test.js:7, Object.<anonymous>                 >>> info\n\n\n\n\n### warn\n\nprints yellow text\n\n\tlog.warn( "warn", new Date(), 455 );\n\n\t// output \n\t22 13:06:34.940 > test.js:8, Object.<anonymous>                 >>> warn, 2013-08-22T11:06:34.939Z, 455\n\n\n\n\n\n### error\n\nprints red text\n\n\tlog.error( "error", { "test": 3 } );\n\n\t// output\n\t22 13:06:34.940 > test.js:9, Object.<anonymous>                 >>> error\n\n\n\n\n\n### highlight\n\nprints cyan text\n\n\tlog.highlight( "highlight" );\n\n\t// output\n\t22 13:06:34.940 > test.js:10, Object.<anonymous>                >>> highlight\n\n\n\n\n\n### dir\n\nprints the items passed to it\n\n\tlog.dir( { hi: 1 } );\n\n\t// output\n\t22 13:16:32.207 > test.js:11, Object.<anonymous>                >>> Dir\n\t{\n\t    hi: 1\n\t}\n\n\n\n\n### trace\n\nprints a colorful error stack trace\n\t\n\tlog.trace( new Error( "testing the sh*t" ) );\n\n\t// output\n\t22 13:30:48.899 > /test.js:12, Object.<anonymous>                >>> Trace\n\t--------------------------------------------------------------------------------\n\tError: testing the sh*t\n\t--------------------------------------------------------------------------------\n\t                      /test.js   12:13  Object.<anonymous>\n\t                     module.js  456:26  Module._compile\n\t                     module.js  474:10  Object.Module._extensions..js\n\t                     module.js  356:32  Module.load\n\t                     module.js  312:12  Function.Module._load\n\t                     module.js  497:10  Function.Module.runMain\n\t                       node.js  119:16  startup\n\t                       node.js  901:3   \n\t--------------------------------------------------------------------------------\n\n\n### log method\n\nprints whatever comes, uses log.info for text types\n\n\tlog( 2, "er %s:%s", 22, new Error( "whoa!" ), "hui", new Error( "" ), new Buffer(22) );\n\n\t// output\n\t23 14:53:15.480 > /test.js 16:2, Object.<anonymous>               >>> 2\n\t23 14:53:15.480 > /test.js 16:2, Object.<anonymous>               >>> er 22:Error: whoa!\n\t23 14:53:15.480 > /test.js 16:2, Object.<anonymous>               >>> hui\n\t23 14:53:15.482 > /test.js 16:2, Object.<anonymous>               >>> [Trace]\n\t--------------------------------------------------------------------------------\n\tError: -\n\t--------------------------------------------------------------------------------\n\t                      /test.js   16:55  Object.<anonymous>\n\t                     module.js  456:26  Module._compile\n\t                     module.js  474:10  Object.Module._extensions..js\n\t                     module.js  356:32  Module.load\n\t                     module.js  312:12  Function.Module._load\n\t                     module.js  497:10  Function.Module.runMain\n\t                       node.js  119:16  startup\n\t                       node.js  901:3   \n\t--------------------------------------------------------------------------------\n\t23 14:53:15.482 > /test.js 16:2, Object.<anonymous>               >>> 70 ab ac 0 0 0 0 0 3a 0 0 0 3b 0 0 0 f0 34 72 1 0 0 \n\n\n\n### disable logging inside one module\n\t\n\t// call this from inside your module, no logs will be displayed anymore\n\tlog.disable();\n\n\t// enable logging again\n\tlog.enable();\n',
+921 silly resolved     readmeFilename: 'README.md',
+921 silly resolved     _id: 'ee-log@0.2.16',
+921 silly resolved     dist: { shasum: '58c62d564da8e9852f24039f16b87d18c04ace8f' },
+921 silly resolved     _from: 'ee-log@*',
+921 silly resolved     _resolved: 'https://registry.npmjs.org/ee-log/-/ee-log-0.2.16.tgz' } ]
+922 info install ee-options@0.1.0 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+923 info install ee-class@0.2.7 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+924 info install ee-error@0.1.0 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+925 info install ee-protocol-json@0.1.0 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+926 info install ee-event-emitter@0.1.0 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+927 info install ee-arguments@0.1.4 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+928 info install ee-types@0.1.2 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+929 info install ee-log@0.2.16 into d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+930 info installOne ee-options@0.1.0
+931 verbose about to build d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net
+932 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net unbuild
+933 info installOne ee-class@0.2.7
+934 info installOne ee-error@0.1.0
+935 info installOne ee-protocol-json@0.1.0
+936 info installOne ee-event-emitter@0.1.0
+937 info installOne ee-arguments@0.1.4
+938 info installOne ee-types@0.1.2
+939 info installOne ee-log@0.2.16
+940 info preuninstall ee-net@0.1.3
+941 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-class unbuild
+942 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-error unbuild
+943 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-protocol-json unbuild
+944 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-event-emitter unbuild
+945 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-types unbuild
+946 info d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-log unbuild
+947 info uninstall ee-net@0.1.3
+948 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+949 silly lockFile 663103a8-les-ee-net-node-modules-ee-class tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-class
+950 verbose lock tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-class C:\Users\User\AppData\Roaming\npm-cache\663103a8-les-ee-net-node-modules-ee-class.lock
+951 silly lockFile 97f9aaea-cache-ee-class-0-2-7-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz
+952 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-class\0.2.7\package.tgz C:\Users\User\AppData\Roaming\npm-cache\97f9aaea-cache-ee-class-0-2-7-package-tgz.lock
+953 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+954 silly lockFile 4140db18-et-node-modules-ee-protocol-json tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-protocol-json
+955 verbose lock tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-protocol-json C:\Users\User\AppData\Roaming\npm-cache\4140db18-et-node-modules-ee-protocol-json.lock
+956 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+957 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\9326a133--protocol-json-0-1-0-package-tgz.lock
+958 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+959 silly lockFile c50986c7-et-node-modules-ee-event-emitter tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-event-emitter
+960 verbose lock tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-event-emitter C:\Users\User\AppData\Roaming\npm-cache\c50986c7-et-node-modules-ee-event-emitter.lock
+961 silly lockFile 037b7500--event-emitter-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz
+962 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-event-emitter\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\037b7500--event-emitter-0-1-0-package-tgz.lock
+963 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+964 silly lockFile 7e840d94-les-ee-net-node-modules-ee-types tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-types
+965 verbose lock tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-types C:\Users\User\AppData\Roaming\npm-cache\7e840d94-les-ee-net-node-modules-ee-types.lock
+966 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+967 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz C:\Users\User\AppData\Roaming\npm-cache\b6fd6cf8-cache-ee-types-0-1-2-package-tgz.lock
+968 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+969 silly lockFile 6dbe2cbb-dules-ee-net-node-modules-ee-log tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-log
+970 verbose lock tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-log C:\Users\User\AppData\Roaming\npm-cache\6dbe2cbb-dules-ee-net-node-modules-ee-log.lock
+971 silly lockFile f175dbe1--cache-ee-log-0-2-16-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz
+972 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-log\0.2.16\package.tgz C:\Users\User\AppData\Roaming\npm-cache\f175dbe1--cache-ee-log-0-2-16-package-tgz.lock
+973 verbose true,d:\program\nodejs__prjs\mixa_node_site_template2\node_modules,d:\program\nodejs__prjs\mixa_node_site_template2\node_modules unbuild ee-net@0.1.3
+974 info postuninstall ee-net@0.1.3
+975 verbose tar unpack C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+976 silly lockFile 69545657-les-ee-net-node-modules-ee-error tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-error
+977 verbose lock tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-error C:\Users\User\AppData\Roaming\npm-cache\69545657-les-ee-net-node-modules-ee-error.lock
+978 silly lockFile b65500fc-cache-ee-error-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz
+979 verbose lock tar://C:\Users\User\AppData\Roaming\npm-cache\ee-error\0.1.0\package.tgz C:\Users\User\AppData\Roaming\npm-cache\b65500fc-cache-ee-error-0-1-0-package-tgz.lock
+980 silly gunzTarPerm modes [ '755', '644' ]
+981 silly gunzTarPerm modes [ '755', '644' ]
+982 silly gunzTarPerm modes [ '755', '644' ]
+983 silly gunzTarPerm modes [ '755', '644' ]
+984 silly gunzTarPerm modes [ '755', '644' ]
+985 silly gunzTarPerm modes [ '755', '644' ]
+986 silly gunzTarPerm extractEntry package.json
+987 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+988 silly gunzTarPerm extractEntry package.json
+989 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+990 silly gunzTarPerm extractEntry package.json
+991 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+992 silly gunzTarPerm extractEntry .npmignore
+993 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+994 silly gunzTarPerm extractEntry README.md
+995 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+996 silly gunzTarPerm extractEntry .npmignore
+997 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+998 silly gunzTarPerm extractEntry README.md
+999 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+1000 silly gunzTarPerm extractEntry .npmignore
+1001 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+1002 silly gunzTarPerm extractEntry README.md
+1003 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+1004 silly gunzTarPerm extractEntry index.js
+1005 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+1006 silly gunzTarPerm extractEntry test.js
+1007 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+1008 silly gunzTarPerm extractEntry LICENCE
+1009 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+1010 silly gunzTarPerm extractEntry index.js
+1011 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+1012 silly gunzTarPerm extractEntry LICENCE
+1013 silly gunzTarPerm modified mode [ 'LICENCE', 438, 420 ]
+1014 silly gunzTarPerm extractEntry index.js
+1015 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+1016 silly gunzTarPerm extractEntry .travis.yml
+1017 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+1018 silly gunzTarPerm extractEntry lib/JSONProtocol.js
+1019 silly gunzTarPerm modified mode [ 'lib/JSONProtocol.js', 438, 420 ]
+1020 silly gunzTarPerm extractEntry test.js
+1021 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+1022 silly gunzTarPerm extractEntry .client.json
+1023 silly gunzTarPerm modified mode [ '.client.json', 438, 420 ]
+1024 silly gunzTarPerm extractEntry test.js
+1025 silly gunzTarPerm modified mode [ 'test.js', 438, 420 ]
+1026 silly gunzTarPerm extractEntry lib/types.js
+1027 silly gunzTarPerm modified mode [ 'lib/types.js', 438, 420 ]
+1028 silly gunzTarPerm extractEntry .travis.yml
+1029 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+1030 silly gunzTarPerm extractEntry lib/class.js
+1031 silly gunzTarPerm modified mode [ 'lib/class.js', 438, 420 ]
+1032 silly lockFile 7e840d94-les-ee-net-node-modules-ee-types tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-types
+1033 silly lockFile 7e840d94-les-ee-net-node-modules-ee-types tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-types
+1034 silly lockFile 4140db18-et-node-modules-ee-protocol-json tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-protocol-json
+1035 silly lockFile 4140db18-et-node-modules-ee-protocol-json tar://d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-protocol-json
+1036 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+1037 silly lockFile b6fd6cf8-cache-ee-types-0-1-2-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-types\0.1.2\package.tgz
+1038 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+1039 silly lockFile 9326a133--protocol-json-0-1-0-package-tgz tar://C:\Users\User\AppData\Roaming\npm-cache\ee-protocol-json\0.1.0\package.tgz
+1040 silly gunzTarPerm extractEntry package.json
+1041 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+1042 info preinstall ee-types@0.1.2
+1043 info preinstall ee-protocol-json@0.1.0
+1044 silly gunzTarPerm extractEntry package.json
+1045 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+1046 silly gunzTarPerm extractEntry package.json
+1047 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+1048 silly gunzTarPerm extractEntry .npmignore
+1049 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+1050 silly gunzTarPerm extractEntry README.md
+1051 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+1052 verbose readDependencies using package.json deps
+1053 verbose readDependencies using package.json deps
+1054 verbose readDependencies using package.json deps
+1055 silly resolved []
+1056 verbose about to build d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-types
+1057 info build d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-types
+1058 verbose linkStuff [ false,
+1058 verbose linkStuff   false,
+1058 verbose linkStuff   false,
+1058 verbose linkStuff   'd:\\program\\nodejs__prjs\\mixa_node_site_template2\\node_modules\\ee-net\\node_modules' ]
+1059 info linkStuff ee-types@0.1.2
+1060 verbose linkBins ee-types@0.1.2
+1061 verbose linkMans ee-types@0.1.2
+1062 verbose rebuildBundles ee-types@0.1.2
+1063 verbose readDependencies using package.json deps
+1064 silly resolved []
+1065 verbose about to build d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-protocol-json
+1066 info build d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-protocol-json
+1067 verbose linkStuff [ false,
+1067 verbose linkStuff   false,
+1067 verbose linkStuff   false,
+1067 verbose linkStuff   'd:\\program\\nodejs__prjs\\mixa_node_site_template2\\node_modules\\ee-net\\node_modules' ]
+1068 info linkStuff ee-protocol-json@0.1.0
+1069 verbose linkBins ee-protocol-json@0.1.0
+1070 verbose linkMans ee-protocol-json@0.1.0
+1071 verbose rebuildBundles ee-protocol-json@0.1.0
+1072 silly gunzTarPerm extractEntry .npmignore
+1073 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+1074 silly gunzTarPerm extractEntry README.md
+1075 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+1076 info install ee-types@0.1.2
+1077 info install ee-protocol-json@0.1.0
+1078 error Error: ENOENT, open 'd:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-event-emitter\package.json'
+1079 error If you need help, you may report this *entire* log,
+1079 error including the npm and node versions, at:
+1079 error     <http://github.com/isaacs/npm/issues>
+1080 error System Windows_NT 6.1.7601
+1081 error command "d:\\program\\nodejs\\\\node.exe" "d:\\program\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "ee-net"
+1082 error cwd d:\program\nodejs__prjs\mixa_node_site_template2
+1083 error node -v v0.10.24
+1084 error npm -v 1.3.21
+1085 error path d:\program\nodejs__prjs\mixa_node_site_template2\node_modules\ee-net\node_modules\ee-event-emitter\package.json
+1086 error code ENOENT
+1087 error errno 34
+1088 verbose exit [ 34, true ]

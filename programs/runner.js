@@ -1,4 +1,4 @@
-console.log('load app..');
+console.log('load runner.js..');
 
 var g = require('./app/global.js');
 module.exports = g; 
@@ -15,7 +15,7 @@ if(config.get('app_is_webserver')){
     
     var http = require('http');
     var server = http.createServer(app);
-    var port = config.get('http_port');
+    var port = config.get('port');
     
     server.listen(port, function(){
         g.log.info('Express server listening on port ' + port);
