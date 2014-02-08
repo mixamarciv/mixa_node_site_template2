@@ -12,6 +12,7 @@ if(args.length<=2){
     nconf.set("app_is_webserver",1); //флаг, что приложение запущено как веб сервер
 }else{
     nconf.set("app_is_webserver",0);
+    nconf.set("execute_app",args[2]); //какое приложение запускаем
 }
 
 

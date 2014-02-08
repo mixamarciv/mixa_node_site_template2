@@ -1,12 +1,13 @@
 console.log('load runner.js..');
 
-var g = require('./app/global.js');
+var g = require('../app/global.js');
 module.exports = g; 
 
 var config = g.app_config;
+var run_app = nconf.set("execute_app");
 
-if(config.get('app_is_webserver')){
-    //если запускаем наш веб сервер
+if(!config.get('app_is_webserver') || !run_app || run_app){
+    //если 
 
     var express = require('express');
     var app = express();

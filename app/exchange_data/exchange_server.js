@@ -4,27 +4,68 @@ var g = require('../global.js');
 var config = g.app_config;
 var port = config.get('app_server_port');
 
-var dnode = require('dnode');
+//var dnode = require('dnode');
 
 
 var programs_list = {};
-/***
- * array(  pid->object(info->object(name,user_name,description,log_file)
- *                     start_time,
- *                     end_time,
- *                     result,
- *                     errors,
- *                     error_message,
- *                     progress->object(total_progress,status,progress)
- *                    )
- *      );
- ***/
+/*****
+ * {  pid : {info : {name,user_name,description,log_file}
+ *           start_time,
+ *           end_time,
+ *           result,
+ *           errors,
+ *           error_message,
+ *           progress : {total_progress,status,progress}
+ *           }
+ * };
+ *****/
+var clients_list = {} // { pid->client };
 
 //функцмя возвращает текущее время
 function get_time_fnc() { 
     return (new Date()).getTime(); //пока в количестве милисекунд
 }
 
+var net = require('net');
+var server = net.createServer(function(client) { //'connection' listener
+    
+    client.message_interval = setInterval(function(){
+        client.write('connected to server (pid:'+process.pid+')');
+    },2000);
+    
+    client.write('connect to server establish');
+    
+    console.log('client connected');
+    
+    function on_end_connection(type_disconnect) {
+        clearInterval(client.message_interval);
+        console.log('server disconnected ('+type_disconnect+')');
+        receive_client_close_connect(client,type_disconnect);
+    }
+    
+    client.on('close', function(){on_end_connection('close');});
+    client.on('end',   function(){on_end_connection('end');  });
+    client.on('error', function(){on_end_connection('error');});
+    
+    client.on('data',function(data){ 
+      console.log('client data: '+d);
+      receive_client_data(client,data);
+    });
+});
+
+server.listen(port, function() { //'listening' listener
+  g.log.info('app exchange server listening on port ' + port);
+});
+
+function receive_client_close_connect(client,data) {
+    //
+}
+
+function receive_client_data(client,data) {
+    //
+}
+
+/***************
 var server = dnode({
     program_start : function (pid,info) {
         //получаем сообщение о запуске процесса info(name,user_name,description,log_file)
@@ -60,9 +101,7 @@ var server = dnode({
 });
 
 server.listen(port);
-
-g.log.info('app exchange server listening on port ' + port);
-
+*****************/
 
 
 
