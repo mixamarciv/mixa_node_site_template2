@@ -36,5 +36,5 @@ if(g.app_config.get('app_is_webserver')){
 }
 
 //подключаем модуль для обмена сообщениями между процессами
-g.exchange = require('./exchange_data/exchange.js');
+//g.exchange = require('./exchange_data/exchange.js');
 
