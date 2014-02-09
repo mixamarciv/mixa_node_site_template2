@@ -1,7 +1,7 @@
 console.log('load express..');
 
 var g  = require('./global.js');
-var gf = g.app_fnc; 
+var a = g.app_fnc; 
 
 
 var HttpError = require('./error/http_error.js');
@@ -17,7 +17,7 @@ module.exports = function (app, express) {
         //mongoose = require('../utils/mongoose'),
         //MongoStore = require('connect-mongo')(express),
 
-    var router = require('../routes');
+    var router = require('../routes/routes.js');
     
     /****
     //задаем шаблонизатор
@@ -35,16 +35,17 @@ module.exports = function (app, express) {
     //app.set('view engine', 'ejs');
     
     
-
     //прокси мы тоже доверяем
     app.enable('trust proxy');
-
-
+    
+    //первым делом логируем запрос
+    app.use(log_request);
+    
+    
     //отправляем Favicon
     app.use(express.favicon('public/images/favicon.ico'));
-
     
-    if (app.get('env') == 'development') {
+    if(app.get('env') == 'development') {
         //app.use(express.logger('dev'));
     }
 
@@ -84,10 +85,12 @@ module.exports = function (app, express) {
     //user functions load: - загружаем все функции и проходим проверки пользователя
     require('./app_use/app_use.js')(app,express);
 
+    
 
     //теперь задаем все роуты на вывод нужных страниц пользователю
     //app.use(app.router);
-    require('../routes')(app);
+    require('../routes/routes.js')(app,express);
+    require('../public/public.js')(app,express);
 
 
 
@@ -98,10 +101,10 @@ module.exports = function (app, express) {
     app.use(function(err,req,res,next){
         g.log.info('http error catch');
         if(typeof err == 'number'){
-            err = new gf.HttpError(err);
+            err = new a.HttpError(err);
         }
         
-        if(err instanceof gf.HttpError){
+        if(err instanceof a.HttpError){
             //return express.errorHandler()(err,req,res,next);
             return res.sendHttpError(err);
         }
@@ -112,3 +115,18 @@ module.exports = function (app, express) {
     //Error handing
     //app.use(errorHandler);
 };
+
+function log_request(req,res,next) {
+    
+    //var dump_options = {exclude: [/^req.socket/i,/^req.res.socket/i,/\._/,/\.connection\.parser/i,/req.client.parser/i]};
+    //g.log.info(  g.mixa.dump.var_dump_node("req",req,dump_options)  );
+    res.execute_info = { //сохраняем начальную информацию о запросе
+        start_time : (new Date()).getTime(),  //время начала обработки запроса
+        execute_time : function(time_end){ return g.mixa.str.time_duration_str(this.start_time,new Date());},
+        url : req.originalUrl,
+        method: req.method
+    }
+    g.log.info("req: ["+req.method+"] "+req.originalUrl);
+    
+    next();
+}

@@ -6,7 +6,9 @@ module.exports = g;
 var config = g.app_config;
 var run_app = nconf.set("execute_app");
 
-if(!config.get('app_is_webserver') || !run_app || run_app){
+
+/********
+if(!config.get('app_is_webserver') || !run_app ){
     //если 
 
     var express = require('express');
@@ -33,7 +35,7 @@ if(!config.get('app_is_webserver') || !run_app || run_app){
     var user_app = args[2];
     console.log('start app '+user_app);
 }
+*******/
 
 
-console.log('end load');
 

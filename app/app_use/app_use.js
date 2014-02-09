@@ -7,6 +7,7 @@ module.exports = function(app,express){
     //g.log.info("load app_use functions..");
     
     //все заданные переменные res.locals - будут доступны в ejs шаблонах!
+    //app.use(log_request);
     app.use(load_main_vars);
     app.use(a.session.visit);
     app.use(require('./send_http_error.js'));
@@ -21,3 +22,4 @@ function load_main_vars(req,res,next){
     res.locals.data.a = a;
     next();
 }
+

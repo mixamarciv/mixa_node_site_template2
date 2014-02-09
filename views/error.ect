@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ERROR</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>ERROR <%- error %></h1>
-    <pre><%- error_str %></pre>
-  </body>
-</html>
+<% extend @templates_path+'/index.ect' %>
+
+  <!--%- @g.log.error("render template0"); %-->
+
+    <h1>ERROR <%- @error %></h1>
+    <pre><%- @error_str %></pre>
+      <!--%- @g.log.warn("render template!"); %-->
+    
+<% block 'footer' : %>
+	<span>error page</span>
+<% end %>

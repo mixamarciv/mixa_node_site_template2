@@ -27,14 +27,14 @@ var time_id_long = {
 
 if(cfg.get("link_time:short")>0){
     setInterval(function(){
-        time_id_short.prev = time_id_short.prev;
+        time_id_short.prev = time_id_short.last;
         time_id_short.last = get_random_time_id();
     },cfg.get("link_time:short")*1000);
 }
 if(cfg.get("link_time:long")>0){
     setInterval(function(){
-        time_id_short.prev = time_id_short.prev;
-        time_id_short.last = get_random_time_id();
+        time_id_long.prev = time_id_short.last;
+        time_id_long.last = get_random_time_id();
     },cfg.get("link_time:long")*1000);
 }
 
@@ -62,10 +62,10 @@ function check_link_id(req,res,id,is_long) {
 
 //задаем сессию +отмечаем визит
 function session_visit(req,res,next){
-    g.log.info("session_visit ..");
+    //g.log.info("session_visit ..");
     req.session.count = req.session.count || 0;
     if(req.session.count==0){
-        req.session.lsid = m.int.get_random_int(1000*1000*2,1000*1000*1000*9);
+        req.session.lsid = m.int.get_random_int(1000*1000*2,1000*1000*1000*9); //id сессии для генерации lid ссылок на ресурсы
         req.session.lsid_req_error_count = 0;
     }
     req.session.count++;

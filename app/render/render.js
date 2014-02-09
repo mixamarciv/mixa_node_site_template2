@@ -7,7 +7,7 @@ var cfg = g.app_config;
 
                                  
 //задаем обработку вывода шаблона
-module.exports = function(req,res,template){
+module.exports = function(req,res,template,data2){
     g.log.info("render '"+template+"'..");
     var ect = require('ect');
     var renderer = ect({ watch: true, // — Automatic reloading of changed templates,
@@ -23,8 +23,14 @@ module.exports = function(req,res,template){
 
     //if(!data) data = {};
     var data = res.locals.data;
+    if(data2){
+        g.mixa.obj.add_object( data, data2 );
+    }
+    
     if(!data.page_title)  data.page_title = cfg.get('site_title_default');
     if(!data.templates_path)  data.templates_path = templates_path;
+    
+    data.execute_time = res.execute_info.execute_time();
     
     var html;
     

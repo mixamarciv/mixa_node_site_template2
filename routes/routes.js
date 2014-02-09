@@ -1,21 +1,17 @@
-//тут загружаем список всех роутов
+//С‚СѓС‚ Р·Р°РіСЂСѓР¶Р°РµРј СЃРїРёСЃРѕРє РІСЃРµС… СЂРѕСѓС‚РѕРІ
 var g  = require('../app.js');
 var a  = g.app_fnc;
+
 var r  = require('./global/index.js');
 
 
-module.exports = function(app){
+module.exports = function(app,express){
   
   app.get('/',function(req, res, next){
-    
-    g.log.info("try catch error");
-    //test.a.a = 0;
-    res.render('index', { title: 'Express' });
+    a.render(req,res,'index.ect');
   });
   
   app.get('/aaa',r.checkAuth,function(req, res, next){
-    g.log.info("AAAAAAAAAAAAA");
-    g.log.info('http query 404');
     next(404);
     g.log.info('http send 404');
   });
