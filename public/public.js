@@ -3,6 +3,8 @@ console.log("load public.js..")
 var g  = require('../app.js');
 var a  = g.app_fnc;
 
+var lessMiddleware = require('less-middleware');
+
 
 module.exports = function(app,express){
   
@@ -10,6 +12,14 @@ module.exports = function(app,express){
   //app.use('/public', test_access, express.static(__dirname));
   app.use('/public', test_access );
   app.use('/public', less_files_send );
+  /********
+  app.use(lessMiddleware({
+        //dest: '/public/stylesheets', // should be the URI to your css directory from the location bar in your browser
+        src: g.path.join(__dirname), // or '../less' if the less directory is outside of /public
+        //root: '/public',
+        compress: true
+  }));
+  ******/
   app.use('/public', express.static(__dirname));
   //app.use('/public', express.static(__dirname+'/public'));
 }
@@ -28,26 +38,70 @@ function test_access(req,res,next) {
     return next();
 }
 
-
+/**************************************/
 var less = require('less');
 
 function less_files_send(req,res,next) {
   var file = req.path;
-  if (g.path.extname(file).toLowerCase() == 'less') {
-    
-      var parser = new(less.Parser)({
-          paths: [g.path.join(__dirname,'/stylesheets')], // Specify search paths for @import directives
-          filename: 'style.less'      // Specify a filename, for better error messages
-      });
-      
-      
-      parser.parse('.class { width: (1 + 1) }', function (e, tree) {
-          if (err) {
-            return a.render(req,res,'error.ect',{error:"less render exception",error_msg:g.util.inspect(err)});
+  //g.log.info("g.path.extname("+file+").toLowerCase()=="+g.path.extname(file).toLowerCase());
+  if(g.path.extname(file).toLowerCase() !== '.css') return next();
+
+  //g.log.info("fs.exists("+file+")");
+  g.fs.exists(file,function(exists){
+    if(exists) res.sendFile(file);
+  });
+  /*******
+  fs.readFile(lessPath, 'utf8', function(err, str){
+          if (err) { return error(err); }
+
+          delete imports[lessPath];
+
+          try {
+            var preprocessed = options.preprocessor(str, req);
+            options.render(preprocessed, lessPath, cssPath, function(err, css){
+              if (err) {
+                lessError(err);
+
+                return next(err);
+              }
+
+              log('render', lessPath);
+
+              mkdirp(path.dirname(cssPath), 511 , function(err){
+                if (err) return error(err);
+
+                fs.writeFile(cssPath, css, 'utf8', next);
+              });
+            });
+          } catch (err) {
+            lessError(err);
+
+            return next(err);
           }
-          return tree.toCSS({ compress: true }); // Minify CSS output
-      });
-  }
-  return next();
+        });
+  
+  
+      parser.parse(str, function(err, tree) {
+        if(err) {
+          return callback(err);
+        }
+
+        try {
+          var css = tree.toCSS({
+            compress: (options.compress == 'auto' ? regex.compress.test(cssPath) : options.compress),
+            yuicompress: options.yuicompress,
+            sourceMap: options.sourceMap
+          });
+
+          // Store the less import paths
+          imports[lessPath] = determine_imports(tree, lessPath, options.paths);
+
+          callback(err, css);
+        } catch(parseError) {
+          callback(parseError, null);
+        }
+    });
+    ***********/
 }
+/**************************************/
 //req.path
