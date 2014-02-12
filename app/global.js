@@ -29,7 +29,10 @@ a = g.app_fnc;
 
 
 if(g.app_config.get('app_is_webserver')){
-    
+    a.server_info = {
+        request_number: 0 //количество запросов к серверу
+        
+                    };
     a.session = require('./session/session.js');
 
     a.render = require('./render/render.js');

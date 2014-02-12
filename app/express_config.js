@@ -118,6 +118,7 @@ module.exports = function (app, express) {
 
 function log_request(req,res,next) {
     
+    var req_n = a.server_info.request_number++;
     //var dump_options = {exclude: [/^req.socket/i,/^req.res.socket/i,/\._/,/\.connection\.parser/i,/req.client.parser/i]};
     //g.log.info(  g.mixa.dump.var_dump_node("req",req,dump_options)  );
     res.execute_info = { //сохраняем начальную информацию о запросе
@@ -126,7 +127,7 @@ function log_request(req,res,next) {
         url : req.originalUrl,
         method: req.method
     }
-    g.log.info("req: ["+req.method+"] "+req.originalUrl);
+    g.log.info(req_n+": ["+req.method+"] "+req.originalUrl);
     
     next();
 }
