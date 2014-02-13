@@ -1,0 +1,130 @@
+@bg_main: #000;
+@bg_text: @bg_main + #111;
+@bg_link: @bg_text + #222;
+@color_text: #fff;
+@color_link: @color_text - #555 + #00f;
+
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: @color_text;
+  background: @bg_main;
+}
+
+a {
+  color: @color_link;
+  background: @bg_link;
+}
+
+
+
+
+/* CSS MENU */
+@bg_menu: #333;
+@bg_menu2:  #555;
+@bg_menu_selected: @bg_menu - #522 ;
+@bg_menu_text: @bg_main + #111;
+@bg_menu_link: @bg_menu + #777;
+@border_line_menu:  #aaa;
+@color_menu_text: #fff;
+@color_menu_link: @color_menu_text;
+
+@color_menu_text_selected: @color_menu_text;
+@color_menu_link_selected: @color_menu_link;
+
+
+.css_menu {
+  text-align: right;
+  padding-left: 20px;
+  margin-top: 0px;
+  /*float: left;*/
+}
+.css_menu:after { /* что бы после меню не смещались другие элементы */
+  content: "";
+  clear: both;
+  display: block;
+}
+.css_menu * { /* задаем стили для всех элементов */
+  list-style: none;
+  text-decoration: none;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+}
+.css_menu>ul>li { /* главное меню (первая полоска) */
+  display: inline-table;
+  float: left;
+}
+.css_menu * ul { /* все дочерние подпункты меню */
+  z-index: 100;
+  position: absolute;
+  display: none;
+  left: 100%;
+}
+.css_menu>ul>li>ul { /* подпункт главного пункта меню */
+  left: 0px;
+  /*top: 100%;*/
+  /*margin-left: -1px;*/
+}
+.css_menu>ul>li>ul * ul { /* все дочерние подпункты меню, кроме подпункта главного меню */
+  top: 0px;
+  margin-top: -1px;
+}
+.css_menu li:hover > ul { /* делаем видимыми дочерние ul блоки над которыми находится курсор */
+  display: block;
+
+}
+
+/* теперь задаем стили для элементов меню */
+.css_menu a {
+  display: block;
+  
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+  background: transparent;
+}
+.css_menu>ul>li { /* главное меню (первая полоска) */
+  border-top: 1px solid @border_line_menu;
+  border-left: 1px solid @border_line_menu;
+  border-right: 1px solid @border_line_menu;
+  border-bottom: 1px solid @border_line_menu;
+  margin: 1px;
+}
+.css_menu>ul { /* главное меню (первая полоска) */
+  border-top: 0px ;
+}
+.css_menu * ul {
+  background: @bg_menu;
+  border: 1px solid @border_line_menu;
+  border-top: 0px solid @border_line_menu;
+}
+.css_menu li {
+  border-top: 1px solid @border_line_menu;
+  border-left: 0px solid @border_line_menu;
+  border-right: 0px solid @border_line_menu;
+  border-bottom: 0px solid @border_line_menu;
+
+
+
+  font-weight: bold;
+  
+  background: @bg_menu; /* Для старых браузров */
+  
+  /*background:-moz-linear-gradient(top,@bg_menu,@bg_menu2);*/ /* Firefox 3.6+ */
+  /*background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,@bg_menu),color-stop(100%,@bg_menu2));*/ /* Chrome 1-9, Safari 4-5 */
+  /*background:-webkit-linear-gradient(top,@bg_menu,@bg_menu2);*/ /* Chrome 10+, Safari 5.1+ */
+  /*background:-o-linear-gradient(top,@bg_menu,@bg_menu2);*/ /* Opera 11.10+ */
+  /*background:-ms-linear-gradient(top,@bg_menu,@bg_menu2);*/ /* IE10 */
+  /*background:linear-gradient(top,@bg_menu,@bg_menu2);*/ /* CSS3 */
+}
+
+.css_menu ul li:hover {
+  /*border: 1px solid @border_line_menu;*/
+  /*border-bottom: 1px solid @border_line_menu;*/
+  background: @bg_menu_selected;
+}
+
+/* /CSS MENU */

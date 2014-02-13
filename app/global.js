@@ -18,8 +18,8 @@ g.mixa = require('mixa_std_js_functions');
 
 
 g.app_config = require('../config/config.js');
-g.app_config.main_path = g.path.normalize(g.path.join(__dirname, '..'));
-g.app_config.templates_path = g.path.normalize( g.path.join(__dirname, '..',g.app_config.get("templates:path")) );
+
+
 
 g.log = require('./log_config.js')();
 

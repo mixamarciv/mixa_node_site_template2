@@ -26,14 +26,17 @@ module.exports = function(app,express){
 
 
 function test_access(req,res,next) {
+    //all public files need slid (short link id) or llid (long link id)
     var is_long_lid = 0;
     var link_id = req.query['slid'];
     if(!link_id){
         is_long_lid = 1;
         link_id = req.query['llid'];
     }
-    if(!a.session.check_link_id(req,res,link_id,is_long_lid)){
-        return a.render(req,res,'error.ect',{error:"no access to public (bad link id)"});
+    
+    if(!link_id || !a.session.check_link_id(req,res,link_id,is_long_lid)){
+        //return a.render(req,res,'error.ect',{error:"no access to public (bad link id)"});
+        return res.sendHttpError("no access to public file");
     }
     return next();
 }
@@ -42,17 +45,20 @@ function test_access(req,res,next) {
 
 var less = require('less');
 //var public_dir = g.path.dirname(__dirname);
+var dev_render_always = g.app_config.get("dev:always_render_less");
 
 function less_files_send(req,res,next) {
   var file = req.path;
   //g.log.info("g.path.extname("+file+").toLowerCase()=="+g.path.extname(file).toLowerCase());
-  if(g.path.extname(file).toLowerCase() !== '.css') return next();
+  if(g.path.extname(file) !== '.css') return next();
 
   file = g.path.join(__dirname,file);
   
   //g.log.info("fs.exists("+file+")");
   g.fs.exists(file,function(exists){
-      if(exists) return res.sendfile(file);
+      if(exists && dev_render_always==0){
+        return res.sendfile(file);
+      }
       var css_file = file;
       var less_file = file.replace(/css$/i,'less');
       
@@ -98,7 +104,8 @@ function less_files_send(req,res,next) {
           
           if(err){
             g.log.info(  g.mixa.dump.var_dump_node("err",err,dump_options)  );
-            res.end(g.mixa.dump.var_dump_node("err",err,dump_options));
+            //res.end(g.mixa.dump.var_dump_node("err",err,dump_options));
+            return res.sendHttpError(err);
           }
           g.log.info("render new css file: "+result_css_file_path);
           res.sendfile(result_css_file_path);

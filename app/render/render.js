@@ -5,7 +5,8 @@ var cfg = g.app_config;
 
 
 
-                                 
+var log_render_data = g.app_config.get("dev:log_render_data");
+
 //задаем обработку вывода шаблона
 module.exports = function(req,res,template,data2){
     g.log.info("render '"+template+"'..");
@@ -18,8 +19,9 @@ module.exports = function(req,res,template,data2){
                         });
     
     //app.engine('ect', renderer.render );
-    var template_file_path = g.path.join( g.app_config.templates_path, template);
-    var templates_path = g.path.join( g.app_config.templates_path, '/template/default' );
+    var view_file_path = g.path.join( g.app_config.views_path_full, template);
+    var cur_template = 'default';
+
 
     //if(!data) data = {};
     var data = res.locals.data;
@@ -28,24 +30,24 @@ module.exports = function(req,res,template,data2){
     }
     
     if(!data.page_title)  data.page_title = cfg.get('site_title_default');
-    if(!data.templates_path)  data.templates_path = templates_path;
+    if(!data.template_path     )  data.template_path      = g.app_config.templates_path+'/'+cur_template ;
+    if(!data.template_path_full)  data.template_path_full = g.path.join( g.app_config.templates_path_full, cur_template );
+    
     
     data.execute_time = res.execute_info.execute_time();
+    
+    if(log_render_data){
+        var dump_options = {exclude: [/^data.a$/,/^data.g$/]};
+        g.log.warn( "\ndump render data:\n"+g.mixa.dump.var_dump_node("data",data,dump_options) );
+    }
+
     
     var html;
     
     try {
-      html = renderer.render(template_file_path, data);
+      html = renderer.render(view_file_path, data);
     } catch(err) {
-      g.log.error("template render '"+template+"':\n"+g.util.inspect(err,1,10,0));
-      html = "<html><head><title>ERROR template render 1</title></head>"+
-             "<body style=\"background: #000; color:#ccc; font-weight: bolder;\">"+
-             "file: "+template_file_path+
-             "<pre>"+
-             g.util.inspect(err,1,10,0)+
-             "</pre>(data size:"+data.length+") :<pre>"+
-             g.util.inspect(data,1,3,0)+
-             "</pre></body></html>";
+      html = get_html_dump_error_render("err1",err,template,view_file_path,data);
     }
     
     if(!res.getHeader('Content-Type')){
@@ -53,16 +55,25 @@ module.exports = function(req,res,template,data2){
     }
     
     if(!html){
-        g.log.error("send data (data size:"+data.length+")");
-        html = "<html><head><title>ERROR template render 2</title></head>"+
-               "<body style=\"background: #000; color:#ccc; font-weight: bolder;\">"+
-               "file: "+template_file_path+
-               "<pre>"+
-               g.util.inspect(data,1,1,0)+
-               "</pre></body></html>";
+        html = get_html_dump_error_render("no html data",err,template,view_file_path,data);
     }
     
     res.end(html);
     
     
+}
+
+
+function get_html_dump_error_render(err_info,err,template,view_file_path,data) {
+    var dump_options = {exclude: [/^data.a$/,/^data.g77$/]};
+    g.log.error("template render '"+template+"':\n" + g.mixa.dump.var_dump_node("data",data,dump_options));
+    html = "<html><head><title>ERROR template render: "+err_info+"</title></head>"+
+           "<body style=\"background: #000; color:#ccc; font-weight: bolder;\">"+
+           "file: "+view_file_path+
+           "<pre>"+
+           g.mixa.dump.var_dump_node("err",err,{})+
+           "</pre>(data size:"+data.length+") :<pre>"+
+           g.mixa.dump.var_dump_node("data",data,dump_options)+
+           "</pre></body></html>";
+    return html;
 }

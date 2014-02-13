@@ -6,14 +6,19 @@
     
     "site_title_default": "тестовый сайт3000",
     
+    "dev" : {
+      "always_render_less" : 1,
+      "log_render_data" : 0
+    },
+    
     "log": {
         "app": { "filepath": "./temp/log", "level": "info"  },
         "inf": { "filepath": "./temp/log", "level": "trace" },
-        "#other log level names": "all,trace,debug,info,warn,error,fatal"
+        "#other log level names: all,trace,debug,info,warn,error,fatal":0
     },
     
     "templates": {
-    	"path": "./views"
+    	"path": "/public/templates"
     },
     
     "link_time": { "//time in seconds!":0,

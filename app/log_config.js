@@ -20,12 +20,12 @@ var transport_console_options = {
 }
 
 
-var log_filename = config.get("log:app:filepath")+"/app_"+date_to_str_format("YMDhmsk")+".log";
+var log_filename = config.get("log:app:filepath")+"/app_"+date_to_str_format("YMDhms")+".log";
 var log_level = config.get("log:app:level");
 
 if(g.app_config.get('app_is_webserver')==0){
     //если запускаем внешнее приложение
-    log_filename = config.get("log:inf:filepath")+"/app_"+date_to_str_format("YMDhmsk")+".log";
+    log_filename = config.get("log:inf:filepath")+"/app_"+date_to_str_format("YMDhms")+".log";
     log_level = config.get("log:inf:level");
 }
 
