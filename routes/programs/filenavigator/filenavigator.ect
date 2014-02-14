@@ -1,0 +1,31 @@
+<% extend @template_path_full+'/index.ect' %>
+
+    <h1>file navigator</h1>
+    
+    <div class=filenavigator>
+      <% if @error : %>
+        <pre class=error>
+	  <%- "\n"+@g.util.inspect(@error) %>
+	</pre>
+      <% end %>
+      
+      <% if @file_data : %>
+        <pre class=file_data><%= @file_data %></pre>
+      <% else : %>
+	<div class=left_panel>
+	  <%- @l_files_list %>
+	</div>
+	
+	<div class=right_panel>
+	  <%- @r_files_list %>
+	</div>
+      <% end %>
+    </div>
+    
+    <pre>
+    <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
+    <!-- %- @g.mixa.dump.var_dump_node("data",@d,@dump_options) % -->
+    </pre>
+<% block 'footer' : %>
+	<span>filenavigator</span>
+<% end %>

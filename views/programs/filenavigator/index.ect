@@ -1,0 +1,10 @@
+<% extend @template_path_full+'/index.ect' %>
+
+  <!--%- @g.log.error("render template0"); %-->
+
+    <h1>главная страница</h1>
+      <!--%- @g.log.warn("render template!"); %-->
+    
+<% block 'footer' : %>
+	<span>main page</span>
+<% end %>

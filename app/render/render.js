@@ -13,13 +13,19 @@ module.exports = function(req,res,template,data2){
     var ect = require('ect');
     var renderer = ect({ watch: true, // — Automatic reloading of changed templates,
                                       //defaulting to false (useful for debugging with enabled cache, not supported for client-side)
-                         root: __dirname + '/views',
+                         //root: __dirname + '/views',
                          cache: true, // — Compiled functions are cached, defaulting to true
                          test : 1,
                         });
     
     //app.engine('ect', renderer.render );
-    var view_file_path = g.path.join( g.app_config.views_path_full, template);
+    var view_file_path; //= g.path.join( g.app_config.views_path_full, template);
+    if(data2 && data2.view_path){
+        view_file_path = g.path.join( data2.view_path, template);
+    }else{
+        view_file_path = g.path.join( g.app_config.views_path_full, template);
+    }
+    
     var cur_template = 'default';
 
 
@@ -71,7 +77,8 @@ function get_html_dump_error_render(err_info,err,template,view_file_path,data) {
            "<body style=\"background: #000; color:#ccc; font-weight: bolder;\">"+
            "file: "+view_file_path+
            "<pre>"+
-           g.mixa.dump.var_dump_node("err",err,{})+
+           g.util.inspect(err)+
+           //g.mixa.dump.var_dump_node("err",err,{})+
            "</pre>(data size:"+data.length+") :<pre>"+
            g.mixa.dump.var_dump_node("data",data,dump_options)+
            "</pre></body></html>";
