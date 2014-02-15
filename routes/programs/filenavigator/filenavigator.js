@@ -2,6 +2,8 @@
 var g  = require('../../../app.js');
 var a  = g.app_fnc;
 
+var fcfg = g.app_config.filenavigator_cfg ;
+
 var default_path = g.path.join(__dirname,'../../../').replace(/\\/g,'/');
 
 module.exports = function(route_path,app,express){
@@ -16,7 +18,7 @@ module.exports = function(route_path,app,express){
     get_panels_info(req,function(err,data){
       
         if (g.mixa.type.class_of(data).toLowerCase()=='string') {
-          data = {file_data:data};
+          return res.sendfile(data);
         }
 
         if (!data) data = {};
@@ -42,24 +44,11 @@ function get_panels_info(req,fn) {
         }
 
         for(var i in result){
-          //если в одной из панелей выбран файл то загружаем его:
-          if(result[i]) return load_file_info(result[i],fn);
+          //если в одной из панелей выбран файл то отправляем его:
+          if(result[i]) return fn(null,result[i]);
         }
         load_files_list(req,fn);
     });
-}
-
-function load_file_info(file,fn) {
-  g.fs.readFile(file, function (err, data) {
-    if (err) {
-        err.debug_info = "cant read file ("+file+")";
-        err.debug_stack = err.stack;
-        return fn(err);
-    }
-    data = data.toString().substr(0,1024*1024*2);
-    data = escapeHtml(data);
-    fn(null,data);
-  });
 }
 
 function escapeHtml(text) {
@@ -108,24 +97,37 @@ function chek_path_is_file(path,callback) {
 }
 
 function get_files_list_html(req,L_or_R,data) {
-  
+  if (!data || !data.path || !data.files_info) {
+      var err = new Error();
+      err.data = data;
+      err.debug_info = "get_files_list_html error: undefined data";
+      err.debug_stack = err.stack;
+      return "<pre>"+g.util.inspect(err).replace(/\\n/g,'\n')+"</pre>";
+  }
+
+
   var path_L = req.query['L'];
   var path_R = req.query['R'];
 
   var fpath = g.path.normalize(data.path).replace(/\\/g,'/')+'/';
   var files = data.files_info;
-  
-  files.sort(function(a,b){
-      if(a.isDirectory() && b.isFile())
-        return -1; 
-      if(a.isFile() && b.isDirectory())
-        return 1 
-      if(a.name < b.name)
-        return -1;
-      if(a.name > b.name)
-        return 1;
-      return 0
-  });
+  try{
+    files.sort(function(a,b){
+        if(a.isDirectory() && b.isFile())
+          return -1; 
+        if(a.isFile() && b.isDirectory())
+          return 1 
+        if(a.name < b.name)
+          return -1;
+        if(a.name > b.name)
+          return 1;
+        return 0
+    });
+  }catch(err){
+    err.debug_info = "sort files list error";
+    err.debug_stack = err.stack;
+    return "<pre>"+g.util.inspect(err).replace(/\\n/g,'\n')+"</pre>";
+  }
   
   var html = "";
   var link_begin = req.route_path+"?";
@@ -150,6 +152,19 @@ function get_files_list_html(req,L_or_R,data) {
   return html;
 }
 
+
+function is_exclude_path(path) {
+  path = path.replace(/(\\|\\\\|\/\/)/g,'/');
+  for(var i in fcfg.exclude_path){
+    var re = fcfg.exclude_path[i];
+    if(re.test(path)) return re;
+  }
+  return 0;
+}
+
+//функция выдает список файлов, с информацией по каждому
+//из каталога path (dir или любой доступный его родительский каталог)
+//результат : {path:path,files_info:files_info}
 function get_files_list(dir,fn) {
   g.async.waterfall([
       function (callback) { //check_path
@@ -163,6 +178,11 @@ function get_files_list(dir,fn) {
           });
       },
       function (path,callback) { //readdir
+          var re;
+          if (re = is_exclude_path(path)) {
+            return callback(null,path,['exclude : '+re.toString()]);
+          }
+          
           g.fs.readdir(path,function(err,files){
               if(err){
                   err.debug_info = "readdir error";
@@ -180,10 +200,13 @@ function get_files_list(dir,fn) {
               var file_path = path+'/'+file;
               g.fs.stat(file_path,function(err,stat){
                   if (err) {
-                      err.debug_info = "read files stat error";
+                      err.debug_info = "fs.stat error";
                       err.debug_stack = err.stack;
-                      files_info.push( {err:err,name:file} );
-                      return callback(err);
+                      err.name = file;
+                      err.isDirectory = function(){return 0;}
+                      err.isFile = function(){return 0;}
+                      files_info.push( err );
+                      return callback2(null);
                   }
                   stat.name = file;
                   files_info.push( stat );

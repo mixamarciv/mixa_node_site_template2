@@ -25,6 +25,9 @@ nconf.views_path_full = path.normalize( path.join( nconf.main_path_full ,'/views
 
 console.log("  templates_path: "+nconf.templates_path);
 
+nconf.filenavigator_cfg = require('./filenavigator_cfg.js');
+
+
 module.exports = nconf;
 
 
