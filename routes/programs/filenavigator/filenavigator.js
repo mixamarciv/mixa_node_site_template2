@@ -18,7 +18,7 @@ module.exports = function(route_path,app,express){
     get_panels_info(req,function(err,data){
       
         if (g.mixa.type.class_of(data).toLowerCase()=='string') {
-          return res.sendfile(data);
+          return res.sendfile(g.path.basename(data),{root:g.path.dirname(data)}); //для отправки файлов из каталогов уровнем выше
         }
 
         if (!data) data = {};
