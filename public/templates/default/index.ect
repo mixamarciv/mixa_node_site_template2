@@ -5,15 +5,15 @@
     <style>
       body { background: #000; }
     </style>
-    <link rel='stylesheet' href='<%- @template_path %>/stylesheets/style.css?slid=<%- @gen_link_id() %>' />
+    <link rel='stylesheet' href='<%- @this_template_path_web %>/stylesheets/style.css?slid=<%- @gen_link_id() %>' />
   </head>
   <body>
     
     <div class=main_menu >
-      <% include @template_path_full+'/../template_elements/main_menu.ect', { title : 'main menu', info: '10$' } %>
+      <% include @templates_cfg.template_elemenets_path_dir + '/main_menu.ect', { title : 'main menu', info: '10$' } %>
     </div>
     
-    <a href='<%- @template_path %>/stylesheets/style.css?llid=<%- @gen_link_id(1) %>'>test link</a>
+    <a href='<%- @templates_cfg.template_elemenets_path_dir %>/stylesheets/style.css?llid=<%- @gen_link_id(1) %>'>test link</a>
     <% content %>
     
     <footer>

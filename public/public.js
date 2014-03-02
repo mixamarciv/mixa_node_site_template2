@@ -3,25 +3,15 @@ console.log("load public.js..")
 var g  = require('../app.js');
 var a  = g.app_fnc;
 
-var lessMiddleware = require('less-middleware');
+//var lessMiddleware = require('less-middleware');
 
 
 module.exports = function(app,express){
   
-  
-  //app.use('/public', test_access, express.static(__dirname));
   app.use('/public', test_access );
   app.use('/public', less_files_send );
-  /********
-  app.use(lessMiddleware({
-        //dest: '/public/stylesheets', // should be the URI to your css directory from the location bar in your browser
-        src: g.path.join(__dirname), // or '../less' if the less directory is outside of /public
-        //root: '/public',
-        compress: true
-  }));
-  ******/
   app.use('/public', express.static(__dirname));
-  //app.use('/public', express.static(__dirname+'/public'));
+
 }
 
 

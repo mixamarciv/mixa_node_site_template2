@@ -23,7 +23,7 @@ module.exports = function(req,res,template,data2){
     if(data2 && data2.view_path){
         view_file_path = g.path.join( data2.view_path, template);
     }else{
-        view_file_path = g.path.join( g.app_config.views_path_full, template);
+        view_file_path = g.path.join( g.app_config.templates_cfg.views_path_dir, template);
     }
     
     var cur_template = 'default';
@@ -36,8 +36,10 @@ module.exports = function(req,res,template,data2){
     }
     
     if(!data.page_title)  data.page_title = cfg.get('site_title_default');
-    if(!data.template_path     )  data.template_path      = g.app_config.templates_path+'/'+cur_template ;
-    if(!data.template_path_full)  data.template_path_full = g.path.join( g.app_config.templates_path_full, cur_template );
+    
+    data.templates_cfg = g.app_config.templates_cfg;
+    if(!data.this_template_path_web )  data.this_template_path_web  = g.app_config.templates_cfg.templates_path_web +'/'+cur_template ;
+    if(!data.this_template_path_dir )  data.this_template_path_dir  = g.path.join( g.app_config.templates_cfg.templates_path_dir, cur_template );
     
     
     data.execute_time = res.execute_info.execute_time();

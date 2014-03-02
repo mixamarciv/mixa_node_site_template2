@@ -1,3 +1,4 @@
+var start_load_app_time = new Date();
 console.log('load app..');
 
 var g = require('./app/global.js');
@@ -34,5 +35,5 @@ if(config.get('app_is_webserver')){
 }
 
 
-console.log('end load');
+console.log('end load app ('+g.mixa.str.time_duration_str(start_load_app_time)+')');
 

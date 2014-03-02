@@ -13,10 +13,10 @@ var date_to_str_format = g.mixa.str.date_to_str_format;
 
 
 var transport_console_options = {
-    colorize: true,
+    colorize: 1,
     handleExceptions: true,
     timestamp: true,
-    json: false
+    json: 0
 }
 
 
@@ -53,6 +53,9 @@ var logger = new (winston.Logger)({
     ],
     exitOnError: exitOnErrorLoggerCheck
 });
+
+
+winston.handleExceptions(new winston.transports.Console({ colorize: true, json: true }));
 
 
 module.exports = function (type){
