@@ -4,7 +4,7 @@ var g = require('../app/global.js');
 module.exports = g; 
 
 var config = g.app_config;
-var run_app = nconf.set("execute_app");
+var run_app = nconf.get("execute_app");
 
 
 /********

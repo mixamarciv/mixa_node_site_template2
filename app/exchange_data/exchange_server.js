@@ -7,7 +7,6 @@ var port = config.get('app_server_port');
 //var dnode = require('dnode');
 
 
-var programs_list = {};
 /*****
  * {  pid : {info : {name,user_name,description,log_file}
  *           start_time,
@@ -29,13 +28,17 @@ function get_time_fnc() {
 var net = require('net');
 var server = net.createServer(function(client) { //'connection' listener
     
+    client.id = clients_list.length;
+    client.start_time = get_time_fnc();
+    clients_list[client.id] = client;
+    
     client.message_interval = setInterval(function(){
-        client.write('connected to server (pid:'+process.pid+')');
-    },2000);
+        client.write('var data = {connected:1}');
+    },5000);
     
-    client.write('connect to server establish');
+    //client.write('connect to server establish (client id: '+client.id+')');
     
-    console.log('client connected');
+    console.log('client '+client.id+' connected');
     
     function on_end_connection(type_disconnect) {
         clearInterval(client.message_interval);
@@ -47,7 +50,7 @@ var server = net.createServer(function(client) { //'connection' listener
     client.on('end',   function(){on_end_connection('end');  });
     client.on('error', function(){on_end_connection('error');});
     
-    client.on('data',function(data){ 
+    client.on('data',function(data) { 
       console.log('client data: '+d);
       receive_client_data(client,data);
     });
@@ -57,13 +60,22 @@ server.listen(port, function() { //'listening' listener
   g.log.info('app exchange server listening on port ' + port);
 });
 
+//удаляем информацию о заданном подключении
+function delete_client_from_client_list(client) {
+    clients_list[client.id] = null;
+    delete clients_list[client.id];
+}
+
 function receive_client_close_connect(client,data) {
     //
+    delete_client_from_client_list(client);
 }
 
 function receive_client_data(client,data) {
     //
+
 }
+
 
 /***************
 var server = dnode({
