@@ -9,7 +9,7 @@ nconf.argv()
      
 var args = process.argv;
 if(args.length<=2){
-    nconf.set("app_is_webserver",1); //флаг, что приложение запущено как веб сервер
+    nconf.set("app_is_webserver",1); //устанавливаем флаг, что приложение запущено как веб сервер
 }else{
     nconf.set("app_is_webserver",0);
     nconf.set("execute_app",args[2]); //какое приложение запускаем
@@ -22,10 +22,14 @@ path.sep = '/';
 nconf.main_path_full     = path.normalize( path.join(__dirname, '/../') ).replace(/\\/g,'/');
 
 
+var temp_path = nconf.get("temp_path");
+if(!temp_path) temp_path = "./temp";
+temp_path = path.normalize( path.join(nconf.main_path_full,temp_path) ).replace(/\\/g,'/');
+nconf.set("temp_path",temp_path);
 
 //параметры для шаблонов
 nconf.templates_cfg = {};
-t = nconf.templates_cfg;
+var t = nconf.templates_cfg;
 
 //относительный путь к каталогу с шаблонами
 t.templates_path_web = path.normalize( nconf.get("templates:path") ).replace(/\\/g,'/');

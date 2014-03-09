@@ -16,7 +16,9 @@
         "inf": { "filepath": "./temp/log", "level": "trace" },
         "#other log level names: all,trace,debug,info,warn,error,fatal":0
     },
-    
+
+    "temp_path": "./temp",
+
     "templates": {
     	"path": "/public/templates"
     },

@@ -1,0 +1,18 @@
+<% extend @this_template_path_dir + '/index.ect' %>
+
+    <h1>test app 1</h1>
+    
+    <pre>
+    <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
+    <% @g.mixa.dump.var_dump_node("err",@err,@dump_options) %>
+    </pre>
+    
+    <pre>
+    <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
+    <% @g.mixa.dump.var_dump_node("result",@result,@dump_options) %>
+    <% @g.util.inspect(@result) %>
+    </pre>
+    
+<% block 'footer' : %>
+	<span>test app footer</span>
+<% end %>

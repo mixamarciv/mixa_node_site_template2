@@ -27,6 +27,7 @@ g.log = require('./log_config.js')();
 g.app_fnc = {};
 a = g.app_fnc;
 
+a.programs_runner = require('./programs_runner/runner.js');
 
 if(g.app_config.get('app_is_webserver')){
     a.server_info = {
