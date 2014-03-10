@@ -43,7 +43,7 @@ t.template_elemenets_path_dir = path.normalize( path.join( t.templates_path_dir 
 //полный путь к views каталогу
 t.views_path_dir    = path.normalize( path.join( nconf.main_path_full ,'/views/' ) ).replace(/\\/g,'/');  
 
-console.log("  templates_path: "+t.templates_path);
+//console.log("  templates_path: "+t.templates_path_web);
 
 
 nconf.filenavigator_cfg = require('./filenavigator_cfg.js');

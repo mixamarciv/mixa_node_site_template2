@@ -4,14 +4,14 @@
     
     <pre>
     <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
-    <% @g.mixa.dump.var_dump_node("err",@err,@dump_options) %>
+    <%- "\n"+@g.mixa.dump.var_dump_node("err",@err,@dump_options) %>
     </pre>
     
     <pre>
-    <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
-    <% @g.mixa.dump.var_dump_node("result",@result,@dump_options) %>
-    <% @g.util.inspect(@result) %>
+    <% @dump_options = {exclude: [/^data.a$/,/^data.g$/,/\._/],hide_functions:1} %>
+    <%- "\n"+@g.mixa.dump.var_dump_node("result",@result,@dump_options) %>
     </pre>
+
     
 <% block 'footer' : %>
 	<span>test app footer</span>

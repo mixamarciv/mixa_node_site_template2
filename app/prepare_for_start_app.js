@@ -61,5 +61,5 @@ function kill_this_process(pid,callback) {
 function save_new_pid_file(path) {
     var exec = require('child_process').exec;
     var pid = String(process.pid);
-    g.fs.writeFileSync(g.path.join(path,pid), g.mixa.str.date_to_str_format(new Date(),"YYYY.MM.DD  hh:mm:ss"));
+    g.fs.writeFileSync(g.path.join(path,pid), g.mixa.str.date_to_str_format(new Date(),"Y.M.D  h:m:s"));
 }
