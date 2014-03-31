@@ -46,13 +46,45 @@ function exitOnErrorLoggerCheck(err) {
     return err.code !== 'EPIPE';
 }
 
+var transports_list = [new (winston.transports.File)(transport_file_options)];
+if(g.app_config.get('app_is_webserver')){
+    transports_list.push(new (winston.transports.Console)(transport_console_options));
+}
+
 var logger = new (winston.Logger)({
-    transports: [
-      new (winston.transports.Console)(transport_console_options),
-      new (winston.transports.File)(transport_file_options)
-    ],
+    transports: transports_list,
     exitOnError: exitOnErrorLoggerCheck
 });
+
+
+logger.dump_str = function(obj_name,obj,options){
+    if (!obj){
+        obj = obj_name;
+        obj_name = 'dump';
+    }
+    if (!options) 
+        options = {
+            max_level:5,
+            separator:'\n',
+            showHidden:1,
+            hide_functions:0,
+            max_str_length: 9000,
+            prepare_str_function:null,
+            prepare_num_function:null,
+            exclude: [/.+\._/] //исключаем все var._переменные
+        };
+    return g.mixa.dump.var_dump_node(obj_name,obj,options/*,level*/);
+}
+
+logger.dump_error = function(obj_name,obj,options){
+    return logger.error(logger.dump_str(obj_name,obj,options));
+}
+logger.dump_info = function(obj_name,obj,options){
+    return logger.info(logger.dump_str(obj_name,obj,options));
+}
+logger.dump_warn = function(obj_name,obj,options){
+    return logger.warn(logger.dump_str(obj_name,obj,options));
+}
 
 
 winston.handleExceptions(new winston.transports.Console({ colorize: true, json: true }));

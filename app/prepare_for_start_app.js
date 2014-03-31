@@ -44,7 +44,43 @@ function check_directory(path,fn) {
     });
 }
 
-function kill_this_process(pid,callback) {
+function my_kill_process(pid,type) {
+    try{
+      process.kill(pid,type);
+      return 0;
+    } catch(err) {
+      return err;
+    }
+}
+
+function kill_this_process2(pid,callback) {
+    var try_i = 0, try_success = 0;
+    var kill_type_arr = [undefined,'SIGINT','SIGTERM','SIGKILL'];
+    var err = [];
+    for(var i in kill_type_arr){
+        var has_error = my_kill_process(pid,kill_type_arr[i]);
+        try_i++;
+        if (!has_error){
+            try_success = 1;
+            break;
+        }
+        has_error.kill_signal = kill_type_arr[i];
+        err.push(has_error);
+    }
+    if (try_success) {
+        if(try_i>1) {
+            var str = g.mixa.dump.var_dump_node('err',err);
+            g.log.warn(str);
+        }
+        g.log.info("kill prev process pid: "+pid);
+    }else
+    if(try_i>1) {
+        var str = g.mixa.dump.var_dump_node('err',err);
+        g.log.error(str);
+    }
+    
+    g.fs.unlink(g.path.join(temp_path_pid,pid),callback);
+    /************
     var exec = require('child_process').exec;
     exec('taskkill /f /PID '+pid, function (error, stdout, stderr) {
         var msg = [stdout,stderr];
@@ -55,7 +91,21 @@ function kill_this_process(pid,callback) {
         }
         g.fs.unlink(g.path.join(temp_path_pid,pid),callback);
     });
+    ***********/
     
+}
+
+function kill_this_process(pid,callback) {
+    var exec = require('child_process').exec;
+    exec('taskkill /f /PID '+pid, function (error, stdout, stderr) {
+        var msg = [stdout,stderr];
+        g.log.warn("kill prev process pid: "+pid);
+        if (error !== null) {
+          g.log.error("error kill prev webserver app (pid:"+pid+")");
+          g.log.error(error);
+        }
+        g.fs.unlink(g.path.join(temp_path_pid,pid),callback);
+    });
 }
 
 function save_new_pid_file(path) {
