@@ -1,14 +1,23 @@
 <% extend @this_template_path_dir + '/index.ect' %>
 
     <h1>test app 1</h1>
-    
+    <pre>
+    <%- "\n"+@g.mixa.dump.var_dump_node("test_obj",@test_obj) %>
+    </pre>
+    <pre>
+    <%- "\n"+@test_str %>
+    </pre>
+    <pre>
+    <%- "\n"+@g.mixa.dump.var_dump_node("test_obj2",@test_obj2) %>
+    </pre>
+       
     <pre>
     <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
     <%- "\n"+@g.mixa.dump.var_dump_node("err",@err,@dump_options) %>
     </pre>
     
     <pre>
-    <% @dump_options = {exclude: [/^data.a$/,/^data.g$/,/\._/],hide_functions:1} %>
+    <% @dump_options = {exclude: [/^data.a$/,/^data.g$/,/\._/,/\.stderr$/,/\.stdin$/,/\.stdio$/,/\.stdout$/],hide_functions:1} %>
     <%- "\n"+@g.mixa.dump.var_dump_node("result",@result,@dump_options) %>
     </pre>
 

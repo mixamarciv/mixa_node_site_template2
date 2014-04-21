@@ -2,6 +2,7 @@ node_modules/
 tmp/
 temp/
 public/vendor/bower_components/
+public/templates/default/stylesheets/style.css
 
 
 #############

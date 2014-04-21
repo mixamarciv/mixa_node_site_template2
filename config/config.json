@@ -14,7 +14,7 @@
     "log": {
         "app": { "filepath": "./temp/log", "level": "info"  },
         "inf": { "filepath": "./temp/log", "level": "trace" },
-        "#other log level names: all,trace,debug,info,warn,error,fatal":0
+        "#//other log level names: all,trace,debug,info,warn,error,fatal":0
     },
 
     "temp_path": "./temp",
@@ -23,12 +23,12 @@
     	"path": "/public/templates"
     },
     
-    "link_time": { "//time in seconds!":0,
+    "link_time": { "#//time in seconds!":0,
 	"short": 10,
 	"long": 10
     },
     
-    "db": {                                     
+    "#db - пока не используется": {                                     
         "connection": "mongodb://localhost",    
         "name": "db_name",                      
         "options": {                            

@@ -23,6 +23,7 @@ module.exports = function(req,res,next){
 
 function load_anonim_user_data() {
     var user_data = {
+        id_user: 0,
         name: 'anonim',
         visit_count: 0
     }

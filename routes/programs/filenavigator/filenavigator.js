@@ -3,8 +3,9 @@ var g  = require('../../../app.js');
 var a  = g.app_fnc;
 
 var fcfg = g.app_config.filenavigator_cfg ;
+var fnf = require('./filenavigator_fnc.js');
 
-var default_path = g.path.join(__dirname,'../../../').replace(/\\/g,'/');
+var default_path = fnf.default_path;
 
 module.exports = function(route_path,app,express){
   
@@ -17,9 +18,10 @@ module.exports = function(route_path,app,express){
     
     get_panels_info(req,function(err,data){
       
-        if (g.mixa.type.class_of(data).toLowerCase()=='string') {
-          return res.sendfile(g.path.basename(data),{root:g.path.dirname(data)}); //для отправки файлов из каталогов уровнем выше
-        }
+        /*if (g.mixa.type.class_of(data).toLowerCase()=='string') {
+          //для отправки файлов из каталогов уровнем выше
+          return res.sendfile(g.path.basename(data),{root:g.path.dirname(data)});
+        }*/
 
         if (!data) data = {};
 
@@ -35,9 +37,42 @@ module.exports = function(route_path,app,express){
 
 
 function get_panels_info(req,fn) {
-    var path_L = req.query['L'];
-    var path_R = req.query['R'];
+    var path_L = {type:'L',path:req.query['L']};
+    var path_R = {type:'R',path:req.query['R']};
     
+    g.async.map(
+      [path_L,path_R],
+      function(path_T,callback){
+        chek_path_is_file(path_T.path,function(err,is_file){
+            if (err) return callback(err);
+            if (!is_file) {
+                get_files_list(path_T.path,function(err,files){
+                  if (err) return callback(err);
+                  var result = get_files_list_html(req,path_T.type,files);
+                  callback(null,result);
+                });
+            }else{
+                //return file info html block
+                require('./load_file_info.js').load(req,path_T,function(err,result){
+                    if (err) return callback(err);
+                    callback(null,result);
+                });
+            }
+            return;
+        });
+      },
+      function(err,results){
+          if(err){
+              return fn(err);
+          }
+          var data = {}
+          data.d = results;
+          data.l_files_list = results[0];
+          data.r_files_list = results[1];
+          fn(null,data);
+      }
+    );
+    /**********
     g.async.map([path_L,path_R],chek_path_is_file,function(err,result){
         if(err){
             return fn(err);
@@ -49,6 +84,7 @@ function get_panels_info(req,fn) {
         }
         load_files_list(req,fn);
     });
+    *******/
 }
 
 function escapeHtml(text) {
@@ -153,14 +189,6 @@ function get_files_list_html(req,L_or_R,data) {
 }
 
 
-function is_exclude_path(path) {
-  path = path.replace(/(\\|\\\\|\/\/)/g,'/');
-  for(var i in fcfg.exclude_path){
-    var re = fcfg.exclude_path[i];
-    if(re.test(path)) return re;
-  }
-  return 0;
-}
 
 //функция выдает список файлов, с информацией по каждому
 //из каталога path (dir или любой доступный его родительский каталог)
@@ -179,7 +207,7 @@ function get_files_list(dir,fn) {
       },
       function (path,callback) { //readdir
           var re;
-          if (re = is_exclude_path(path)) {
+          if (re = fnf.is_exclude_path(path)) {
             return callback(null,path,['exclude : '+re.toString()]);
           }
           

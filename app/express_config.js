@@ -17,7 +17,7 @@ module.exports = function (app, express) {
         //mongoose = require('../utils/mongoose'),
         //MongoStore = require('connect-mongo')(express),
 
-    var router = require('../routes/routes.js');
+    //var router = require('../routes/routes.js');
     
     /****
     //задаем шаблонизатор
@@ -73,7 +73,8 @@ module.exports = function (app, express) {
     }));
     ************/
     
-    //express.cookieSession - храним все данные сессии в куках пользователя! поэтому обязательно надежно храним ключ "session:secret"
+    //express.cookieSession - храним все данные сессии в куках пользователя!
+    //  поэтому обязательно надежно храним ключ "session:secret"
     app.use(express.cookieSession({
         key: config.get('session:key'),
         secret: config.get('session:secret'),

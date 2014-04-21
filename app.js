@@ -36,7 +36,7 @@ if(config.get('app_is_webserver')){
     //если запускаем внешнее приложение
     var user_app = config.get('execute_app');
     console.log('start app '+user_app);
-    a.programs_runner(user_app);
+    a.external_app.execute_app(user_app);
 }
 
 
