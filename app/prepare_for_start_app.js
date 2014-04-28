@@ -15,12 +15,24 @@ var temp_path = cfg.get('temp_path');
 var temp_path_pid = g.path.join(temp_path,"/app_pid");
 
 function prepare_for_start_app(fn) {
+    /*var pfn = fn;
+    fn = function(){
+        g.path.mkdirp(cfg.get("log:app:filepath"),function(err,success){
+            if (err || !success) {
+                console.log(err);
+                console.log("ERROR: can't create log path '"+cfg.get("log:app:filepath")+"'");
+            }
+            pfn();
+        });
+    }*/
+    
     check_directory(temp_path_pid,function(err,dir_is_exists){
         if(!dir_is_exists) return 0;
         var list = g.fs.readdirSync(temp_path_pid);
         g.async.map(list,kill_this_process,function(err,result){
             if(err) g.log.error(err);
             save_new_pid_file(temp_path_pid);
+            
             fn();
         });
     });

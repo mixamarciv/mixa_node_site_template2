@@ -19,6 +19,7 @@ g.fs   = require('fs');
 g.util = require('util');
 g.mixa = require('mixa_std_js_functions');
 
+g.err  = require('./error/error.js');
 
 g.app_config = require('../config/config.js');
 

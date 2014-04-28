@@ -32,6 +32,8 @@ app_db_functions.query = function query(query_str,result_function/*(err,rows)*/,
 
     app_db_conn.query(query_str,function(err,rows){
         if (err) {
+            err.query = query_str;
+            //err.stack = new Error().stack;
             g.log.error("query to app_DB error:");
             g.log.dump_error("app_conndb_config",app_conndb_config);
             g.log.dump_error("err",err);
@@ -48,15 +50,17 @@ app_db_functions.close = function close(){
 }
 
 app_db_functions.generator = function generator(gen_name,inc_val,result_function){
-    var query_str = "SELECT gen_id("+gen_name+","+inc_val+") FROM rdb$database";
+    var query_str = "SELECT gen_id("+gen_name+","+inc_val+") AS new_id FROM rdb$database";
     app_db_conn.query(query_str,function(err,rows){
         if (err) {
+            err.query = query_str;
+            err.stack = new Error().stack;
             g.log.error("generator query to app_DB error:");
             g.log.dump_error("err",err);
             g.log.error("generator query_str("+query_str.length+") = \n"+query_str);
             return result_function(err);
         }
-        var id = rows[0][0];
+        var id = rows[0].new_id;
         result_function(null,id);
     });
 }

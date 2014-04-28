@@ -1,0 +1,24 @@
+<% extend @this_template_path_dir + '/index.ect' %>
+
+    <h1>run child process</h1>
+
+
+
+       
+    <pre>
+    <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
+    <%- "\n"+@g.mixa.dump.var_dump_node("err",@err,@dump_options) %>
+    
+    <%- "\n"+@g.mixa.dump.var_dump_node("err",@err,@dump_options) %>
+    <%- "\n"+@err.stack %>
+    </pre>
+    
+    <pre>
+    <% @dump_options = {exclude: [/^data.a$/,/^data.g$/,/\._/,/\.stderr$/,/\.stdin$/,/\.stdio$/,/\.stdout$/,/\.rr$/],hide_functions:1} %>
+    <%- "\n"+@g.mixa.dump.var_dump_node("result",@result,@dump_options) %>
+    </pre>
+
+    
+<% block 'footer' : %>
+	<span>test app footer</span>
+<% end %>

@@ -6,6 +6,8 @@ var cfg = g.app_config;
 
 //функции для работы с сессиями
 module.exports = {
+    get_session_id: get_session_id,
+    get_session_user: get_session_user,
     visit: session_visit,
     end: session_end,
     check_link_id: check_link_id,
@@ -59,13 +61,19 @@ function check_link_id(req,res,id,is_long) {
     return 0;
 }
 
+function get_session_id(req){
+      return req.session.lsid;
+}
+function get_session_user(req){
+      return req.session.user;
+}
 
 //задаем сессию +отмечаем визит
 function session_visit(req,res,next){
     //g.log.info("session_visit ..");
     req.session.count = req.session.count || 0;
     if(req.session.count==0){
-        req.session.lsid = m.int.get_random_int(1000*1000*2,1000*1000*1000*9); //id сессии для генерации lid ссылок на ресурсы
+        req.session.lsid = m.int.get_random_int(1000000*2,1000000*1000*9); //id сессии для генерации lid ссылок на ресурсы
         req.session.lsid_req_error_count = 0;
     }
     req.session.count++;

@@ -19,42 +19,51 @@ var transport_console_options = {
     json: 0
 }
 
-
-var log_filename = config.get("log:app:filepath")+"/app_"+date_to_str_format("YMDhms")+".log";
-var log_level = config.get("log:app:level");
-
-if(g.app_config.get('app_is_webserver')==0){
-    //если запускаем внешнее приложение
-    log_filename = config.get("log:inf:filepath")+"/app_"+date_to_str_format("YMDhms")+".log";
-    log_level = config.get("log:inf:level");
-}
-
-console.log('  log file: '+log_filename+' (level:'+log_level+')');
-
-var transport_file_options = {
-    filename: log_filename,
-    level: log_level,
-    handleExceptions: true,
-    timestamp: true,
-    maxsize: 1024*100,
-    maxFiles: 10,
-    json: false
-}
-
 function exitOnErrorLoggerCheck(err) {
     return err.code == 'Unexpected token';
     return err.code !== 'EPIPE';
 }
 
-var transports_list = [new (winston.transports.File)(transport_file_options)];
+var transports_list = [];
+
 if(g.app_config.get('app_is_webserver')){
-    transports_list.push(new (winston.transports.Console)(transport_console_options));
+    var log_filename = config.get("log:app:filepath")+"/app_"+date_to_str_format("YMDhms")+".log";
+    var log_level = config.get("log:app:level");
+    /*********
+    if(g.app_config.get('app_is_webserver')==0){
+        //если запускаем внешнее приложение
+        log_filename = config.get("log:inf:filepath")+"/app_cp_"+date_to_str_format("YMDhms")+".log";
+        log_level = config.get("log:inf:level");
+    }
+    ********/
+    console.log('  log file: '+log_filename+' (level:'+log_level+')');
+
+
+    var transport_file_options = {
+        filename: log_filename,
+        level: log_level,
+        handleExceptions: true,
+        timestamp: true,
+        maxsize: 1024*100,
+        maxFiles: 10,
+        json: false
+    }
+    
+    
+    transports_list.push(new (winston.transports.File)(transport_file_options));
+    
 }
 
-var logger = new (winston.Logger)({
-    transports: transports_list,
-    exitOnError: exitOnErrorLoggerCheck
-});
+transports_list.push(new (winston.transports.Console)(transport_console_options));
+
+
+
+var logger = {};
+
+    logger = new (winston.Logger)({
+        transports: transports_list,
+        exitOnError: exitOnErrorLoggerCheck
+    });
 
 
 logger.dump_str = function(obj_name,obj,options){

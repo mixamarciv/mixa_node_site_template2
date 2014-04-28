@@ -12,8 +12,8 @@
     },
     
     "log": {
-        "app": { "filepath": "./temp/log", "level": "info"  },
-        "inf": { "filepath": "./temp/log", "level": "trace" },
+        "app": { "filepath": "./temp/log_app", "level": "info"  },
+        "child_process": { "filepath": "./temp/log_child_process", "level": "nevajno) (tam budet vse)" },
         "#//other log level names: all,trace,debug,info,warn,error,fatal":0
     },
 
