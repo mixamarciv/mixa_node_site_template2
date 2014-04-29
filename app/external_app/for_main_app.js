@@ -129,14 +129,15 @@ function prepare_for_run_process__get_id_program(options,callback){
     //g.log.dump_warn("arguments1",arguments,{exclude:[/\.rr/g]});
     
     var file = options.run_file_rel_path;
-    var qstr = "SELECT id_program,app_name,app_file_path FROM app_program WHERE app_file_path='"+file+"'";
+    
+    var qstr = "SELECT id_program,app_name,app_file_path FROM app_program WHERE app_file_path='"+options.run_file+"'";
     app_db.query(qstr,function(err,rows){
         if (err) return callback(errs(err));
         if (!rows.length) {
             app_db.generator('NEW_ID_APP_PROGRAM',1,function(err,new_id){
                 if (err) return callback(errs(err));
                 options.id_program = new_id;
-                var qstrins = "INSERT INTO app_program(id_program,app_name,app_file_path) VALUES("+new_id+",'"+file+"','"+file+"')";
+                var qstrins = "INSERT INTO app_program(id_program,app_name,app_file_path) VALUES("+new_id+",'"+file+"','"+options.run_file+"')";
                 app_db.query(qstrins,function(err,data){
                     if (err) return callback(errs(err));
                     //app_db.query("COMMIT WORK",function(err){
@@ -177,12 +178,12 @@ function prepare_for_run_process__get_id_child_process(options,callback){
     });
 }
 
-function update_process_status__set_run_date(options,fn) {
+function update_process_status__set_run_date_process(options,fn) {
     var qstr = "UPDATE app_child_process SET run_date_process=current_timestamp WHERE id_process="+options.id_process;
     app_db.query(qstr,function(err2,data){
         if (err2) {
             err2 = errs(err2);
-            err2.debug_msg = "save child_process status ERROR\n SQL: "+qstr
+            err2.debug_msg = "update child_process status ERROR\n SQL: "+qstr
             g.log.error( err2.debug_msg );
             g.log.dump_error("err2",err2,dump_options);
             return fn(err2);
@@ -205,10 +206,10 @@ function run_process(options,fn) {
     var d = {data:{arr_params:arr_params,options:options},error:null};
     fn({},d);
     
-    str = "node app.js "+options.id_process+">>"+log_file;
+    str = "node app.js "+options.id_process+">>"+log_file+" 2>&1";
     g.log.info("cpRUN: "+str);
     require('child_process').exec(str);
-    update_process_status__set_run_date(options,function(){});
+    update_process_status__set_run_date_process(options,function(){});
     return;
 /*****
     var child_process = execFile(run_app_bat_file,arr_params,{},function(err,data){
