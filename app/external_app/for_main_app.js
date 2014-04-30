@@ -74,7 +74,6 @@ module.exports.run_child_process2 = function(options,fn){
         
         prepare_for_run_process(options,function(err,options){
             if(err) return fn(errs(err),null);
-
             run_process(options,fn);
         });
     });
@@ -94,7 +93,6 @@ function get_min_rel_path(path) {
 
 //записываем данные для запуска процесса в бд
 function prepare_for_run_process(options,callback){
-    
     /**********
     g.async.waterfall([
         function(callback)         { prepare_for_run_process__get_id_program(options,callback); },

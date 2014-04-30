@@ -12,7 +12,7 @@ function update_error_stack(err){
     return err;
 }
 
-function show_error_and_callfn(fn,err,msg) {
+function show_error_and_callfn(err,msg,fn) {
     
     g.log.error(msg);
     

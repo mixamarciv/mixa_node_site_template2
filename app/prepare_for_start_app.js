@@ -6,6 +6,7 @@ console.log('load prepare_for_start_app..');
 var g = require('./global.js');
 var cfg = g.app_config;
 var a = g.app_fnc;
+var app_db = g.app_db;
 
 module.exports = prepare_for_start_app;
 if(!cfg.get('app_is_webserver')) module.exports = function(){g.log.warn("prepare_for_start_app.js call only for app webserwer!");} 
@@ -33,7 +34,10 @@ function prepare_for_start_app(fn) {
             if(err) g.log.error(err);
             save_new_pid_file(temp_path_pid);
             
-            fn();
+            app_db.on_ready(function(){
+                fn();    
+            });
+            
         });
     });
     
