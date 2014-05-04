@@ -17,14 +17,7 @@ module.exports = function(app,express){
 
 function test_access(req,res,next) {
     //all public files need slid (short link id) or llid (long link id)
-    var is_long_lid = 0;
-    var link_id = req.query['slid'];
-    if(!link_id){
-        is_long_lid = 1;
-        link_id = req.query['llid'];
-    }
-    
-    if(!link_id || !a.session.check_link_id(req,res,link_id,is_long_lid)){
+    if(!a.session.check_link_id(req,res)){
         //return a.render(req,res,'error.ect',{error:"no access to public (bad link id)"});
         return res.sendHttpError("no access to public file");
     }

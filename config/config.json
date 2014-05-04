@@ -25,7 +25,7 @@
     
     "link_time": { "#//time in seconds!":0,
 	"short": 10,
-	"long": 10
+	"long": 600
     },
     
     "#db - пока не используется": {                                     

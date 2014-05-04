@@ -50,7 +50,16 @@ function gen_link_id(req,res,is_long) {
     return r;    
 }
 
-function check_link_id(req,res,id,is_long) {
+function check_link_id(req,res) {
+    
+    var is_long = 0;
+    var id = req.query['slid'];  //link id
+    if(!id){
+        is_long = 1;
+        id = req.query['llid'];
+    }
+    
+    
     var t = id - req.session.lsid;
     if (is_long) {
         if (time_id_long.last==t || time_id_long.prev==t) return 1;

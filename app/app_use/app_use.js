@@ -19,7 +19,7 @@ module.exports = function(app,express){
 function load_main_vars(req,res,next){
     res.locals.data = {}; //данные которые будут доступны далее в шаблоне
     res.locals.data.g = g;
-    res.locals.data.a = a;
+    res.locals.data.a = g.app_fnc;
     next();
 }
 

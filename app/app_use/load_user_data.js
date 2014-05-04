@@ -13,7 +13,7 @@ module.exports = function(req,res,next){
         return 0;
     }
     
-    update_user_visit(req.session.user,req);
+    update_user_vizit(req.session.user,req);
     
     res.locals.data.user = req.session.user;
     
@@ -25,11 +25,11 @@ function load_anonim_user_data() {
     var user_data = {
         id_user: 0,
         name: 'anonim',
-        visit_count: 0
+        vizit_count: 0
     }
     return user_data;
 }
 
-function update_user_visit(user,req) {
-    user.visit_count++;
+function update_user_vizit(user,req) {
+    user.vizit_count++;
 }
