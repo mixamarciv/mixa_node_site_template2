@@ -10,6 +10,7 @@ module.exports = function(app,express){
   
   app.use('/public', test_access );
   app.use('/public', less_files_send );
+  app.use('/public', js_files_send );
   app.use('/public', express.static(__dirname));
 
 }
@@ -101,3 +102,80 @@ function less_files_send(req,res,next) {
   //return res.end('что то пошло не так..');
 }
 
+function js_files_send(req,res,next) {
+  var file = req.path;
+  if(g.path.extname(file) !== '.js' || g.path.basename(file) !== 'all.scripts.min' ) return next();
+  
+  file = g.path.join(__dirname,file);
+  
+  g.fs.exists(file,function(exists){
+      if(exists && dev_render_always==0){
+        return res.sendfile(file);
+      }else{
+        return render_min_js_file(file,req,res,next);
+      }
+  });
+}
+
+function render_min_js_file(file,req,res,next) {
+  var js_min_file = file;
+  var js_list_file = file.replace(/\.js$/i,'.jslist');
+  g.async.waterfall([
+        function(callback){
+          g.fs.exists(js_list_file,function(exists){
+            if(exists) return callback(null, js_list_file);
+            callback('ERROR: .jslist file not found ('+js_list_file+')');
+          });
+        },
+        function(js_list_file, callback){
+          g.fs.readFile(js_list_file, 'utf8', function(err, str){
+            if (err) return callback(err);
+            callback(null, str);
+          });
+        },
+        function(js_list_file_str, callback){
+          var arr_list_files = [];
+          
+          try{
+            //получаем список файлов
+            arr_list_files = eval(js_list_file_str);
+          }catch(err){
+            return callback(err);
+          }
+          
+          var UglifyJS = null;
+          try{
+            UglifyJS = require("uglify-js");
+          }catch(err){
+            return callback(err);
+          }
+          
+          var result = null;
+          try{
+            result = UglifyJS.minify(arr_list_files,null);
+          }catch(err){
+            return callback(err);
+          }
+          
+          callback(null,result.code);
+          
+        },
+        function(js_code, callback){
+          g.fs.writeFile(js_min_file, js_code, 'utf8', function(err){
+              if(err) return callback(err);
+              callback(null,js_min_file);
+          });
+        }
+    ], function (err, result_js_min_file) {
+        if(err){
+          var dump_options = {exclude: [/^req.socket/i,/^req.res.socket/i,/\._/,/\.connection\.parser/i,/req.client.parser/i]};
+          g.log.info(  g.mixa.dump.var_dump_node("err",err,dump_options)  );
+          //res.end(g.mixa.dump.var_dump_node("err",err,dump_options));
+          return res.sendHttpError(err);
+        }
+        g.log.info("render new js file: "+result_js_min_file);
+        res.sendfile(result_js_min_file);
+        //g.log.info(  g.mixa.dump.var_dump_node("result",result,dump_options)  );
+        //res.end(g.mixa.dump.var_dump_node("result",result,dump_options));
+  });
+}

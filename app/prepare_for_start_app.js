@@ -15,7 +15,7 @@ if(!cfg.get('app_is_webserver')) module.exports = function(){g.log.warn("prepare
 var temp_path = cfg.get('temp_path');
 var temp_path_pid = g.path.join(temp_path,"/app_pid");
 
-function prepare_for_start_app(fn) {
+function prepare_for_start_app(fn_callback) {
     /*var pfn = fn;
     fn = function(){
         g.path.mkdirp(cfg.get("log:app:filepath"),function(err,success){
@@ -34,10 +34,8 @@ function prepare_for_start_app(fn) {
             if(err) g.log.error(err);
             save_new_pid_file(temp_path_pid);
             
-            app_db.on_ready(function(){
-                fn();    
-            });
-            
+            app_db.on_ready(fn_callback);
+            //fn_callback();
         });
     });
     

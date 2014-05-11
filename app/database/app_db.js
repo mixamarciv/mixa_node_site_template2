@@ -33,7 +33,9 @@ fb.attach(app_conndb_config,function(err,db_conn){
 
 app_db_functions.on_ready = function(fn){
     db_ready_function = fn;
-    if (app_db_conn.is_connected) fn();
+    if (app_db_conn.is_connected){
+        return fn();
+    }
 }
 
 app_db_functions.query = function query(query_str,result_function/*(err,rows)*/,options){
