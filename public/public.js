@@ -9,8 +9,8 @@ var a  = g.app_fnc;
 module.exports = function(app,express){
   
   app.use('/public', test_access );
-  app.use('/public', less_files_send );
-  app.use('/public', js_files_send );
+  //app.use('/public', less_files_send );
+  //app.use('/public', js_files_send );
   app.use('/public', express.static(__dirname));
 
 }
@@ -18,9 +18,16 @@ module.exports = function(app,express){
 
 function test_access(req,res,next) {
     //all public files need slid (short link id) or llid (long link id)
+    if (a.session.get_session_vizit_count(req)>1) {
+      var file = req.path;
+      var ext = g.path.extname(file);
+      if (ext=='.css') return less_files_send(req,res,next);
+      else if (ext=='.js') return js_files_send(req,res,next);
+    }
     if(!a.session.check_link_id(req,res)){
         //return a.render(req,res,'error.ect',{error:"no access to public (bad link id)"});
-        return res.sendHttpError("no access to public file");
+        //return res.sendHttpError("no access to public file");
+        return a.send_http_error("no access to public file (not valid link id)",req,res);
     }
     return next();
 }
@@ -104,14 +111,17 @@ function less_files_send(req,res,next) {
 
 function js_files_send(req,res,next) {
   var file = req.path;
-  if(g.path.extname(file) !== '.js' || g.path.basename(file) !== 'all.scripts.min' ) return next();
+  //g.log.warn("query file ["+g.path.basename(file)+"] ");
+  if(g.path.basename(file) !== 'all.scripts.min.js') return next();
   
   file = g.path.join(__dirname,file);
   
   g.fs.exists(file,function(exists){
       if(exists && dev_render_always==0){
+        //g.log.warn("send already exists file ["+file+"]");
         return res.sendfile(file);
       }else{
+        g.log.warn("render & send file ["+file+"]");
         return render_min_js_file(file,req,res,next);
       }
   });
@@ -136,11 +146,16 @@ function render_min_js_file(file,req,res,next) {
         function(js_list_file_str, callback){
           var arr_list_files = [];
           
-          try{
-            //получаем список файлов
-            arr_list_files = eval(js_list_file_str);
-          }catch(err){
-            return callback(err);
+          {
+            var this_path = g.path.dirname(js_min_file);
+            var path_join = g.mixa.path.path_join;
+            
+            try{
+              //получаем список файлов
+              arr_list_files = eval(js_list_file_str);
+            }catch(err){
+              return callback(err);
+            }
           }
           
           var UglifyJS = null;

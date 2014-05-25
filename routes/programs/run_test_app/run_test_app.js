@@ -5,7 +5,9 @@ var a  = g.app_fnc;
 module.exports = function(route_path,app,express){
   
   app.get(route_path,function(req, res, next){
-    
+    var data = {view_path:__dirname};
+    a.render( req, res, 'run_test_js_list.ect', data );
+    return ;
     a.external_app.run_child_proccess("d:/program/nodejs__prjs/mixa_node_site_template2/programs/test_app/test_app.js",function(err,p_data){
       
         var data = {view_path:__dirname};

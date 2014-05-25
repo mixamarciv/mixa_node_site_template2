@@ -10,7 +10,7 @@ module.exports = function(app,express){
     //app.use(log_request);
     app.use(load_main_vars);
     app.use(a.session.visit);
-    app.use(require('./send_http_error.js'));
+    //app.use(require('./send_http_error.js'));
     app.use(require('./load_user_data.js'));
     app.use(check_query);
 }
@@ -23,16 +23,17 @@ function load_main_vars(req,res,next){
     next();
 }
 
+
 function check_query(req,res,next){
     //тут выполняем проверки на валидность запроса..
     var req_path = req.path;
     if(req_path.match(/\.\.\//)){
-        return res.sendHttpError("not valid http path: "+req_path);
+        return a.send_http_error("not valid http path: "+req_path,req,res);
     }
     
     var test = req.query['test'];
     if (test) {
-        return res.sendHttpError("check_query test: "+test);
+        return res.send_http_error("check_query test: "+test,req,res);
     }
     next();
 }
