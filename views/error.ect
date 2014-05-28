@@ -3,8 +3,13 @@
   <!--%- @g.log.error("render template0"); %-->
 
     <h1>ERROR <%- @error %></h1>
+    
+    <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
+    <pre><%- @g.mixa.dump.var_dump_node("error",@error,@dump_options) %></pre>
+    
     <pre><%- @error_dump %></pre>
       <!--%- @g.log.warn("render template!"); %-->
+      
     
 <% block 'footer' : %>
 	<span>error page</span>

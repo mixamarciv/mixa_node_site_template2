@@ -186,7 +186,9 @@ function render_min_js_file(file,req,res,next) {
           var dump_options = {exclude: [/^req.socket/i,/^req.res.socket/i,/\._/,/\.connection\.parser/i,/req.client.parser/i]};
           g.log.info(  g.mixa.dump.var_dump_node("err",err,dump_options)  );
           //res.end(g.mixa.dump.var_dump_node("err",err,dump_options));
-          return res.sendHttpError(err);
+          err.info = 'render min js file from list file error';
+          err.file_error = __filename;
+          return a.send_http_error(err,req,res,next);
         }
         g.log.info("render new js file: "+result_js_min_file);
         res.sendfile(result_js_min_file);

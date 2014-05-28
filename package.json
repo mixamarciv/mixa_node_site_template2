@@ -7,6 +7,7 @@
   "dependencies": {
     "underscore": ">=1.0",
     "underscore.string": ">=2.0",
+    "uglify-js": "*",
     "express": ">=3.4.7",
     "nconf": "*",
     "bower": "~1.2.8",

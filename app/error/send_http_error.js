@@ -7,13 +7,15 @@ module.exports = function(error,req,res,next){
     //g.log.info("load res.sendHttpError..");
     
     //res.sendHttpError = function(error){
-        g.log.warn("res.sendHttpError..");
+        //g.log.warn("res.sendHttpError..");
         //res.end(require('util').inspect(error));
         //res.status(error.status);
         res.status(505);
         if(res.req.headers['x-requested-with'] == 'XMLHttpRequest') {
+            g.log.warn("sendHttpError - send json");
             res.json(error);
         }else{
+            g.log.warn("sendHttpError - send html");
             var err_info = {
                     url: req.originalUrl,
                     error: error
@@ -23,5 +25,5 @@ module.exports = function(error,req,res,next){
             a.render(req,res,"error.ect",{error:error, error_dump:dump});
         }
     //}
-    if (next && g.u.isFunction(next)) next();
+    //if (next && g.u.isFunction(next)) next();
 }
