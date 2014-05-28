@@ -26,7 +26,9 @@ g.app_config = require('../config/config.js');
 
 
 g.log = require('./log_config.js')();
-g.app_db = require('./database/app_db.js');
+g.db = {}; // list of databases
+g.db.app_db = require('./database/app_db.js');
+g.app_db = g.db.app_db;
 
 g.app_fnc = {};
 a = g.app_fnc;
