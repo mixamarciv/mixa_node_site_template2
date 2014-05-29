@@ -4,8 +4,9 @@
 
     <h1>ERROR <%- @error %></h1>
     
-    <% dump_options = {exclude: [/^data.a$/,/^data.g$/]} %>
-    <pre><%- @g.mixa.dump.var_dump_node("error",@error,@dump_options) %></pre>
+    <% @dump_options = {exclude: [/^data.a$/,/^data.g$/], max_str_length:90000} %>
+    <pre><%- @g.mixa.dump.var_dump_node("error",@error,@dump_options) %>
+    </pre>
     
     <pre><%- @error_dump %></pre>
       <!--%- @g.log.warn("render template!"); %-->
