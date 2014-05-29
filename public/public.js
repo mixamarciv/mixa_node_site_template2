@@ -57,7 +57,7 @@ function check_exists_and_send_file(file,render_from_list_fn,req,res,next) {
             //g.log.warn("send already exists file ["+file+"]");
             return res.sendfile(file);
         }else{
-            g.log.warn("render & send file ["+file+"]");
+            g.log.warn("render & send file ["+req.path+"]");
             get_list_files(file,function(err,list_files){
                 if (err) return a.send_http_error(err,req,res,next);
                 render_from_list_fn(file,list_files,function(err){
@@ -117,6 +117,10 @@ function render_css_file_from_list_files(file,list_files,fn) {
           });
       },
       function(err, results){
+          if (err) {
+              g.err.update(err,{msg:'ERROR load data from files',files:list_files});
+              return callback(err);
+          }
           var less_data_str = results.join('\n');
           parser.parse(less_data_str, function (err, tree) {
               if (err) {
@@ -132,6 +136,7 @@ function render_css_file_from_list_files(file,list_files,fn) {
                 //if (dev_render_always) {
                 //  css = '/*' + less_data_str + '\n*/\n\n'+css;
                 //}
+                css = str_delete_last_comment(css);
                 write_render_data_to_file(file,css,fn);
               } catch(parseError) {
                 g.err.update(parseError,"Parse ERROR");
@@ -140,6 +145,16 @@ function render_css_file_from_list_files(file,list_files,fn) {
           });
       }
     );
+}
+
+function str_delete_last_comment(str) {
+  str = string.rtrim(str,'\n\r ');
+  var len = str.length;
+  if (str[len-1]=='/' && str[len-2]=='*') {
+      var pos = str.lastIndexOf('/*');
+      str = str.substring(0,pos);
+  }
+  return str;
 }
 
 function get_list_files(file,fn) {
