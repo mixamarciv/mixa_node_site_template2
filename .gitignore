@@ -21,3 +21,6 @@ $RECYCLE.BIN/
 
 npm-debug.log
 *.css
+
+db/app_db.fdb
+*.fdb
