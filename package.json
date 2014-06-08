@@ -9,6 +9,11 @@
     "underscore.string": ">=2.0",
     "uglify-js": "*",
     "express": ">=3.4.7",
+        "serve-favicon": "*",
+        "morgan": "*",
+        "cookie-parser": "*",
+        "body-parser": "*",
+        "cookie-session": "*",
     "nconf": "*",
     "bower": "~1.2.8",
     "async": "~0.2.9",
@@ -19,7 +24,7 @@
     "less": "~1.6.3",
     "node-firebird": "*",
     "moment": "*",
-    "chalk", "*"
+    "chalk": "*"
 
   }
 }

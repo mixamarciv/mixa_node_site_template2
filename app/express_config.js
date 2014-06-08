@@ -1,8 +1,6 @@
 console.log('load express..');
-
 var g  = require('./global.js');
 var a = g.app_fnc; 
-
 
 var HttpError = require('./error/http_error.js');
 
@@ -42,36 +40,16 @@ module.exports = function (app, express) {
     app.use(log_request);
     
     
+    /*********************************
     //отправляем Favicon
     app.use(express.favicon('public/images/favicon.ico'));
-    
-    if(app.get('env') == 'development') {
-        //app.use(express.logger('dev'));
-    }
-
-
-    
 
     //теперь вместо bodyParser() используются следующие две надстройки:
     app.use(express.json());
     app.use(express.urlencoded());
     
-    
-    
     //задаем парсер куков
     app.use(express.cookieParser());
-    
-    /**********
-    //задаем параметры хранения сессии
-    //express.session - используется всегда после express.cookieParser
-    app.use(express.session({
-        secret: config.get('session:secret'),
-        key: config.get('session:key'),
-        cookie: config.get('session:cookie'),
-        //store: new MongoStore({mongoose_connection: mongoose.connection})
-        test: 0
-    }));
-    ************/
     
     //express.cookieSession - храним все данные сессии в куках пользователя!
     //  поэтому обязательно надежно храним ключ "session:secret"
@@ -81,7 +59,27 @@ module.exports = function (app, express) {
         cookie: config.get('session:cookie'),
         test: 0
     }));
+    **********************************/
     
+    var favicon = require('serve-favicon');
+    var logger = require('morgan');
+    var cookieParser = require('cookie-parser');
+    var bodyParser = require('body-parser');
+    var session = require('cookie-session');
+    
+    app.use(favicon('public/images/favicon.ico'));
+    app.use(logger('dev'));
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded());
+    app.use(cookieParser());
+    app.use(session({
+        keys: [config.get('session:key'),config.get('session:secret')],
+        //secret: config.get('session:secret'),
+        //cookie: config.get('session:cookie'),
+        secureProxy: true // if you do SSL outside of node
+    }));
+    
+
 
     //user functions load: - загружаем все функции и проходим проверки пользователя
     require('./app_use/app_use.js')(app,express);

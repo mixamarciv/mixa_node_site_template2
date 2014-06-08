@@ -3,7 +3,8 @@ tmp/
 temp/
 public/vendor/bower_components/
 public/templates/default/stylesheets/style.css
-
+db/**.fdb
+**.fdb
 
 #############
 ## Windows detritus
@@ -22,5 +23,3 @@ $RECYCLE.BIN/
 npm-debug.log
 *.css
 
-db/app_db.fdb
-*.fdb
