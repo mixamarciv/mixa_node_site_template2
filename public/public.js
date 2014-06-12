@@ -8,7 +8,9 @@ var string = g.u.str;
 //var lessMiddleware = require('less-middleware');
 
 //var public_dir = g.path.dirname(__dirname);
-var dev_render_always = g.app_config.get("dev:always_render_less");
+var dev_render_always     = g.app_config.get("dev:always_render_all");
+var dev_render_always_css = g.app_config.get("dev:always_render_css");
+var dev_render_always_js  = g.app_config.get("dev:always_render_js");
 
 module.exports = function(app,express){
   
@@ -42,18 +44,18 @@ function css_files_send2(req,res,next) {
     //if(g.path.basename(file) !== 'all.styles.min.css') return less_files_send(req,res,next);
     if(!string.endsWith(file,'all.styles.min.css')) return less_files_send(req,res,next);
     file = path_join(__dirname,file);
-    check_exists_and_send_file(file,render_css_file_from_list_files,req,res,next);
+    check_exists_and_send_file(file,render_css_file_from_list_files,dev_render_always_css,req,res,next);
 }
 function js_files_send2(req,res,next) {
   var file = req.path;
   if(!string.endsWith(file,'all.scripts.min.js')) return next();
   file = g.path.join(__dirname,file);
-  check_exists_and_send_file(file,render_js_file_from_list_files,req,res,next);
+  check_exists_and_send_file(file,render_js_file_from_list_files,dev_render_always_js,req,res,next);
 }
 
-function check_exists_and_send_file(file,render_from_list_fn,req,res,next) {
+function check_exists_and_send_file(file,render_from_list_fn,render_anyway,req,res,next) {
     g.fs.exists(file,function(exists){
-        if(exists && dev_render_always==0){
+        if(exists && dev_render_always==0 && render_anyway==0){
             //g.log.warn("send already exists file ["+file+"]");
             return res.sendfile(file);
         }else{

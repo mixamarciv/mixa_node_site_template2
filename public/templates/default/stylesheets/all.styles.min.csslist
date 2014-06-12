@@ -1,5 +1,6 @@
 [
-  ,path_join(g.app_config.main_path_full, "public/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css")
+  /*,path_join(g.app_config.main_path_full, "public/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css")*/
+  ,path_join(g.app_config.main_path_full, "public/templates/template_elements/bootstrap/themes/gray/bootstrap.min.css.file")
   ,path_join(g.app_config.main_path_full, "public/vendor/bower_components/bootstrap/dist/css/bootstrap-theme.min.css")
-  ,path_join(this_path, "/style.less")
+  /*,path_join(this_path, "/style.less")*/
 ]

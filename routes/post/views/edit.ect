@@ -1,0 +1,28 @@
+<% extend @this_template_path_dir + '/index.ect' %>
+
+    <h1>добавление новой записи</h1>
+    
+    <form method="POST" action="<%- @this_url_path %>" enctype="multipart/form-data" >
+
+    
+	<div class="form-group">
+	    <label for="post_name">название</label>
+	    <input class="form-control" id="post_name" placeholder="введите название" type="text" name=post_name />
+	</div>
+	
+	<div class="form-group-inverse">
+	    <textarea class="form-control" rows="3" placeholder="введите текст вашего очень важного сообщения" name=post_text></textarea>
+	</div>
+	
+	<div class="form-group">
+	    <label for="post_save">перед сохранением проверьте введенные данные</label>
+	    <div class="form-group">
+	    <input type=submit name=post_save id="post_save" value="сохранить" class="btn btn-lg btn-default" />
+	    </div>
+	</div>
+    </form>
+
+    
+<% block 'footer' : %>
+	<span>добавление новой записи</span>
+<% end %>
