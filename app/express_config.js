@@ -65,19 +65,26 @@ module.exports = function (app, express) {
     var logger = require('morgan');
     var cookieParser = require('cookie-parser');
     var bodyParser = require('body-parser');
-    var session = require('cookie-session');
+    var cookieSession = require('cookie-session');
     
-    app.use(favicon('public/images/favicon.ico'));
     app.use(logger('dev'));
+    app.use(favicon('public/images/favicon.ico'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
     app.use(cookieParser());
-    app.use(session({
-        keys: [config.get('session:key'),config.get('session:secret')],
-        //secret: config.get('session:secret'),
+    app.use(cookieSession({
+        //keys: [config.get('session:key'),config.get('session:secret')],
+        
+        secret: config.get('session:secret'),
+        name: config.get('session:cookie_name'),
+        httpOnly: false,
         //cookie: config.get('session:cookie'),
-        secureProxy: true // if you do SSL outside of node
+        
+        //если не работают сессии поменяй этот ключ!!!:
+        secureProxy: false // if you do SSL outside of node   // <<<<<<<<<<<<===================== поменяй ключ, если не работают сессии
+        
     }));
+    
     
 
 
@@ -94,7 +101,7 @@ module.exports = function (app, express) {
 
 
     
-    // ------------------------------------------------------------------------
+    /*// ------------------------------------------------------------------------
     //задаем функцию обработки ошибок, она должна идти последней в списке app.use
     //обязательно должна получать 4 параметра, argument1 == next(argument1)
     app.use(function(err,req,res,next){
@@ -109,6 +116,9 @@ module.exports = function (app, express) {
         }
         return express.errorHandler()(err,req,res,next);
     });
+    */
+    var errorhandler = require('errorhandler');
+    app.use(errorhandler());
     // ------------------------------------------------------------------------
     
     //Error handing

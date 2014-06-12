@@ -16,10 +16,12 @@ module.exports = function(app,express){
 }
 
 
+
 function load_main_vars(req,res,next){
     res.locals.data = {}; //данные которые будут доступны далее в шаблоне
     res.locals.data.g = g;
     res.locals.data.a = g.app_fnc;
+    res.locals.data.ip = get_ip(req,res);
     next();
 }
 
@@ -36,4 +38,9 @@ function check_query(req,res,next){
         return res.send_http_error("check_query test: "+test,req,res);
     }
     next();
+}
+
+function get_ip(req,res) {
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    return ip;
 }

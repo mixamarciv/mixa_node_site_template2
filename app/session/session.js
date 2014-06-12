@@ -100,12 +100,17 @@ function get_session_vizit_count(req) {
 //задаем сессию +отмечаем визит
 function session_visit(req,res,next){
     //g.log.info("session_visit ..");
-    req.session.count = req.session.count || 0;
-    if(req.session.count==0){
+    var n = req.session.count || 0;
+    if(n==0){
+
+        //var dump_options = {exclude: [/^req.socket/i,/^req.res.socket/i,/\._/,/\.connection\.parser/i,/req.client.parser/i]};
+        //g.log.error(g.mixa.dump.var_dump_node("session",req.session,dump_options) );
+
+        g.log.warn("new session "+res.locals.data.ip);
         req.session.lsid = m.int.get_random_int(1000000*2,1000000*1000*9); //id сессии для генерации lid ссылок на ресурсы
         req.session.lsid_req_error_count = 0;
     }
-    req.session.count++;
+    req.session.count = ++n;
     
     //задаем gen_link_id() доступной для использования в шаблонах
     res.locals.data.gen_link_id = function(is_long){

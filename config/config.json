@@ -41,6 +41,7 @@
     },
     
     "session": {
+	"cookie_name": "sess3000",
         "secret": "secret_key3000",
         "key": "sid",
         "cookie": {

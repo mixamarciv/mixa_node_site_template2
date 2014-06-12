@@ -14,6 +14,8 @@
         "cookie-parser": "*",
         "body-parser": "*",
         "cookie-session": "*",
+        "errorhandler": "*",
+        
     "nconf": "*",
     "bower": "~1.2.8",
     "async": "~0.2.9",
