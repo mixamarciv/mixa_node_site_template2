@@ -25,7 +25,7 @@ function load_main_vars(req,res,next){
     res.locals.data.ip = get_ip(req,res);
     
     res.locals.data.this_url_path = get_url_path(req.originalUrl);
-    
+
     
     next();
 }
@@ -33,7 +33,11 @@ function load_main_vars(req,res,next){
 function get_url_path(url) {
     var p = url;
     if (p.length == 0) return "/";
-    p = p.substr(0,p.indexOf('?'));
+    
+    var indx = p.indexOf('?');
+    if (indx >= 0) {
+        p = p.substr(0,indx);
+    }
     
     if (p.length == 0) return "/";
     //if (p[p.length-1]=='/') return p;

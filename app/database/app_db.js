@@ -5,7 +5,13 @@ var g = require('../global.js');
 var cfg = g.app_config;
 var a = g.app_fnc;
 
+var app_conndb_config = cfg.app_conndb_config;
 
+app_conndb_config.name = "app_db";
+
+module.exports = g.db.connect.create_db_connect(app_conndb_config);
+
+/***************
 var app_db_functions = {};
 var app_db_conn = {is_connected:0};
 
@@ -38,7 +44,7 @@ app_db_functions.on_ready = function(fn){
     }
 }
 
-app_db_functions.query = function query(query_str,result_function/*(err,rows)*/,options){
+app_db_functions.query = function query(query_str,result_function,options){
     app_db_conn.query(query_str,function(err,rows){
         if (err) {
             err.query = query_str;
@@ -73,3 +79,6 @@ app_db_functions.generator = function generator(gen_name,inc_val,result_function
         result_function(null,id);
     });
 }
+
+
+****************/

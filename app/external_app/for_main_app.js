@@ -201,8 +201,8 @@ function run_process(options,fn) {
     var log_file = path_join(options.log_path,'process.log');
     var arr_params = ["app.js",options.id_process,'>>'+log_file/*,'2>&1'*/];
     
-    var d = {data:{arr_params:arr_params,options:options},error:null};
-    fn({},d);
+    var d = {id_process:options.id_process,data:{arr_params:arr_params,options:options},error:null};
+    fn(null,d);
     
     str = "node app.js "+options.id_process+">>"+log_file+" 2>&1";
     g.log.info("cpRUN: "+str);

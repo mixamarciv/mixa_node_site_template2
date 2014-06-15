@@ -8,10 +8,6 @@ module.exports = function(route_path,app,express){
     req.route_path = route_path;
     return require('./search/search.js').request(req,res,next);
 
-    //var data = {};
-    //data.view_path = view_path;
-    //a.render( req, res, 'post.ect', data );
-
   });
     
     

@@ -29,11 +29,11 @@ module.exports = function(req,res,template,data2){
     var cur_template = 'default';
 
 
-    //if(!data) data = {};
-    var data = res.locals.data;
-    if(data2){
-        g.mixa.obj.add_object( data, data2 );
-    }
+    if(!data2) data2 = {};
+    
+    var data = data2;
+    g.mixa.obj.add_object( data, res.locals.data );
+
     
     if(!data.page_title)  data.page_title = cfg.get('site_title_default');
     

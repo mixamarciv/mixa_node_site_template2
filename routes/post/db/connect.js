@@ -19,6 +19,10 @@ var db_conn_config = {
 };
 //-------------------------------------------------------------
 
+db_conn_config.name = "post_db";
+module.exports = g.db.connect.create_db_connect(db_conn_config);
+
+/*******************
 var db_functions = {};
 var db_conn = {is_connected:0};
 
@@ -57,7 +61,7 @@ db_functions.on_ready = function(fn){
     }
 }
 
-db_functions.query = function query(query_str,result_function/*(err,rows)*/,options){
+db_functions.query = function query(query_str,result_function,options){
     db_conn.query(query_str,function(err,rows){
         if (err) {
             err.query = query_str;
@@ -92,3 +96,4 @@ db_functions.generator = function generator(gen_name,inc_val,result_function){
         result_function(null,id);
     });
 }
+**********************/

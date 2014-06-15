@@ -27,8 +27,11 @@ module.exports = function (app, express) {
     
     app.use(logger('dev'));
     app.use(favicon('public/images/favicon.ico'));
+    app.use(bodyParser.urlencoded())
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded());
+
+    //for <form enctype="multipart/form-data" method="POST" action="<%- @this_url_path %>" >
+    
     //app.use(cookieParser());
     app.use(cookieSession({
         //keys: [config.get('session:key'),config.get('session:secret')],

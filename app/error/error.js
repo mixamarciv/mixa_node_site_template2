@@ -35,6 +35,16 @@ function show_error_and_callfn(err,msg,fn) {
 }
 
 
+function html_dump_for_error(err) {
+    var dump_options = {exclude: [/^data.a$/,/^data.g$/], max_str_length:90000};
+      
+    var serr = g.mixa.dump.var_dump_node("err",err,dump_options);
+    serr = serr.replace(/err = undefined.?/ig,'');
+    serr = serr.replace(/\n/g,'<br>');
+    return serr;
+}
+
+module.exports.html_dump_for_error = html_dump_for_error;
 module.exports.update = update_error_stack;
 module.exports.update_error_stack = update_error_stack;
 

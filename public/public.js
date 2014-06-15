@@ -124,6 +124,10 @@ function render_css_file_from_list_files(file,list_files,fn) {
               return callback(err);
           }
           var less_data_str = results.join('\n');
+          var use_less = g.app_config.get("less_render:use_less");
+          if (!use_less) {
+            return write_render_data_to_file(file,less_data_str,fn);
+          }
           parser.parse(less_data_str, function (err, tree) {
               if (err) {
                 g.err.update(err,{msg:"less parse error",less_data:less_data_str});
@@ -131,8 +135,8 @@ function render_css_file_from_list_files(file,list_files,fn) {
               }
               try{
                 var css = tree.toCSS({
-                            compress: 1,
-                            yuicompress: 1,
+                            compress: g.app_config.get("less_render:compress"),
+                            yuicompress: g.app_config.get("less_render:yuicompress"),
                             sourceMap: []
                           });
                 //if (dev_render_always) {
