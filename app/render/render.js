@@ -45,7 +45,9 @@ module.exports = function(req,res,template,data2){
     data.execute_time = res.execute_info.execute_time();
     
     if(log_render_data){
-        var dump_options = {exclude: [/^data.a$/,/^data.g$/]};
+        var dump_options = {exclude: [
+                              // /^data.a$/,/^data.g$/
+                            ]};
         g.log.warn( "\ndump render data:\n"+g.mixa.dump.var_dump_node("data",data,dump_options) );
     }
 
@@ -73,7 +75,9 @@ module.exports = function(req,res,template,data2){
 
 
 function get_html_dump_error_render(err_info,err,template,view_file_path,data) {
-    var dump_options = {exclude: [/^data.a$/,/^data.g$/]};
+    var dump_options = {exclude: [
+                               /^data\.a\..*/,/^data\.g\..*/
+                        ]};
     g.log.error("template render '"+template+"':\n" + g.mixa.dump.var_dump_node("data",data,dump_options));
     html = "<html><head><title>ERROR template render: "+err_info+"</title></head>"+
            "<body style=\"background: #000; color:#ccc; font-weight: bolder;\">"+

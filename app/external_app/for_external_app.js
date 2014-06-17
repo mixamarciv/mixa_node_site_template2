@@ -85,7 +85,11 @@ function execute_app_js(app_options,fn) {
     };
     update_process_status__set_run_date_app(app_options,function(err){
         g.log.info("run js file: "+app_options.run_file);
-        require(app_options.run_file)(data,fn);
+        try{
+            require(app_options.run_file)(data,fn);
+        }catch(err){
+            return errf(err,"require js file error",fn);
+        }
     });
 }
 

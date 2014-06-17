@@ -1,0 +1,45 @@
+<% extend @this_template_path_dir + '/index.ect' %>
+
+    <% if @error : %>
+      <div class="alert alert-dismissable alert-danger">
+	<!-- button type="button" class="close" data-dismiss="alert">×</button -->
+	<strong>ERROR: <%- @error %></strong>
+	<div class="row">
+	  <div class="col-md-12"><%- @html_dump_error %></div>
+	</div>
+      </div>
+    <% end %>
+    
+    <div class="col-md-12"><%- @g.app_config %></div>
+    
+    
+    
+    <table class="table table-striped table-hover ">
+    <!--
+    <thead>
+      <tr>
+	<th>name/text</th>
+      </tr>
+    </thead>
+    -->
+    <tbody>
+    <% for row in @status : %>
+  	<tr><td class="col-md-12">
+	<div class="row">
+	    
+	    <div class="col-md-1" ><%- @g.mixa.str.date_to_str_format( row.create_date ) %></div>
+	    <div class="col-md-1" ><%- row.percent_execute %></div>
+	    <div class="col-md-10"><%= row.note %></div>
+	    
+	</div>
+	</td></tr>
+    <% end %>
+
+
+    </tbody>
+    </table> 
+    
+    
+<% block 'footer' : %>
+	<span>информация о процессе</span>
+<% end %>

@@ -41,10 +41,10 @@ function firebird_database_functions(p_db_conn_config) {
     var db_functions = {};
     var db_conn = {is_connected:0};
     var db_ready_functions_list = [];      //функции выполняется при установке подключения к бд
-    var db_ready_function = function(){
+    var db_ready_function = function(err){
         for(var i=0;i<db_ready_functions_list.length;i++) {
             var fn = db_ready_functions_list[i];
-            fn(arguments);
+            fn(err);
         }
         db_ready_functions_list = [];
     };  

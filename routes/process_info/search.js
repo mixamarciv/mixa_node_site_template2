@@ -1,4 +1,4 @@
-var c  = require('../post_config.js');
+var c  = require('../process_info_config.js');
 var g  = c.g;
 var a  = g.app_fnc;
 var err_info = g.err.update;
