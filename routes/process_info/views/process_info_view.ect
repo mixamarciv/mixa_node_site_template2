@@ -28,6 +28,23 @@
     	<blockquote>
 	    description: <%- @app_description %>
 	</blockquote>
+	
+	
+	<% if @run_options.log_file : %>
+	    <a type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="откроется в новом окне"
+		target="_blank" href="/programs/filenavigator/download_file?file=<%- @run_options.log_file %>"
+	    >
+		<strong> посмотреть лог </strong>
+	    </a>
+	<% else : %>
+	    run_options:
+	    <pre>
+		<%- @run_options %>
+	    </pre>
+	<% end %>
+	
+	
+	
 	<table class="table table-striped table-hover ">
 	<!--
 	<thead>

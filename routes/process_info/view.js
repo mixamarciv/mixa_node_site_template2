@@ -56,6 +56,18 @@ function load_process_info(req, res, fn) {
       if (!row) {
         return fn(err_info(new Error(),'process not found (id_process='+id_process+')'));
       }
+      
+      try {
+          row.run_options = JSON.parse(row.run_options);
+      } catch(err) {
+          row.run_options_is_error = 1;
+          row.run_options = 'JSON.parse ERROR: '+row.run_options;
+      }
+      
+      if (!row.run_options_is_error) {
+        row.run_options.log_file = path_join(row.run_options.log_path,'process.log');
+      }
+      
       row.id_process = id_process;
       load_process_status(req, res, row, fn);
   });

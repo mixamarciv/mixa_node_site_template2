@@ -25,9 +25,10 @@ function exitOnErrorLoggerCheck(err) {
 }
 
 var transports_list = [];
+var log_filename = "";
 
 if(g.app_config.get('app_is_webserver')){
-    var log_filename = config.get("log:app:filepath")+"/app_"+date_to_str_format("YMDhms")+".log";
+    log_filename = config.get("log:app:filepath")+"/app_"+date_to_str_format("YMDhms")+".log";
     var log_level = config.get("log:app:level");
     /*********
     if(g.app_config.get('app_is_webserver')==0){
