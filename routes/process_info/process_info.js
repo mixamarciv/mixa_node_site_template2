@@ -18,6 +18,10 @@ module.exports = function(route_path,app,express){
       return require('./edit.js')(req, res);
     }
     
+    if ( req.param('view_process_log') ) {
+      return require('./view_process_log.js')(req, res);
+    }
+    
     return require('./view.js')(req, res);
   });
 }

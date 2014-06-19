@@ -1,4 +1,17 @@
-var c  = require('../post_config.js');
+
+
+module.exports = function(data,fn){
+  var g = data.g;
+  data.app.update_status('success start app');
+  
+  g.log.info( "\napp options:\n"+g.mixa.dump.var_dump_node("data.app_options",data.app_options,{}) );
+  
+  data.app.update_status('end app');
+  fn();
+}
+
+/**********
+var c  = require('../../post_config.js');
 var g  = c.g;
 var a  = g.app_fnc;
 
@@ -173,4 +186,4 @@ function load_post_data(post,fn){
       fn(null,post);
   });
 }
-
+***********/

@@ -19,7 +19,9 @@ function errf(err,msg,fn) {
     });
 }
 
+var update_app_status_n_order = 0;
 function update_app_status(msg,is_error,fn) {
+    g.log.info(msg);
     if(!app_options || !app_options.id_process) return errf(new Error(),"ERROR app_options not loaded.",fn);
     if(g.u.isFunction(is_error)) {
         fn = is_error;
@@ -28,11 +30,17 @@ function update_app_status(msg,is_error,fn) {
         if(!is_error) is_error = 0;
         else  is_error = 1;
     }
-    var qs = "INSERT INTO app_child_process_status(id_process,note,is_error)"
-    +" VALUES("+app_options.id_process+",'"+msg+"',"+is_error+")";
+    
+    update_app_status_n_order++;
+    var qs = "INSERT INTO app_child_process_status(id_process,note,is_error,n_order)"
+    +" VALUES("+app_options.id_process+",'"+msg+"',"+is_error+","+update_app_status_n_order+")";
     app_db.query(qs,function(err,data){
-        if (err) return errf(err,"ERROR update child_process status: bad query SQL: \n"+qs,fn);
-        fn(null);
+        if (err){
+            g.log.error("ERROR update child_process status: bad query SQL: \n"+qs);
+            g.log.error(err);
+            return ;
+        }
+        if(fn && g.u.isFunction(fn)) fn(null);
     });
 }
 
@@ -69,6 +77,7 @@ function execute_app(app_options,fn) {
     var file = app_options.run_file;
     var ext = g.path.extname(file).toLowerCase();
     g.log.info("app type: "+ext);
+    
     if (ext == '.js') {
         execute_app_js(app_options,fn);
     }else{
@@ -84,18 +93,35 @@ function execute_app_js(app_options,fn) {
         app:module.exports
     };
     update_process_status__set_run_date_app(app_options,function(err){
-        g.log.info("run js file: "+app_options.run_file);
-        try{
-            require(app_options.run_file)(data,fn);
-        }catch(err){
-            return errf(err,"require js file error",fn);
-        }
+        var file = app_options.run_file;
+        g.fs.exists(file,function(is_exists){
+            if (!is_exists) {
+                return errf(err,"require js file '"+file+"' not found!",fn);
+            }
+            g.log.info("run js file: "+file);
+            
+            var fr = null;
+            
+            try{
+                fr = require(file);
+            }catch(err){
+                return errf(err,"require js file error!",fn);
+            }
+            
+            try{
+                fr(data,fn);
+            }catch(err){
+                return errf(err,"call js file error!",fn);
+            }
+            
+        });
     });
 }
 
 
 function execute_app_external(app_options,fn) {
     g.log.info("run external file: "+app_options.run_file);
+    //..........
     fn();
 }
 
@@ -129,11 +155,11 @@ function get_app_data(options,fn){
         try {
             options.run_options = JSON.parse(run_options);
         }catch(err2){
-            if (err2) return errf(err2,"JSON.parse run_options ERROR:\n"+run_options,fn);
+            if (err2) return errf(err2,"JSON.parse app run_options ERROR:\n"+run_options,fn);
         }
         
-        g.log.info('app options load:');
-        g.log.dump_info('options',options);
+        //g.log.info('app options load:');
+        //g.log.dump_info('options',options);
         fn(null,options);
     });
 }
@@ -152,7 +178,10 @@ function update_process_status__set_end_date_app(options,fn) {
     var qstr = "UPDATE app_child_process SET end_date_app=current_timestamp WHERE id_process="+options.id_process;
     app_db.query(qstr,function(err,data){
         if (err) return errf(err,"update child_process status ERROR\n SQL: "+qstr,fn);
+        //app_db.query('commit',function(err,data){
+        //  if (err) return errf(err,"commit; child_process status ERROR\n SQL: "+qstr,fn);
         fn();
+        //});
     });
 }
 

@@ -1,0 +1,25 @@
+<% extend @this_template_path_dir + '/index.ect' %>
+
+    <% if @error : %>
+      <div class="alert alert-dismissable alert-danger">
+	<!-- button type="button" class="close" data-dismiss="alert">×</button -->
+	<strong>ERROR: <%- @error %></strong>
+	<div class="row">
+	  <div class="col-md-12"><%- @html_dump_error %></div>
+	</div>
+      </div>
+    <% end %>
+    
+    <div class="row">
+	<div class="col-md-12"><h1>process log</h1></div>
+    </div>
+    
+    <div class="row">
+	<div class="col-md-12"><%- @file_data_html %></div>
+    </div>
+    
+    
+<% block 'footer' : %>
+	<span>лог процесса</span>
+<% end %>
+

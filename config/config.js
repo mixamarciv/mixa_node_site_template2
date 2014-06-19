@@ -57,7 +57,7 @@ nconf.filenavigator_cfg = require('./filenavigator_cfg.js');
 
 //параметры подключения к бд приложения
 nconf.app_conndb_config = {
-    database: path_join( __dirname, '../db/app_db.fdb' ) ,
+    database: path_join( __dirname, '../db/app_db1.fdb' ) ,
     host: '127.0.0.1',     // default
     port: 3050,            // default
     user: 'SYSDBA',        // default

@@ -76,7 +76,7 @@ function load_process_info(req, res, fn) {
 function load_process_status(req, res, data, fn) {
   var sql = "SELECT p.percent_execute,p.note,p.create_date,p.is_error "
            +" FROM app_child_process_status p WHERE id_process="+data.id_process
-           +" ORDER BY p.create_date ";
+           +" ORDER BY p.create_date,p.n_order ";
   
   db.query(sql,function(err,rows){
       if (err) {

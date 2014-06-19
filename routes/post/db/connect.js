@@ -8,7 +8,7 @@ var a = g.app_fnc;
 var path_join = g.mixa.path.path_join;
 //-------------------------------------------------------------
 var db_conn_config = {
-    database: path_join( __dirname, './data.fdb' ) ,
+    database: path_join( __dirname, './data1.fdb' ) ,
     host: '127.0.0.1',     // default
     port: 3050,            // default
     user: 'SYSDBA',        // default

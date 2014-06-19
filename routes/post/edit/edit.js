@@ -122,8 +122,10 @@ function post_is_success_saved(post, req, res) {
 
 function update_post_metadata(req, res, post, fn) {
   var options = {};
+  options.id_post = post.id;
   options.run_file = path_join(__dirname,'update_post_metadata/update_post_metadata_script.js');
   options.rr = {req:req,res:res};
+  
   
   a.external_app.run_child_process2(options,function(err,p_data){
         if (err) {
