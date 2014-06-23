@@ -19,6 +19,7 @@ function render(req,res,data) {
     post.id       = req.param('post_id');
     post.name     = req.param('post_name');
     post.text     = req.param('post_text');
+    post.tags     = req.param('post_tags');
     if(!post.new_post && !post.name && !post.text) {
       if (!data.error) return load_post(req, res);
     }
@@ -69,6 +70,7 @@ function save_post(req, res) {
   post.id   = req.param('post_id');
   post.name = req.param('post_name');
   post.text = req.param('post_text');
+  post.tags = req.param('post_tags');
   
   if (!post.id) {
     post.new_post = 1;
@@ -84,9 +86,9 @@ function save_post(req, res) {
 function save_post_next1(post, req, res) {
   var str = "";
   if(post.new_post){
-    str = "INSERT INTO app1_post(id_post,name,text) VALUES("+post.id+",'"+post.name+"','"+post.text+"')";
+    str = "INSERT INTO app1_post(id_post,name,text,tags) VALUES("+post.id+",'"+post.name+"','"+post.text+"','"+post.tags+"')";
   }else{
-    str = "UPDATE app1_post SET name='"+post.name+"',text='"+post.text+"' WHERE id_post="+post.id;
+    str = "UPDATE app1_post SET name='"+post.name+"',text='"+post.text+"',tags='"+post.tags+"' WHERE id_post="+post.id;
   }
   
   g.log.error( "\npost save:\n"+g.mixa.dump.var_dump_node("post_save",post,{}) );
@@ -156,7 +158,7 @@ function load_post(req, res) {
 
 
 function load_post_data(post,fn){
-  var str = "SELECT name,text FROM app1_post WHERE id_post="+post.id;
+  var str = "SELECT name,text,tags FROM app1_post WHERE id_post="+post.id;
   db.query(str,function(err,rows){
       if(err){
         err.sql_query_error = str;
@@ -172,6 +174,7 @@ function load_post_data(post,fn){
 
       post.name = row.name;
       post.text = row.text;
+      post.tags = row.tags;
       fn(null,post);
   });
 }

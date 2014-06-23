@@ -3,9 +3,6 @@
 
 
 
-    <form method="POST" action="<%- @this_url_path %>" class="form-horizontal"> <!-- enctype="multipart/form-data" -->
-
-    <legend><%= @legend %></legend>
     
   <% if @error : %>
     <div class="alert alert-dismissable alert-danger">
@@ -30,7 +27,7 @@
       <!-- button type="button" class="close" data-dismiss="alert">×</button -->
       процесс индексации и обновления сохраненных данных вы можете 
       <a type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="откроется в новом окне"
-         target="_blank" href="/process_info?id_process=<%- @id_process %>"
+         target0="_blank" href="/process_info?id_process=<%- @id_process %>"
       >
 	<strong> посмотреть тут </strong>
       </a>
@@ -38,7 +35,9 @@
     </div>
   <% end %>
   
-  
+    <form method="POST" action="<%- @this_url_path %>" class="form-horizontal"> <!-- enctype="multipart/form-data" -->
+
+    <legend><%= @legend %></legend>
     
 	<input type="hidden" name=post_id value="<%- @post.id %>" />
 	<input type="hidden" name=new_post value="<%- @post.new_post %>" />
@@ -49,7 +48,11 @@
 	</div>
 	
 	<div class="form-group">
-	    <textarea class="form-control" rows="5" placeholder="введите текст вашего очень важного сообщения" name=post_text><%- @post.text %></textarea>
+	    <textarea class="form-control" rows="8" placeholder="введите текст вашего очень важного сообщения" name=post_text><%- @post.text %></textarea>
+	</div>
+	
+	<div class="form-group">
+	    <textarea class="form-control" rows="2" placeholder="теги сообщения (ключевые слова по которым его будет не сложно найти)" name=post_tags><%- @post.tags %></textarea>
 	</div>
 	
 	<div class="form-group">

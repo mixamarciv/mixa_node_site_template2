@@ -28,6 +28,7 @@ function show_error_and_callfn(err,msg,fn) {
     if(!err.err_msg) err.err_msg = [];
     err.err_msg.push(msg);
     
+
     var dump_options = {exclude: [/^data.a$/,/^data.g$/]};
     g.log.dump_error("error",err,dump_options);
     
