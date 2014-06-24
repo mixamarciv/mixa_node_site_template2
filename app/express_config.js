@@ -27,7 +27,7 @@ module.exports = function (app, express) {
     
     app.use(logger('dev'));
     app.use(favicon('public/images/favicon.ico'));
-    app.use(bodyParser.urlencoded())
+    app.use(bodyParser.urlencoded({extended: true}))
     app.use(bodyParser.json());
 
     //for <form enctype="multipart/form-data" method="POST" action="<%- @this_url_path %>" >

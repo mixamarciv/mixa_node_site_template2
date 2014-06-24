@@ -121,7 +121,7 @@ function render_css_file_from_list_files(file,list_files,fn) {
       function(err, results){
           if (err) {
               g.err.update(err,{msg:'ERROR load data from files',files:list_files});
-              return callback(err);
+              return fn(err);
           }
           var less_data_str = results.join('\n');
           var use_less = g.app_config.get("less_render:use_less");
