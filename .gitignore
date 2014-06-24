@@ -23,4 +23,3 @@ $RECYCLE.BIN/
 npm-debug.log
 *.css
 
-public/templates/template_elements/main_menu/main_menu.ect.html
