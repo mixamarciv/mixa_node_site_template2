@@ -11,7 +11,10 @@ module.exports = request;
 
 function request(req, res){
     load_process_info(req, res,function(err,data){
-          if(err) return render_error('load process info',err,req,res);
+          if(err){
+            
+            return render_error('load process info',err,req,res);
+          }
           //g.log.error("id_process=="+req.param('id_process'));
           //g.log.error(rows);
           
@@ -22,7 +25,7 @@ function request(req, res){
 function render_error(msg,err,req,res,data) {
     err_info(err,msg);
     var html_dump_error = g.err.html_dump_for_error(err);
-    render(req,res,{error:msg,err:err,html_dump_error:html_dump_error});
+    render(req,res,{error:err.get_msg(default_msg='undefined error'),err:err,html_dump_error:html_dump_error});
 }
 
 function render(req,res,data) {

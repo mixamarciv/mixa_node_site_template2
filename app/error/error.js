@@ -17,7 +17,33 @@ function update_error_stack(err,info){
         var s = new Error().stack;
         if (s.length > err.stack_data.length) err.stack_data = s; 
     }
+    
+    if (!err.get_msg) {
+        err.get_msg = get_msg;
+    }
+    
     return err;
+}
+
+function get_msg(default_msg) {
+    var err = this;
+    if (!err || !err.info || (!g.u.isArray(err.info) && !g.u.isString(err.info)) ) {
+        return default_msg;
+    }
+    if (g.u.isString(err.info)) {
+        return err.info;
+    }
+    
+    var str = "";
+    for(var i=0; i<err.info.length;i++){
+        var msg = err.info[i];
+        if (!msg) continue;
+        if (str!="") {
+            str = str + " -> ";
+        }
+        str = str + String(msg);
+    }
+    return str;
 }
 
 function show_error_and_callfn(err,msg,fn) {
@@ -35,7 +61,6 @@ function show_error_and_callfn(err,msg,fn) {
     return fn(err);
 }
 
-
 function html_dump_for_error(err) {
     var dump_options = {exclude: [/^data.a$/,/^data.g$/], max_str_length:90000};
       
@@ -44,6 +69,8 @@ function html_dump_for_error(err) {
     serr = serr.replace(/\n/g,'<br>');
     return serr;
 }
+
+
 
 module.exports.html_dump_for_error = html_dump_for_error;
 module.exports.update = update_error_stack;

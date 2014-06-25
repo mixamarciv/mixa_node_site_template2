@@ -29,7 +29,7 @@ if(config.get('app_is_webserver')){
             g.log.error('http server error: %j',err);
         });
         
-        console.log('start app');
+        console.log('start app (prepare:'+g.mixa.str.time_duration_str(start_load_app_time)+')');
     });
     
 }else{

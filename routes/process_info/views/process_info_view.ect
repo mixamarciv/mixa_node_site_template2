@@ -66,7 +66,7 @@
 	</tbody>
 	</table>
 	
-	<% if @run_options.log_file : %>
+	<% if @run_options && @run_options.log_file : %>
 	    <a type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="откроется в новом окне"
 		target0="_blank" href="/programs/filenavigator/download_file?file=<%- @run_options.log_file %>"
 	    >
@@ -91,6 +91,8 @@
 	    process status:
 	</div>
 	</div>
+	
+	
 	<table class="table table-striped table-hover ">
 	<!-- -->
 	<thead>
@@ -103,21 +105,24 @@
 	</thead>
 	<!-- -->
 	<tbody>
-	<% for row in @status : %>
-	    <% if row.is_error : %>
-	    <tr class="danger">
-	    <% else : %>
-	    <tr>
+	<% if @status && @status.length > 0 : %>
+	    <% for row in @status : %>
+		<% if row.is_error : %>
+		<tr class="danger">
+		<% else : %>
+		<tr>
+		<% end %>
+		    <td class="col-md-2" ><%- @g.mixa.str.date_to_str_format( row.create_date,'Y.M.D h:m:s k' ) %></td>
+		    <td class="col-md-1" ><%- row.percent_execute %></td>
+		    <td class="col-md-1" ><%- row.is_error %></td>
+		    <td class="col-md-9"><%= row.note %></td>
+		    
+		</tr>
 	    <% end %>
-		<td class="col-md-2" ><%- @g.mixa.str.date_to_str_format( row.create_date,'Y.M.D h:m:s k' ) %></td>
-		<td class="col-md-1" ><%- row.percent_execute %></td>
-		<td class="col-md-1" ><%- row.is_error %></td>
-		<td class="col-md-9"><%= row.note %></td>
-		
-	    </tr>
 	<% end %>
 	</tbody>
-	</table> 
+	</table>
+	
     </div>
     </div>
     
