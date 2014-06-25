@@ -25,11 +25,10 @@
   <% if @id_process : %>
     <div class="alert alert-dismissable alert-info">
       <!-- button type="button" class="close" data-dismiss="alert">×</button -->
-      процесс индексации и обновления сохраненных данных вы можете 
+      процесс индексации и обновления данных вы можете 
       <a type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="откроется в новом окне"
          target0="_blank" href="/process_info?id_process=<%- @id_process %>"
-      >
-	<strong> посмотреть тут </strong>
+      > <strong> посмотреть тут </strong>
       </a>
        
     </div>
@@ -60,7 +59,8 @@
 	    <div class="row">
 		
 		<div class="col-md-6"><input type=submit name=post_save id="post_save" value="сохранить" class="btn btn-lg btn-default btn-block" /></div>
-		<div class="col-md-6"></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-2"><input type=submit name=post_delete id="post_delete" value="удалить" class="btn btn-lg btn-default btn-block" /></div>
 	    </div>
 	    
 	</div>

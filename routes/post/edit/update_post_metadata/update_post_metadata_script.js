@@ -53,11 +53,36 @@ module.exports = function(data,fn_end_app){
     return error_end(null,'app_options.run_options.id_post is undefined');
   }
   var id_post = data.app_options.run_options.id_post;
+  var delete_post = data.app_options.run_options.delete_post;
   
   update_status('connect to db');
   connect_to_db(function(){
     
+    if(delete_post){
+      update_status('get post data');
+      
+      var post_data = {id_post:id_post,name:'',text:'',tags:''};
+      post_data.words = get_words_from_post_data(post_data);
+      
+      update_status('delete post words');
+      save_post_words(post_data,function(err){
+          if ( err ) return error_end(err,'delete post words error');
+          
+          update_status('delete post data');
+          delete_post_data(post_data.id_post,function(err){
+              if ( err ) return error_end(err,'delete post data error');
+              
+              g.log.info( "\n statistika:\n"+g.mixa.dump.var_dump_node("statistika",statistika,{}) );
+                
+              update_status('end app');
+              fn_end_script();
+          });
+      });
+      return;
+    }
+    
     update_status('get post data');
+    
     get_post_data(id_post,function(err,post_data){
         if ( err ) return error_end(err,'get_post_data error');
 
@@ -86,6 +111,26 @@ module.exports = function(data,fn_end_app){
 
 function connect_to_db(fn) {
   db.on_ready(fn);
+}
+
+function delete_post_data(id_post,fn) {
+  str = "DELETE FROM app1_post WHERE id_post="+id_post;
+  db.query(str,function(err,rows){
+      if ( err ) {
+        err.sql_string = str;
+        return fn(err_info(err,'sql query: delete post data'));
+      }
+      
+      str1 = "DELETE FROM app1_post_text WHERE id_post="+id_post;
+      db.query(str1,function(err,rows){
+          if ( err ) {
+            err.sql_string = str1;
+            return fn(err_info(err,'sql query: delete post text'));
+          }
+          fn(null);
+      });
+      
+  });
 }
 
 function get_post_data(id_post,fn) {

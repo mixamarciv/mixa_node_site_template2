@@ -31,7 +31,14 @@
 	      <div class="row">
 	        <div class="col-md-4"><%- String(post.name).substr(0,1000) %></div>
 		<div class="col-md-7"><%- String(post.text).substr(0,1000) %></div>
-		<div class="col-md-1"><a href="<%- @this_url_path %>/view?post_id=<%- post.id_post %>"><b>-></b></a></div>
+		<div class="col-md-1">
+		    <a  href="<%- @this_url_path %>/view?id=<%- post.id_post %>"
+		        data-toggle="tooltip"
+			data-placement="bottom"
+			title="подробнее"
+			data-original-title="подробнее"
+			class="btn btn-primary btn-xs"
+			> >> </a></div>
 	      </div>
 	    </td>
 	</tr>

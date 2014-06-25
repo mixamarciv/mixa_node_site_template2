@@ -32,11 +32,16 @@ function render(req,res,data) {
     data.legend = "Редактирование записи";
   }
   
+  if(req.param('delete')) data.legend = "Удаление записи";
+  
   if(req.param('success')){
-    data.success = "Запись успешно сохранена <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
+    if(!req.param('delete'))
+      data.success = "Запись успешно сохранена <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
+    else
+      data.success = "Запись успешно УДАЛЕНА <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
   }
   
-  g.log.error( "\npost render:\n"+g.mixa.dump.var_dump_node("post_rend",post,{}) );
+  //g.log.error( "\npost render:\n"+g.mixa.dump.var_dump_node("post_rend",post,{}) );
   
   data.view_path = c.view_path;
   a.render( req, res, 'edit.ect', data );
@@ -52,12 +57,16 @@ module.exports = function(route_path,app,express){
   
   app.all(route_path,function(req, res, next){
     var is_save = req.param('post_save');
+    var post_delete = req.param('post_delete');
+    /*********
     g.log.error( "\npost render:\n"
                 +g.mixa.dump.var_dump_node("req.params",req.params,{})
                 +g.mixa.dump.var_dump_node("req.body"  ,req.body,  {})
                 +g.mixa.dump.var_dump_node("req.query" ,req.query, {})
                 );
+    **********/
     if (is_save) return save_post(req, res);
+    if (post_delete) return delete_post(req, res);
     load_post(req, res );
   });
     
@@ -83,6 +92,26 @@ function save_post(req, res) {
   save_post_next1(post, req, res);
 }
 
+function delete_post(req, res) {
+  var post = {};
+  post.new_post = 0;
+  post.id   = req.param('post_id');
+  if (!post.id) {
+    post.new_post = 1;
+  }
+  if (post.new_post) {
+    if(err) return render_error('cant delete new post',new Error(),req,res);
+  }
+  post.delete_post = 1;
+  post_is_success_delete(post, req, res);
+  update_post_metadata(req, res, post, function(err,id_process){
+          if (err) {
+            return render_error('update_post_metadata error4',err,req,res);
+          }
+          render(req,res,{id_process:id_process});
+  });
+}
+
 function save_post_next1(post, req, res) {
   var str = "";
   if(post.new_post){
@@ -91,7 +120,7 @@ function save_post_next1(post, req, res) {
     str = "UPDATE app1_post SET name='"+post.name+"',text='"+post.text+"',tags='"+post.tags+"' WHERE id_post="+post.id;
   }
   
-  g.log.error( "\npost save:\n"+g.mixa.dump.var_dump_node("post_save",post,{}) );
+  //g.log.error( "\npost save:\n"+g.mixa.dump.var_dump_node("post_save",post,{}) );
   
   db.query(str,function(err,data){
       if(err){
@@ -122,9 +151,20 @@ function post_is_success_saved(post, req, res) {
 
 }
 
+function post_is_success_delete(post, req, res) {
+
+  req.params['post_id'] = post.id;
+  req.body  ['post_id'] = post.id;
+  req.query ['post_id'] = post.id;
+  
+  req.params['delete'] = 1;
+  req.params['success'] = 1;
+}
+
 function update_post_metadata(req, res, post, fn) {
   var options = {};
   options.id_post = post.id;
+  options.delete_post = post.delete_post;
   options.run_file = path_join(__dirname,'update_post_metadata/update_post_metadata_script.js');
   options.rr = {req:req,res:res};
   
