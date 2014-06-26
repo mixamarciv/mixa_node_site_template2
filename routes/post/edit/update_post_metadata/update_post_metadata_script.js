@@ -141,7 +141,7 @@ function get_post_data(id_post,fn) {
         return fn(err_info(err,'sql query: get post data'));
       }
       if ( rows.length==0 ) {
-        return fn(err_info(err,'sql query: post(id_post='+id_post+') not found'));
+        return fn(err_info(new Error(),'sql query: post(id_post='+id_post+') not found'));
       }
       var row = rows[0];
       if ( !row ) {

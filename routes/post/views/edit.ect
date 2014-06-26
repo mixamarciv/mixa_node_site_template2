@@ -36,7 +36,7 @@
   
     <form method="POST" action="<%- @this_url_path %>" class="form-horizontal"> <!-- enctype="multipart/form-data" -->
 
-    <legend><%= @legend %></legend>
+    <legend><%= @legend %><small>(id:<%- @post.id %>)<small></legend>
     
 	<input type="hidden" name=post_id value="<%- @post.id %>" />
 	<input type="hidden" name=new_post value="<%- @post.new_post %>" />

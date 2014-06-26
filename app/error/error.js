@@ -3,6 +3,7 @@ console.log('load error..');
 var g = require('../global.js');
 
 function update_error_stack(err,info){
+    if (!err) err = new Error();
     if (!g.u.isArray(err.info)) {
         err.info = [err.info];
     }else if (!err.info) {

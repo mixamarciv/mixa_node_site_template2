@@ -35,10 +35,16 @@ function render(req,res,data) {
   if(req.param('delete')) data.legend = "Удаление записи";
   
   if(req.param('success')){
-    if(!req.param('delete'))
-      data.success = "Запись успешно сохранена <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
-    else
-      data.success = "Запись успешно УДАЛЕНА <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
+    if(req.param('delete')){
+        data.success = "Запись успешно <b>УДАЛЕНА</b> <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
+        post.id = 0;
+    }else{
+        if (post.new_post){
+            data.success = "Запись успешно <b>добавлена</b> <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
+        }else{
+            data.success = "Запись успешно <b>сохранена</b> <br> id:"+post.id+";  "+g.mixa.str.date_format('Y.M.D h:m:s');
+        }
+    }
   }
   
   //g.log.error( "\npost render:\n"+g.mixa.dump.var_dump_node("post_rend",post,{}) );
@@ -81,13 +87,14 @@ function save_post(req, res) {
   post.text = req.param('post_text');
   post.tags = req.param('post_tags');
   
-  if (!post.id) {
+  if (!post.id || post.id == 0 ) {
     post.new_post = 1;
-    db.generator('next_id_post',1,function(err,new_id){
+    db.generator('app1_post_id',1,function(err,new_id){
         if(err) return render_error('query: get new gen id_post',err,req,res);
         post.id = new_id;
         save_post_next1(post, req, res);
     });
+    return;
   }
   save_post_next1(post, req, res);
 }
