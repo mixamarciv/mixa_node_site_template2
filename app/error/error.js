@@ -29,6 +29,9 @@ function update_error_stack(err,info){
 function get_msg(default_msg) {
     var err = this;
     if (!err || !err.info || (!g.u.isArray(err.info) && !g.u.isString(err.info)) ) {
+        if (!default_msg) {
+            default_msg = "undefined error message";
+        }
         return default_msg;
     }
     if (g.u.isString(err.info)) {
@@ -43,6 +46,12 @@ function get_msg(default_msg) {
             str = str + " -> ";
         }
         str = str + String(msg);
+    }
+    if (str=="") {
+        if (!default_msg) {
+            default_msg = "undefined error message";
+        }
+        return default_msg;
     }
     return str;
 }

@@ -24,6 +24,9 @@
       </tr>
     </thead>
     <tbody>
+    
+    
+    <% if !@error : %>
     <% for post in @rows : %>
   	<tr>
 	    <!-- td class="col-md-1"><%- post.id_post %></td -->
@@ -43,7 +46,7 @@
 	    </td>
 	</tr>
     <% end %>
-
+    <% end %>
 
     </tbody>
     </table> 

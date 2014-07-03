@@ -24,7 +24,6 @@ g.err  = require('./error/error.js');
 g.app_config = require('../config/config.js');
 
 
-
 g.log = require('./log_config.js')();
 g.db = {}; // list of databases
 g.db.connect = require('./database/database_connect.js');
@@ -47,9 +46,9 @@ if(g.app_config.get('app_is_webserver')){
     a.render = require('./render/render.js');
     a.HttpError = require('./error/http_error.js');
     a.send_http_error = require('./error/send_http_error.js');
-    
 
 }
+
 
 //подключаем модуль для обмена сообщениями между процессами
 //g.exchange = require('./exchange_data/exchange.js'); 
