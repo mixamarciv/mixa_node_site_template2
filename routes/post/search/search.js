@@ -5,7 +5,7 @@ var err_info = g.err.update;
 
 var path_join = g.mixa.path.path_join;
 
-var db = c.db;
+var db_arr = c.db_arr;
 
 function render(req,res,data) {
   if (!data) data = {};
@@ -15,6 +15,7 @@ function render(req,res,data) {
   }
  
   data.view_path = c.view_path;
+  data.id_db = req.db.id_db;
   a.render( req, res, 'search.ect', data );
 }
 
@@ -32,12 +33,16 @@ module.exports = function(route_path,app,express){
 
 module.exports.request = request;
 function request(req, res, next) {
-    load_post_list(req, res,function(err,rows){
-          if(err) return render_error('load post list',err,req,res);
-          //g.log.error("SEARCH=="+req.param('search'));
-          //g.log.error(rows);
-          
-          render(req,res,{rows:rows});
+    db_arr.get_db(req,res,function(err,db){
+      if(err) return render_error('get db error',err,req,res);
+      req.db = db;
+      load_post_list(req, res,function(err,rows){
+            if(err) return render_error('load post list',err,req,res);
+            //g.log.error("SEARCH=="+req.param('search'));
+            //g.log.error(rows);
+            
+            render(req,res,{rows:rows});
+      });
     });
 }
 
@@ -114,7 +119,7 @@ function load_post_list(req, res, fn) {
   sql += "WHERE "+cnt_words_where;
   sql += order_by;
   
-  db.query(sql,function(err,rows){
+  req.db.query(sql,function(err,rows){
       if(err){
         err.sql_query_error = sql;
         return fn(err_info(err,'sql query: get post list'));

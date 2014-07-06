@@ -1,7 +1,9 @@
 node_modules/
+node_modules_*/
 tmp/
 temp/
 public/vendor/bower_components/
+public/vendor_*/bower_components/
 public/templates/default/stylesheets/style.css
 db/**.fdb
 **.fdb

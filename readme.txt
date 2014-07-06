@@ -24,3 +24,10 @@ git pull - обновить текущую ветку
 
 тестирование в ноде https://www.youtube.com/watch?v=28iyqtug3cE
 
+
+var opener = require("opener");
+
+opener("http://google.com");
+opener("./my-file.txt");
+opener("firefox");
+opener("npm run lint");

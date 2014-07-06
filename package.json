@@ -26,7 +26,7 @@
     "less": ">=1.6.3",
     "node-firebird": "*",
     "moment": "*",
-    "chalk": "*"
-
+    "chalk": "*",
+    "opener": "*"
   }
 }
