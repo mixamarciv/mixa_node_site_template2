@@ -26,3 +26,6 @@ npm-debug.log
 *.css
 
 public/templates/template_elements/main_menu/main_menu.ect.html
+public/templates/template_elements/bootstrap/themes/gray/example/1/**
+
+public/templates/template_elements/bootstrap/themes/gray/example/1/Bootswatch  Slate.htm

@@ -33,17 +33,8 @@ function add_database_config(config) {
     arr_databases[cfg.name] = cfg;
     arr_databases[cfg.id  ] = cfg;
 }
-//-------------------------------------------------------------
+function get_db_by_id(id_db,fn){
 
-
-module.exports = arr_databases;
-
-module.exports.get_db = function(req,res,fn){
-    var id_db = req.param('id_db');
-    if (!id_db) id_db = req.param('id_database');
-    if (!id_db) id_db = req.param('db');
-    if (!id_db) id_db = req.param('database');
-    
     var d = arr_databases[id_db];
     if (!d){
         return fn(err_info(new Error(),'daatabase "'+id_db+'"not found'));
@@ -57,5 +48,20 @@ module.exports.get_db = function(req,res,fn){
         if (err) return fn(err_info(err,'connect to daatabase "'+id_db+'" error'));
         fn(null,d.connect);
     });
+}
+
+//-------------------------------------------------------------
+
+
+module.exports = arr_databases;
+module.exports.get_db_by_id = get_db_by_id;
+
+module.exports.get_db = function(req,res,fn){
+    var id_db = req.param('id_db');
+    if (!id_db) id_db = req.param('id_database');
+    if (!id_db) id_db = req.param('db');
+    if (!id_db) id_db = req.param('database');
+    
+    get_db_by_id(id_db,fn);
 }
 

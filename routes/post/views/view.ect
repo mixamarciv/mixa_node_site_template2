@@ -15,7 +15,7 @@
   <% if @post && @post.name : %>
     <h1><%= @post.name %></h1>
     <div class="row">
-	  <div class="col-md-12"><%= @post.text %></div>
+	  <div class="col-md-12"><%- @post.text %></div>
     </div>
      
     <div class="row">
@@ -25,7 +25,7 @@
     <div class="row">
 	  <div class="col-md-10"><%= @post.tags %></div>
 	  <div class="col-md-2">
-	      <a  href="<%- @g.path.dirname(@this_url_path) %>/edit?post_id=<%- @post.id %>"
+	      <a  href="<%- @g.path.dirname(@this_url_path) %>/edit?db=<%- @id_db %>&post_id=<%- @post.id %>"
 		        data-toggle="tooltip"
 			data-placement="bottom"
 			title="редактировать"

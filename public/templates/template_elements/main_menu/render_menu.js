@@ -10,7 +10,8 @@ var string = g.u.str;
 var main_menu = [];
 
 module.exports = function render_menu(route_list,fn){
-
+  return fn(1); //нах
+  
   route_list.sort(function(a,b){ return a.route_path > b.route_path });
   //g.log.error("route_list:\n" + g.mixa.dump.var_dump_node("list",route_list,{}));
   

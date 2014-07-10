@@ -9,7 +9,7 @@ var view_path = path_join(__dirname,'./views');
 module.exports = {
   g: g,
   view_path: path_join(__dirname,'./views'),
-  db_arr: post_db
+  db_arr: post_db_arr
 }
 
 

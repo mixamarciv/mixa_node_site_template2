@@ -1,5 +1,5 @@
 
-var db = require('../../db/connect.js');
+var post_config = require('../../post_config.js');
 
 var g = null;
 var a = null;
@@ -8,6 +8,8 @@ var err_info = null;
 var update_status = null;
 var fn_end_script = null;
 
+var db_arr = post_config.db_arr;
+var db = null;
 
 function set_global_vars(data,fn) {
   g = data.g;
@@ -49,14 +51,20 @@ module.exports = function(data,fn_end_app){
   
   g.log.info( "\napp options:\n"+g.mixa.dump.var_dump_node("data.app_options",data.app_options,{}) );
   
-  if (!data.app_options || !data.app_options.run_options || !data.app_options.run_options.id_post) {
+  if (!data.app_options || !data.app_options.run_options ) {
+    return error_end(null,'app_options.run_options is undefined');
+  }
+  if (!data.app_options.run_options.id_post) {
     return error_end(null,'app_options.run_options.id_post is undefined');
+  }
+  if (!data.app_options.run_options.id_db) {
+    return error_end(null,'app_options.run_options.id_db is undefined');
   }
   var id_post = data.app_options.run_options.id_post;
   var delete_post = data.app_options.run_options.delete_post;
   
-  update_status('connect to db');
-  connect_to_db(function(){
+  update_status('connect to db'+data.app_options.run_options.id_db);
+  connect_to_db(data.app_options.run_options.id_db,function(){
     
     if(delete_post){
       update_status('get post data');
@@ -109,8 +117,13 @@ module.exports = function(data,fn_end_app){
   });
 }
 
-function connect_to_db(fn) {
-  db.on_ready(fn);
+function connect_to_db(id_db,fn) {
+  //db.on_ready(fn);
+  db_arr.get_db_by_id(id_db,function(err,cdb){
+      if(err) return error_end(err,"connect to db"+id_db+" error");
+      db = cdb;
+      return fn();
+  });
 }
 
 function delete_post_data(id_post,fn) {
@@ -174,15 +187,19 @@ function get_lower_words(words) {
 }
 //----------------------------------------------------------------------------------------------
 function get_words_from_text(text){
+  
+  text = text.replace(/<[A-z][^>]*>/g,""); //удаляем теги
+  
   var words = {};
   var re = new RegExp("\d{2,100}","g");
-  re = /[^ \t\n\v\.,;\:\!\?\|'"`~\\@#№$%\^\&\[\]{}\(\)-\+\*\/=]{2,100}/g;
+  re = /[^ \t\n\v\r\.,;\:\!\?\|'"`~\\@#№$%\^\&\[\]{}\(\)\-\+\*\/=<>]{2,100}/g;
   
   //g.log.info( "\n================================================\n" );
   //g.log.info( "text: \"" +text+"\"");
   while ((arr = re.exec(text)) != null){
     //g.log.info( "\n"+g.mixa.dump.var_dump_node("arr",arr,{}) );
     var word = arr[0];
+    
     if(!words[word]) words[word] = 1;
     else words[word]++;
   }

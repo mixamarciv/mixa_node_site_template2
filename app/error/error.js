@@ -65,7 +65,7 @@ function show_error_and_callfn(err,msg,fn) {
     err.err_msg.push(msg);
     
 
-    var dump_options = {exclude: [/^data.a$/,/^data.g$/]};
+    var dump_options = {exclude: [/^data.a$/,/^data.g$/], max_str_length:90000};
     g.log.dump_error("error",err,dump_options);
     
     return fn(err);

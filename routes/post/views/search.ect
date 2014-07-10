@@ -2,6 +2,7 @@
     
     <form method="GET" action="<%- @this_url_path %>" class="form-horizontal"> <!-- enctype="multipart/form-data" -->
 	<div class="form-group">
+	    <input id="db" type="hidden" name=db value="<%- @id_db %>" />
 	    <input class="form-control" id="search" placeholder="введите текст для поиска" type="text" name=search value="<%- @search %>" />
 	</div>
     </form>
@@ -32,17 +33,18 @@
 	    <!-- td class="col-md-1"><%- post.id_post %></td -->
 	    <td class="col-md-11">
 	      <div class="row">
-	        <div class="col-md-4"><%- String(post.name).substr(0,1000) %></div>
-		<div class="col-md-7"><%- String(post.text).substr(0,1000) %></div>
-		<div class="col-md-1">
-		    <a  href="<%- @this_url_path %>/view?id=<%- post.id_post %>"
+	        <div class="col-md-3">
+		    <a  href="<%- @this_url_path %>/view?db=<%- @id_db %>&id=<%- post.id_post %>"
 		        data-toggle="tooltip"
 			data-placement="bottom"
 			title="подробнее"
 			data-original-title="подробнее"
-			class="btn btn-primary btn-xs"
-			> >> </a></div>
-	      </div>
+			class="btn btn-default"
+			>
+		    <%= String(post.name).substr(0,300) %>
+		    </a>
+		</div>
+		<div class="col-md-9"><%= String(post.text).substr(0,300) %></div>
 	    </td>
 	</tr>
     <% end %>

@@ -6,7 +6,7 @@ var err_info = g.err.update;
 
 var path_join = g.mixa.path.path_join;
 
-var db = c.db;
+var db_arr = c.db_arr;
 
 function render(req,res,data) {
   if (!data) data = {};
@@ -50,6 +50,9 @@ function render(req,res,data) {
   //g.log.error( "\npost render:\n"+g.mixa.dump.var_dump_node("post_rend",post,{}) );
   
   data.view_path = c.view_path;
+  if (req.db) {
+    data.id_db = req.db.id_db;
+  }
   a.render( req, res, 'edit.ect', data );
 }
 
@@ -62,18 +65,23 @@ function render_error(msg,err,req,res,data) {
 module.exports = function(route_path,app,express){
   
   app.all(route_path,function(req, res, next){
-    var is_save = req.param('post_save');
-    var post_delete = req.param('post_delete');
-    /*********
-    g.log.error( "\npost render:\n"
-                +g.mixa.dump.var_dump_node("req.params",req.params,{})
-                +g.mixa.dump.var_dump_node("req.body"  ,req.body,  {})
-                +g.mixa.dump.var_dump_node("req.query" ,req.query, {})
-                );
-    **********/
-    if (is_save) return save_post(req, res);
-    if (post_delete) return delete_post(req, res);
-    load_post(req, res );
+    db_arr.get_db(req,res,function(err,db){
+        if(err) return render_error('get db error',err,req,res);
+        req.db = db;
+        
+        var is_save = req.param('post_save');
+        var post_delete = req.param('post_delete');
+        /*********
+        g.log.error( "\npost render:\n"
+                    +g.mixa.dump.var_dump_node("req.params",req.params,{})
+                    +g.mixa.dump.var_dump_node("req.body"  ,req.body,  {})
+                    +g.mixa.dump.var_dump_node("req.query" ,req.query, {})
+                    );
+        **********/
+        if (is_save) return save_post(req, res);
+        if (post_delete) return delete_post(req, res);
+        load_post(req, res );
+    });
   });
     
     
@@ -89,7 +97,7 @@ function save_post(req, res) {
   
   if (!post.id || post.id == 0 ) {
     post.new_post = 1;
-    db.generator('app1_post_id',1,function(err,new_id){
+    req.db.generator('app1_post_id',1,function(err,new_id){
         if(err) return render_error('query: get new gen id_post',err,req,res);
         post.id = new_id;
         save_post_next1(post, req, res);
@@ -129,7 +137,7 @@ function save_post_next1(post, req, res) {
   
   //g.log.error( "\npost save:\n"+g.mixa.dump.var_dump_node("post_save",post,{}) );
   
-  db.query(str,function(err,data){
+  req.db.query(str,function(err,data){
       if(err){
         err.sql_string = str;
         return render_error('query: save post data',err,req,res);
@@ -170,6 +178,7 @@ function post_is_success_delete(post, req, res) {
 
 function update_post_metadata(req, res, post, fn) {
   var options = {};
+  options.id_db = req.db.id_db;
   options.id_post = post.id;
   options.delete_post = post.delete_post;
   options.run_file = path_join(__dirname,'update_post_metadata/update_post_metadata_script.js');
@@ -193,7 +202,7 @@ function load_post(req, res) {
   
   if (!post.id && !post.new_post) return render(req,res,{error:'select post for edit'});
   if (post.id){
-    load_post_data(post,function(err,post_data){
+    load_post_data(post,req,res,function(err,post_data){
         if(err) return render_error('load post data',err,req,res);
         render(req,res,{post:post_data});
     })
@@ -204,9 +213,9 @@ function load_post(req, res) {
 }
 
 
-function load_post_data(post,fn){
+function load_post_data(post,req,res,fn){
   var str = "SELECT name,text,tags FROM app1_post WHERE id_post="+post.id;
-  db.query(str,function(err,rows){
+  req.db.query(str,function(err,rows){
       if(err){
         err.sql_query_error = str;
         return fn(err_info(err,'sql query: get post data'));

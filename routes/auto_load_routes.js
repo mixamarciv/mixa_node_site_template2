@@ -38,12 +38,18 @@ module.exports = function(app,express){
     g.log.error(g.util.inspect(error));
   }
   
+  
+  /******
   var templ_elements_path = g.app_config.templates_cfg.template_elemenets_path_dir;
   var menu_render = require(templ_elements_path+"/main_menu/render_menu.js");
   menu_render(route_list,function(err,menu_file){
+    if (err) {
+        return g.log.error(err);
+    }
     var file = g.path.relative( g.app_config.main_path_full, menu_file);
     g.log.info("render new menu file: "+file);
   });
+  *****/
   
   var router;
   while(router = route_list.shift()){

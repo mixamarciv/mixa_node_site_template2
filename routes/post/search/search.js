@@ -15,7 +15,9 @@ function render(req,res,data) {
   }
  
   data.view_path = c.view_path;
-  data.id_db = req.db.id_db;
+  if (req.db) {
+    data.id_db = req.db.id_db;
+  }
   a.render( req, res, 'search.ect', data );
 }
 
