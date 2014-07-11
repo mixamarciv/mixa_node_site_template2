@@ -127,8 +127,24 @@ function delete_post(req, res) {
   });
 }
 
+function prepare_text_for_save(s) {
+  if (!s) return '';
+  s = s.replace(/\'/g,"''");
+  return s;
+}
+
+function prepare_post(p) {
+  p.text = prepare_text_for_save(p.text);
+  p.name = prepare_text_for_save(p.name);
+  p.tags = prepare_text_for_save(p.tags);
+  
+}
+
 function save_post_next1(post, req, res) {
   var str = "";
+  
+  prepare_post(post);
+  
   if(post.new_post){
     str = "INSERT INTO app1_post(id_post,name,text,tags) VALUES("+post.id+",'"+post.name+"','"+post.text+"','"+post.tags+"')";
   }else{

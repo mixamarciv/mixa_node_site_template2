@@ -75,8 +75,25 @@ function load_post_data(post, req, res ,fn){
       post.text = row.text;
       post.tags = row.tags;
       
+      post.text = prepare_text(post.text);
+      
       fn(null,post);
   });
   
 }
 
+
+function prepare_text(s) {
+  if (!s) return s;
+
+  
+  s = s.replace(/\n\r/g,'\n');
+  s = s.replace(/\r\n/g,'\n');
+  
+  s = s.replace(/<code([^>]*)>[\n]*/gi,'<codeclear></codeclear><code$1>');
+  s = s.replace(/[\n]*<\/code>[\n]?/gi,'</code><codeclear></codeclear>');
+  
+  s = s.replace(/\n/g,'<br>');
+
+  return s;
+}

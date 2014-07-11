@@ -8,7 +8,7 @@
     
     "dev" : {
       "always_render_all" : 0,
-      "always_render_css" : 0,
+      "always_render_css" : 1,
       "always_render_js" : 0,
       "log_render_data" : 0
     },
