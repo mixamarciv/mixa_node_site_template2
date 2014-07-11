@@ -8,7 +8,8 @@ var a = g.app_fnc;
 
 var path_join = g.mixa.path.path_join;
 //-------------------------------------------------------------
-var arr_databases = {};
+var arr_databases = [];
+var map_databases = {};
 
 var db_conn_config = {
     id: 1,
@@ -30,12 +31,13 @@ function add_database_config(config) {
     if (!cfg.name) throw("undefined database name");
     if (!cfg.id)   throw("undefined database id");
     
-    arr_databases[cfg.name] = cfg;
-    arr_databases[cfg.id  ] = cfg;
+    map_databases[cfg.name] = cfg;
+    map_databases[cfg.id  ] = cfg;
+    arr_databases.push(cfg);
 }
 function get_db_by_id(id_db,fn){
 
-    var d = arr_databases[id_db];
+    var d = map_databases[id_db];
     if (!d){
         return fn(err_info(new Error(),'daatabase "'+id_db+'"not found'));
     }
@@ -53,7 +55,9 @@ function get_db_by_id(id_db,fn){
 //-------------------------------------------------------------
 
 
-module.exports = arr_databases;
+module.exports.map_conn = map_databases;
+module.exports.arr_conn = arr_databases;
+
 module.exports.get_db_by_id = get_db_by_id;
 
 module.exports.get_db = function(req,res,fn){

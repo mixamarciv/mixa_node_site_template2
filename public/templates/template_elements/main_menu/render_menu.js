@@ -10,7 +10,7 @@ var string = g.u.str;
 var main_menu = [];
 
 module.exports = function render_menu(route_list,fn){
-  return fn(1); //нах
+  //return fn(1); //нах
   
   route_list.sort(function(a,b){ return a.route_path > b.route_path });
   //g.log.error("route_list:\n" + g.mixa.dump.var_dump_node("list",route_list,{}));
@@ -29,7 +29,7 @@ module.exports = function render_menu(route_list,fn){
 }
 
 
-
+//проверяем является ли указанный пункт меню el одним из дочерних ранее загруженных пунктов меню 
 function set_main_menu_element(menu,el) {
   //g.log.error("==============================================>>>\n"+g.mixa.dump.var_dump_node("menu",menu));
   if (menu.length == 0) {
@@ -47,13 +47,16 @@ function set_main_menu_element(menu,el) {
     if( rp.indexOf(trp) == -1 ) continue;
     //далее если путь к текущему елементу является частью пути к родительскому элементу
     if(!t.subitems){
+      if(t.no_autoload_subitems) return 1;
       t.subitems = [el];
       return 1;
     }else{
       //g.log.error("==============================================>>>\n"+g.mixa.dump.var_dump_node("menu",menu));
       var b = set_main_menu_element(t.subitems,el);
       if(b) return 1;
+      
       //если не один из дочерних элементов не подошел под роль родительского то им будет текущий
+      if(t.no_autoload_subitems) return 1; //если ему конечно не запрещено
       t.subitems.push(el);
       return 1;
     }
@@ -61,12 +64,32 @@ function set_main_menu_element(menu,el) {
   return 0;
 }
 
-
+//get_menu_element - получаем информацию по элементу меню, и возможно по его дочерним элементам
+//элемент состоит из
+// el = {name:'',link:route,file:path,subitems:[],no_autoload_subitems:0}
 function get_menu_element(item) {
   var el = {};
   el.name = g.path.basename(item.route_path);
   el.link = item.route_path;
   el.file = g.mixa.path.path_norm( item.file );
+  el.no_autoload_subitems = 0;
+
+  //require(el.file).user_main_menu_item  - может быть функция, может быть и сам объект
+  var user_menu_item = require(el.file).user_main_menu_item;
+  if (user_menu_item) {
+      if (g.u.isFunction(user_menu_item)) {
+        user_menu_item = user_menu_item(item.route_path);
+      }
+      if (g.u.isObject(user_menu_item)) {
+          if(user_menu_item.name) el.name = user_menu_item.name;
+          if(user_menu_item.link) el.link = user_menu_item.link;
+          if(user_menu_item.file) el.file = user_menu_item.file;
+          if(user_menu_item.no_autoload_subitems) el.no_autoload_subitems = user_menu_item.no_autoload_subitems;
+          if(user_menu_item.subitems) el.subitems = user_menu_item.subitems;
+      }
+  }
+
+
   return el;
 }
 
@@ -84,11 +107,11 @@ function write_to_file_menu(menu,file_name,fn) {
   
   var menu_html = get_menu_html(menu,"\t\t");
   var data = {menu:menu,menu_html:menu_html,g:g,a:a};
-  /*************
+  /*************/
   g.log.error("==========================================================\n   menu:\n"
-              +g.mixa.dump.var_dump_node("menu",menu)
+              +g.mixa.dump.var_dump_node("menu",menu,{max_level:10})
               +"\n==========================================================");
-  **************/
+  /**************/
   var text = "";
   try {
       text = renderer.render(file_name, data);
@@ -107,18 +130,21 @@ function write_to_file_menu(menu,file_name,fn) {
 }
 
 
-function get_menu_html(menu,deep_str) {
+function get_menu_html(menu,deep_str,deep_level) {
+  if (!deep_level) {
+    deep_level = 0;
+  }
   var str = "";
   var cnt = menu.length;
   for(var i=0;i<cnt;i++){
     var el = menu[i];
-    if(el.subitems){
+    if(el.subitems && deep_level<1){
       str += deep_str+"<li class='dropdown'>\n";
       str += deep_str+"<a href=\"#\" class='dropdown-toggle' data-toggle='dropdown'>"+el.name+"<b class='caret'></b></a>\n";
       str += deep_str+"<ul class='dropdown-menu'>\n";
       str += deep_str+"\t\t<li><a href=\""+el.link+"\">"+el.name+"</a></li>\n";
       str += deep_str+"\t\t<li class='divider'></li>\n";
-      str += get_menu_html(el.subitems,deep_str+"\t\t");
+      str += get_menu_html(el.subitems,deep_str+"\t\t",deep_level+1);
       str += deep_str+"</ul>\n";
     }else{
       str += deep_str+"<li><a href=\""+el.link+"\">"+el.name+"</a></li>\n";
