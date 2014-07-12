@@ -107,11 +107,11 @@ function write_to_file_menu(menu,file_name,fn) {
   
   var menu_html = get_menu_html(menu,"\t\t");
   var data = {menu:menu,menu_html:menu_html,g:g,a:a};
-  /*************/
+  /*************
   g.log.error("==========================================================\n   menu:\n"
               +g.mixa.dump.var_dump_node("menu",menu,{max_level:10})
               +"\n==========================================================");
-  /**************/
+  **************/
   var text = "";
   try {
       text = renderer.render(file_name, data);

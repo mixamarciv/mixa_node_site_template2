@@ -10,10 +10,12 @@ var db_arr = c.db_arr;
 
 function render(req,res,data) {
   if (!data) data = {};
-  
+  data.c = c;
   data.view_path = c.view_path;
   if (req.db) {
     data.id_db = req.db.id_db;
+  }else{
+    return c.render_select_db(req, res, data);
   }
   a.render( req, res, 'view.ect', data );
 }

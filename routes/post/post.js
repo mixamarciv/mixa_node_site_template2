@@ -3,10 +3,11 @@ var a  = g.app_fnc;
 var c  = require('./post_config.js');
 
 module.exports = function(route_path,app,express){
+  c.set_post_route_path(route_path);
   
   app.all(route_path,function(req, res, next){
-    req.route_path = route_path;
-    return require('./search/search.js').request(req,res,next);
+      req.route_path = route_path;
+      return require('./search/search.js').request(req,res,next);
   });
     
     
