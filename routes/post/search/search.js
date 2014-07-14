@@ -21,6 +21,10 @@ function render(req,res,data) {
   }else{
     return c.render_select_db(req, res, data);
   }
+  
+  if (data.ajax_query || req.param('ajax_query')) {
+      return a.render( req, res, 'search_data.ect', data );
+  }
   a.render( req, res, 'search.ect', data );
 }
 
@@ -70,7 +74,6 @@ function get_sub_sql(table_name,options,arr_search) {
   end_search_text += "')\n";
   //end_search_text == "%')\n"
 
-  
   for(var i=0;i<arr_search.length;i++){
     if (i>0) {
       s += "  OR ";
@@ -78,6 +81,10 @@ function get_sub_sql(table_name,options,arr_search) {
     s += begin_search_text + arr_search[i] + end_search_text ;
   }
   s += "  )";
+  
+  if (arr_search.length==0) {
+    return 0;
+  }
   return s;
 
 
@@ -105,16 +112,16 @@ function load_post_list(req, res, fn) {
   var order_by = " ORDER BY date_modify DESC \n";
   
   if (search) {
-    var options = {to_lower:1}
+    var options = {to_lower:1,like_begin:1};
     var words_arr = get_search_words_arr(search);
-    
-    cnt_words_select  = " ("+get_sub_sql("app1_word_tags_lower",options,words_arr)+") AS tags_cnt,\n";
-    cnt_words_select += " ("+get_sub_sql("app1_word_name_lower",options,words_arr)+") AS name_cnt,\n";
-    cnt_words_select += " ("+get_sub_sql("app1_word_text_lower",options,words_arr)+") AS text_cnt \n";
-    
-    cnt_words_where  = " (tags_cnt > 0 OR name_cnt > 0 OR text_cnt > 0) \n";
-    order_by = " ORDER BY tags_cnt*100+name_cnt*10+text_cnt DESC \n";
-    
+    if (words_arr.length>0) {
+        cnt_words_select  = " ("+get_sub_sql("app1_word_tags_lower",options,words_arr)+") AS tags_cnt,\n";
+        cnt_words_select += " ("+get_sub_sql("app1_word_name_lower",options,words_arr)+") AS name_cnt,\n";
+        cnt_words_select += " ("+get_sub_sql("app1_word_text_lower",options,words_arr)+") AS text_cnt \n";
+        
+        cnt_words_where  = " (tags_cnt > 0 OR name_cnt > 0 OR text_cnt > 0) \n";
+        order_by = " ORDER BY tags_cnt*100+name_cnt*10+text_cnt DESC \n";
+    }
   }
   
   var sql = null;

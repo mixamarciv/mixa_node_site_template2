@@ -1,0 +1,31 @@
+<% extend @this_template_path_dir + '/index.ect' %>
+
+
+<h1>выберите базу данных</h1>
+<div class="list-group">
+  <% for db in @db_arr.arr_conn : %>
+    <a href="<%- @this_url_path %>?db=<%- db.id %>" class="list-group-item">
+      <h3 class="list-group-item-heading"><%- db.name %> (id:<%- db.id %>)</h3>
+      <% if db.description : %><p class="list-group-item-text"><%- db.description %></p><% end %>
+    </a>
+  <% end %>
+  
+</div>
+
+  <!--
+  <% if @error : %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>ERROR: <%- @error %></strong>
+      <div class="row">
+        <div class="col-md-12"><%- @html_dump_error %></div>
+      </div>
+    </div>
+  <% end %>
+  -->
+      
+
+    
+<% block 'footer' : %>
+	<span>выбор базы данных</span>
+<% end %>
