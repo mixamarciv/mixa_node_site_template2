@@ -45,19 +45,19 @@ function request(req, res, next) {
     db_arr.get_db(req,res,function(err,db){
       if(err) return render_error('get db error',err,req,res);
       req.db = db;
-      load_post_list(req, res,function(err,rows){
+      load_post_list(req, res,function(err,rows,options){
             if(err) return render_error('load post list',err,req,res);
             //g.log.error("SEARCH=="+req.param('search'));
             //g.log.error(rows);
             
-            render(req,res,{rows:rows});
+            render(req,res,{rows:rows,options:options});
       });
     });
 }
 
-
-function get_sub_sql(table_name,options,arr_search) {
-  
+//функция возвращает подзапрос, который выдает количество повторений набранных слов в посте
+function get_sub_sql(table_name,options) {
+  var arr_search = options.words_arr;
   var s = "SELECT SUM(wp.cnt) FROM "+table_name+" w \n";
   s    += "  LEFT JOIN "+table_name+"__post wp ON wp.id_word=w.id_word \n";
   s    += "WHERE wp.id_post=p.id_post \n   AND (";
@@ -90,9 +90,42 @@ function get_sub_sql(table_name,options,arr_search) {
 
 }
 
+//получаем параметр search_info из параметров options
+function get_search_info(options) {
+    var arr_search = options.words_arr;
+    var search_info = "поиск записей со словами";
+    if(options.to_lower) search_info += ", без учета регистра";
+    
+    var type_search = "";
+    if(options.like_begin && options.like_end){
+      type_search = ", содержащими текст";
+    }else{
+      if(options.like_begin) type_search = ", начинающимися на";
+      if(options.like_end  ) type_search = ", оканчивающимися на";
+    }
+    search_info += type_search;
+    
+    if (arr_search.length==0) return "не задан текст для поиска";
+    else if (arr_search.length==1){
+      search_info += " \"" + arr_search[0] + "\"";
+    }else{
+      search_info += ": ";
+      for(var i=0;i<arr_search.length;i++){
+        if (i>0) search_info += ", ";
+        var word = arr_search[i];
+        search_info += "\"" + word + "\"";
+      }
+    }
+    return search_info;
+}
+
+
+//функция возвращает words_arr - массив набранных пользователем слов для поиска
 function get_search_words_arr(text) {
+  
   var words = {};
   var re = null;
+  text = text + " "; //регулярка работает только когда в конце пробел!
   re = /[^ \t\n\v\.,;\:\!\?\|'"`~\\@#№$%\^\&\[\]{}\(\)-\+\*\/=]{2,100}/g;
   
   while ((arr = re.exec(text)) != null){
@@ -104,23 +137,26 @@ function get_search_words_arr(text) {
   return arr;
 }
 
+
 function load_post_list(req, res, fn) {
   var search = req.param('search');
   
   var cnt_words_select = " 0 AS tags_cnt, 0 AS name_cnt, 0 AS text_cnt \n";
   var cnt_words_where  = " 1=1 \n";
   var order_by = " ORDER BY date_modify DESC \n";
-  
+  var options = {to_lower:1,like_begin:1};
   if (search) {
-    var options = {to_lower:1,like_begin:1};
-    var words_arr = get_search_words_arr(search);
-    if (words_arr.length>0) {
-        cnt_words_select  = " ("+get_sub_sql("app1_word_tags_lower",options,words_arr)+") AS tags_cnt,\n";
-        cnt_words_select += " ("+get_sub_sql("app1_word_name_lower",options,words_arr)+") AS name_cnt,\n";
-        cnt_words_select += " ("+get_sub_sql("app1_word_text_lower",options,words_arr)+") AS text_cnt \n";
+    options.words_arr = get_search_words_arr(search);
+    if (options.words_arr.length>0) {
+        cnt_words_select  = " ("+get_sub_sql("app1_word_tags_lower",options)+") AS tags_cnt,\n";
+        cnt_words_select += " ("+get_sub_sql("app1_word_name_lower",options)+") AS name_cnt,\n";
+        cnt_words_select += " ("+get_sub_sql("app1_word_text_lower",options)+") AS text_cnt \n";
         
         cnt_words_where  = " (tags_cnt > 0 OR name_cnt > 0 OR text_cnt > 0) \n";
         order_by = " ORDER BY tags_cnt*100+name_cnt*10+text_cnt DESC \n";
+        
+        options.search_info = get_search_info(options);
+        //options = g.mixa.dump.var_dump_node("opt",options,{max_str_length:9000});
     }
   }
   
@@ -136,6 +172,6 @@ function load_post_list(req, res, fn) {
         err.sql_query_error = sql;
         return fn(err_info(err,'sql query: get post list'));
       }
-      fn(null,rows);
+      fn(null,rows,options);
   });
 }

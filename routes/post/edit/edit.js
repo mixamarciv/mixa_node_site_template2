@@ -132,6 +132,7 @@ function delete_post(req, res) {
 function prepare_text_for_save(s) {
   if (!s) return '';
   s = s.replace(/\'/g,"''");
+  s = s + " ";
   return s;
 }
 
