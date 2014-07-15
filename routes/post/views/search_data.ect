@@ -14,11 +14,11 @@
   </div>
 <% else : %>
 
-    <!-- % if @options : % -->
+    <% if @options && @options.search_info: %>
     <div class="well well-sm">
-	<%- @options %>
+	<%- @options.search_info %>
     </div>
-    <!-- % end % -->
+    <% end %>
     
     <% if @rows && @rows.length > 0 : %>
 	<table class="table table-striped table-hover ">

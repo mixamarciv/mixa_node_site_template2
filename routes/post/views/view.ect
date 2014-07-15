@@ -12,7 +12,7 @@
   <% end %>
   
   
-  <% if @post && @post.name : %>
+  <% if @post : %>
     <h1><%= @post.name %></h1>
     <div class="row">
 	  <div class="col-md-11"><%- @post.text %></div>
@@ -27,14 +27,11 @@
 	  </div>
     </div>
      
-    <div class="row">
-	  <div class="col-md-12"><%= @post.tags %></div>
-    </div>
     
     <div class="row">
 	<% if @post.tags : %>
-	  
-	  <div class="col-md-8 well well-sm"><h4>теги:</h4><%= @post.tags %></div>
+	  <br><br>
+	  <div class="col-md-8 well well-sm"><b>теги: </b><%= @post.tags %></div>
 	  
 	<% end %>
     </div>

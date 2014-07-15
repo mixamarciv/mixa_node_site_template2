@@ -184,7 +184,7 @@ function load_post_search(form) {
     obj_input_text.change(function(){
         post_search__run_query();
     });
-    obj_input_text.keydown(function(){
+    obj_input_text.keyup(function(){
         post_search__run_query();
     });
 }

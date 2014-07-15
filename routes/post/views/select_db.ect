@@ -5,7 +5,7 @@
 <div class="list-group">
   <% for db in @db_arr.arr_conn : %>
     <a href="<%- @this_url_path %>?db=<%- db.id %>" class="list-group-item">
-      <h3 class="list-group-item-heading"><%- db.name %> (id:<%- db.id %>)</h3>
+      <h3 class="list-group-item-heading"><%- db.name %> <small>(id:<%- db.id %>)</small></h3>
       <% if db.description : %><p class="list-group-item-text"><%- db.description %></p><% end %>
     </a>
   <% end %>

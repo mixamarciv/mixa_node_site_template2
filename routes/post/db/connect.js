@@ -25,6 +25,22 @@ var db_conn_config = {
 };
 
 add_database_config(db_conn_config);
+
+db_conn_config.id       = 2;
+db_conn_config.name     = 'АДминистрирование';
+db_conn_config.database = path_join( __dirname, './data_adminnax.fdb' );
+add_database_config(db_conn_config);
+
+db_conn_config.id       = 3;
+db_conn_config.name     = 'programming';
+db_conn_config.database = path_join( __dirname, './data_programming.fdb' );
+add_database_config(db_conn_config);
+
+db_conn_config.id       = 4;
+db_conn_config.name     = 'workdb';
+db_conn_config.database = path_join( __dirname, './data_work.fdb' );
+add_database_config(db_conn_config);
+
 //-------------------------------------------------------------
 function add_database_config(config) {
     var cfg = g.u.clone(config);
