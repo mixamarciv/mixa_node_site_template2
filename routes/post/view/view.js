@@ -14,6 +14,7 @@ function render(req,res,data) {
   data.view_path = c.view_path;
   if (req.db) {
     data.id_db = req.db.id_db;
+    data.db = req.db;
   }else{
     return c.render_select_db(req, res, data);
   }

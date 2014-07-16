@@ -1,10 +1,15 @@
 <% extend @this_template_path_dir + '/index.ect' %>
     
 <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-12">
+	db: <b><%- @db.name %></b> <small><small> (id:<%- @db.id_db %>) </small></small>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10">
 	<form method="GET" action="<%- @c.post_route_path %>/search" class="form-horizontal" id=search_form autocomplete="off" > <!-- enctype="multipart/form-data" -->
 	    <div class="form-group">
-		<input type="hidden" name=db value="<%- @id_db %>" />
+		<input type="hidden" name=db value="<%- @db.id_db %>" />
 		<div class="input-group">
 		<input class="form-control" id="search" placeholder="введите текст для поиска" type="text" name=search value="<%- @search %>" />
 		  <span class="input-group-btn">

@@ -35,8 +35,14 @@
   <% end %>
   
     <form method="POST" action="<%- @c.post_route_path %>/edit" class="form-horizontal"> <!-- enctype="multipart/form-data" -->
-
-    <legend><%= @legend %><small>(id:<%- @post.id %>)<small></legend>
+    <div class="row">
+	<div class="col-md-9">
+	    <legend><%= @legend %><small>(id:<%- @post.id %>)</small></legend>
+	</div>
+	<div class="col-md-3">
+	    db: <b><%- @db.name %></b> <small><small> (id:<%- @db.id_db %>) </small></small>
+	</div>
+    </div>
         <input type="hidden" name=db value="<%- @id_db %>" />
 	<input type="hidden" name=post_id value="<%- @post.id %>" />
 	<input type="hidden" name=new_post value="<%- @post.new_post %>" />

@@ -54,66 +54,74 @@ module.exports = function(data,fn_end_app){
   if (!data.app_options || !data.app_options.run_options ) {
     return error_end(null,'app_options.run_options is undefined');
   }
-  if (!data.app_options.run_options.id_post) {
-    return error_end(null,'app_options.run_options.id_post is undefined');
+  if (!data.app_options.run_options.id_post && !data.app_options.run_options.arr_id_post) {
+    return error_end(null,'app_options.run_options.id_post or arr_id_post is undefined');
   }
   if (!data.app_options.run_options.id_db) {
     return error_end(null,'app_options.run_options.id_db is undefined');
   }
-  var id_post = data.app_options.run_options.id_post;
+  
+  var arr_id_post = [];
+  if(data.app_options.run_options.id_post) arr_id_post.push(data.app_options.run_options.id_post);
+  else arr_id_post = data.app_options.run_options.arr_id_post;
+  
   var delete_post = data.app_options.run_options.delete_post;
   
-  update_status('connect to db'+data.app_options.run_options.id_db);
+  update_status('connect to db (id:'+data.app_options.run_options.id_db+')');
   connect_to_db(data.app_options.run_options.id_db,function(){
-    
-    if(delete_post){
-      update_status('get post data');
-      
-      var post_data = {id_post:id_post,name:'',text:'',tags:''};
-      post_data.words = get_words_from_post_data(post_data);
-      
-      update_status('delete post words');
-      save_post_words(post_data,function(err){
-          if ( err ) return error_end(err,'delete post words error');
-          
-          update_status('delete post data');
-          delete_post_data(post_data.id_post,function(err){
-              if ( err ) return error_end(err,'delete post data error');
-              
-              g.log.info( "\n statistika:\n"+g.mixa.dump.var_dump_node("statistika",statistika,{}) );
+      g.async.each(arr_id_post,function(id_post,callback_fn){
+
+              if(delete_post){
+                update_status('get post(id:'+id_post+') data');
                 
-              update_status('end app');
-              fn_end_script();
-          });
+                var post_data = {id_post:id_post,name:'',text:'',tags:''};
+                post_data.words = get_words_from_post_data(post_data);
+                
+                update_status('delete post(id:'+id_post+') words');
+                save_post_words(post_data,function(err){
+                    if ( err ) return error_end(err,'delete post words error');
+                    
+                    update_status('delete post(id:'+id_post+') data');
+                    delete_post_data(post_data.id_post,function(err){
+                        if ( err ) return error_end(err,'delete post data error');
+                        
+                        g.log.info( "\n statistika:\n"+g.mixa.dump.var_dump_node("statistika",statistika,{}) );
+                          
+                        callback_fn();
+                    });
+                });
+                return;
+              }
+              
+              update_status('get post(id:'+id_post+') data');
+              
+              get_post_data(id_post,function(err,post_data){
+                  if ( err ) return error_end(err,'get_post_data error');
+          
+                  g.log.info( "\npost_data:\n"+g.mixa.dump.var_dump_node("post_data",post_data,{}) );
+                  
+                  update_status('get post(id:'+id_post+') words');
+                  
+                  post_data.words = get_words_from_post_data(post_data);
+                  
+                  g.log.info( "\n post_data.words:\n"+g.mixa.dump.var_dump_node("post_data.words",post_data.words,{}) );
+                  
+                  
+                  update_status('save post(id:'+id_post+') words');
+                  save_post_words(post_data,function(err){
+                      if ( err ) return error_end(err,'save post words error');
+                      
+                      g.log.info( "\n statistika:\n"+g.mixa.dump.var_dump_node("statistika",statistika,{}) );
+                      
+                      callback_fn();
+                  });
+          
+              });
+            
+      },function(err){
+          update_status('end app');
+          fn_end_script();
       });
-      return;
-    }
-    
-    update_status('get post data');
-    
-    get_post_data(id_post,function(err,post_data){
-        if ( err ) return error_end(err,'get_post_data error');
-
-        g.log.info( "\npost_data:\n"+g.mixa.dump.var_dump_node("post_data",post_data,{}) );
-        
-        update_status('get post words');
-        
-        post_data.words = get_words_from_post_data(post_data);
-        
-        g.log.info( "\n post_data.words:\n"+g.mixa.dump.var_dump_node("post_data.words",post_data.words,{}) );
-        
-        
-        update_status('save post words');
-        save_post_words(post_data,function(err){
-            if ( err ) return error_end(err,'save post words error');
-            
-            g.log.info( "\n statistika:\n"+g.mixa.dump.var_dump_node("statistika",statistika,{}) );
-            
-            update_status('end app');
-            fn_end_script();
-        });
-
-    });
   });
 }
 

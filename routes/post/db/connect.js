@@ -60,6 +60,7 @@ function get_db_by_id(id_db,fn){
     if(!d.connect){
         d.connect = g.db.connect.create_db_connect(d);
         d.connect.id_db = d.id;
+        d.connect.name = d.name;
     }
     
     d.connect.on_ready(function(err){

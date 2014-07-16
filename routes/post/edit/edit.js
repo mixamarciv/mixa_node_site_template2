@@ -52,6 +52,7 @@ function render(req,res,data) {
   data.view_path = c.view_path;
   if (req.db) {
     data.id_db = req.db.id_db;
+    data.db = req.db;
   }else{
     return c.render_select_db(req, res, data);
   }
@@ -97,8 +98,12 @@ function save_post(req, res) {
   post.text = req.param('post_text');
   post.tags = req.param('post_tags');
   
+  var is_mass_posts = mass_save_posts_data(post, req, res);
+  if (is_mass_posts) return;
+  
   if (!post.id || post.id == 0 ) {
     post.new_post = 1;
+
     req.db.generator('app1_post_id',1,function(err,new_id){
         if(err) return render_error('query: get new gen id_post',err,req,res);
         post.id = new_id;
@@ -143,7 +148,7 @@ function prepare_post(p) {
   
 }
 
-function save_post_next1(post, req, res) {
+function save_post_next1(post, req, res, fn_mass) {
   var str = "";
   
   prepare_post(post);
@@ -159,8 +164,10 @@ function save_post_next1(post, req, res) {
   req.db.query(str,function(err,data){
       if(err){
         err.sql_string = str;
+        if (fn_mass) fn_mass(err);
         return render_error('query: save post data',err,req,res);
       }
+      if (fn_mass) return fn_mass(null,post);
       
       post_is_success_saved(post, req, res);
       update_post_metadata(req, res, post, function(err,id_process){
@@ -170,6 +177,146 @@ function save_post_next1(post, req, res) {
           render(req,res,{id_process:id_process});
       });
   });
+}
+
+//---------------------------------------------------------------
+//функция для удаления переводов строки внутри текста - что бы он прошел валидацию в eval
+//  все переводы строки заменяются на <#br#>, после eval - преобразуются обратно
+function mass_prepapre_text(str) {
+  var new_str = "";
+  var p = str.indexOf('"');
+  while(p!=-1){
+      new_str += str.substr(0,p);  //строка до "
+      str = str.substr(p+1);
+      
+      p = str.indexOf('"');
+      subtext = str.substr(0,p);   // строка от " до второй "
+      str = str.substr(p+1);
+      
+      subtext = mass_prepare_subtext(subtext);
+      new_str += '"'+subtext+'"';
+      
+      p = str.indexOf('"');
+  }
+  new_str += str;
+  
+  return new_str;
+}
+
+function mass_prepare_subtext(subtext) {
+  if (!subtext || subtext.length==0) {
+    return "";
+  }
+  subtext = subtext.replace(/\r\n/g,"\n");
+  subtext = subtext.replace(/\n\r/g,"\n");
+  subtext = subtext.replace(/\n/g,"<#br#>");
+  return subtext;
+}
+function mass_reprepare_subtext(subtext) {
+  if (!subtext || subtext.length==0) {
+    return "";
+  }
+  subtext = subtext.replace(/<#br#>/g,"\n");
+  return subtext;
+}
+function mass_prepare_post_to_save(p) {
+  var post = {};
+  post.new_post = 1;
+  if (g.u.isString(p)) {
+    post.text = mass_reprepare_subtext(p);
+    return post;
+  }
+  
+  post.name = mass_reprepare_subtext(p.name);
+  post.text = mass_reprepare_subtext(p.text);
+  post.tags = mass_reprepare_subtext(p.tags);
+  return post;
+}
+
+//
+function mass_get_array_from_text(str, req, res) {
+  var arr = [];
+  try{
+    arr = eval(str);
+  }catch (e) {
+    e.dump_msg_eval = g.mixa.dump.var_dump_node("errEval",e,{max_str_length:90000});
+    render_error('eval error: ',e,req,res);
+    return null;
+  }
+  return arr;
+}
+
+//функция проверки и подготовки текста для массового добавления записей
+//для добавления нескольких записей должен быть задан текст вида:
+//[ {name:"название",text:"текст",tags:"теги-необязательно"},{name:"название2",text:"текст обязательно в кавычках"}]
+function mass_save_posts_data(post, req, res) {
+    var Str = g.u.str;  //underscore.string
+    var str = Str.trim(post.text);
+    
+    if (Str.startsWith(str,"[") && Str.endsWith(str,"]")) {
+      ok = 1;
+    }else{
+      return 0;
+    }
+    
+    str = mass_prepapre_text(str);
+    var arr = mass_get_array_from_text(str, req, res);
+    if (!arr) return 1;
+    
+    g.async.map(arr,function(arr_p,callback) {
+        var post = mass_prepare_post_to_save(arr_p);
+        if (post) {
+            req.db.generator('app1_post_id',1,function(err,new_id){
+                if (err) {
+                    post.err_msg = "generate id error";
+                    post.is_error = 1;
+                    post.err = err;
+                    return callback(null,post);
+                }
+                post.id = new_id;
+                save_post_next1(post, req, res, function(err,s_post){
+                    if (err) {
+                        post.err_msg = "save post error";
+                        post.is_error = 1;
+                        post.err = err;
+                    }
+                    callback(null,post);
+                });
+            });
+        }else{
+            callback(null,{nothing:1,data:arr_p});
+        }
+    }, function(err,res_arr){
+        var data = {};
+        var errors = [];
+        var arr_id = [];
+        for(var i=0;i<res_arr.length;i++){
+            var p = res_arr[i];
+            if (p.nothing || p.is_error) {
+                errors.push(p);
+            }else{
+                arr_id.push(p.id);
+            }
+        }
+        if (errors.length) {
+          data.error = 'Ошибка сохранены не все записи ('+errors.length+'/'+res_arr.length+')';
+          data.html_dump_error = g.mixa.dump.var_dump_node("err_arr",errors,{max_str_length:90000});
+        }
+        
+        update_post_metadata(req, res, arr_id, function(err,id_process){
+            if (err) {
+              if (data.error) {
+                data.error += '<br> +Ошибка обновления метаданных';  
+              }else{
+                data.error = 'Ошибка обновления метаданных';  
+              }
+            }
+            data.id_process = id_process;
+            render(req,res,data);
+        });
+    });
+    
+    return 1;
 }
 
 function post_is_success_saved(post, req, res) {
@@ -198,8 +345,13 @@ function post_is_success_delete(post, req, res) {
 function update_post_metadata(req, res, post, fn) {
   var options = {};
   options.id_db = req.db.id_db;
-  options.id_post = post.id;
-  options.delete_post = post.delete_post;
+  if (!g.u.isArray(post)) {
+    options.id_post = post.id;
+    options.delete_post = post.delete_post;
+  }else{
+    options.arr_id_post = post; 
+    options.delete_post = 0;
+  }
   options.run_file = path_join(__dirname,'update_post_metadata/update_post_metadata_script.js');
   options.rr = {req:req,res:res};
   
