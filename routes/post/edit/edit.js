@@ -221,16 +221,38 @@ function mass_reprepare_subtext(subtext) {
 }
 function mass_prepare_post_to_save(p) {
   var post = {};
-  post.new_post = 1;
+  
   if (g.u.isString(p)) {
-    post.text = mass_reprepare_subtext(p);
+    var text = mass_reprepare_subtext(p);
+    post = mass_prepare_get_post_attr_from_text(text);
+    post.new_post = 1;
     return post;
   }
-  
+
   post.name = mass_reprepare_subtext(p.name);
   post.text = mass_reprepare_subtext(p.text);
   post.tags = mass_reprepare_subtext(p.tags);
+  post.new_post = 1;
   return post;
+}
+
+//получаем название поста с первой строки текста или если строк больше 
+function mass_prepare_get_post_attr_from_text(t) {
+    if (!t || t.length==0 || !g.u.isString(t)) {
+      return null;
+    }
+    var post = {};
+    var Str = g.u.str;
+    var lines = Str.lines(t);
+    if (lines.length>1) {
+      post.name = lines.shift();
+      post.text = lines.join('\n');
+    }else{
+      var words = Str.words(t);
+      post.name = words[0];
+      post.text = t;
+    }
+    return post;
 }
 
 //
