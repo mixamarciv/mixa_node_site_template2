@@ -59,6 +59,9 @@ function request(req, res, next) {
 //функция возвращает подзапрос, который выдает количество повторений набранных слов в посте
 function get_sub_sql(table_name,options) {
   var arr_search = options.words_arr;
+  if (arr_search.length==0) {
+    return 0;
+  }
   var s = "SELECT SUM(wp.cnt) FROM "+table_name+" w \n";
   s    += "  LEFT JOIN "+table_name+"__post wp ON wp.id_word=w.id_word \n";
   s    += "WHERE wp.id_post=p.id_post \n   AND (";
@@ -83,12 +86,63 @@ function get_sub_sql(table_name,options) {
   }
   s += "  )";
   
-  if (arr_search.length==0) {
-    return 0;
-  }
+  //s += " AND (SELECT COUNT(*) FROM "+table_name+"__post WHERE )"
   return s;
+}
 
+//
+var get_cnt_where_query = " \
+  AND( 0<(SELECT COUNT(*) FROM app1_word_text#table# w \
+            LEFT JOIN app1_word_text#table#__post pw ON pw.id_word=w.id_word \
+          WHERE pw.id_post = p.id_post \
+            AND w.word #search# \
+          PLAN JOIN (PW INDEX (APP1_WORD_TEXT#table#__POST_IDX2), W INDEX (IDX_APP1_WORD_TEXT#table#_2)) \
+         ) \
+       OR \
+        0<(SELECT COUNT(*) FROM app1_word_name#table# w \
+            LEFT JOIN app1_word_name#table#__post pw ON pw.id_word=w.id_word \
+          WHERE pw.id_post = p.id_post \
+            AND w.word #search# \
+          PLAN JOIN (PW INDEX (APP1_WORD_name#table#__POST_IDX2), W INDEX (IDX_APP1_WORD_name#table#_2)) \
+         ) \
+       OR \
+        0<(SELECT COUNT(*) FROM app1_word_tags#table# w \
+            LEFT JOIN app1_word_tags#table#__post pw ON pw.id_word=w.id_word \
+          WHERE pw.id_post = p.id_post \
+            AND w.word #search# \
+          PLAN JOIN (PW INDEX (APP1_WORD_tags#table#__POST_IDX2), W INDEX (IDX_APP1_WORD_tags#table#_2)) \
+         ) \
+     ) \
+";
+function get_cnt_where(options) {
+  var arr_search = options.words_arr;
+  var s = get_cnt_where_query;
+ 
+  
+  var search_type = "";
+  var table_type = "";
+  if (options.to_lower){
+    table_type = "_lower";
+    if (options.like_begin )     search_type = " starts with LOWER('#word#') ";
+    else if (options.like_end  ) search_type = " ends with LOWER('#word#') ";
+    else                         search_type = " = LOWER('#word#') ";
+  }else{
+    table_type = "";
+    if (options.like_begin )     search_type = " starts with '#word#' ";
+    else if (options.like_end  ) search_type = " ends with '#word#' ";
+    else                         search_type = " = '#word#' ";
+  }
 
+  s = s.replace(/#table#/g,table_type);
+  s = s.replace(/#search#/g,search_type);
+  var s_all = ' 1=1 \n';
+
+  for(var i=0;i<arr_search.length;i++){
+    var tmp = s;
+    tmp = tmp.replace(/#word#/g,arr_search[i]);
+    s_all += tmp;
+  }
+  return s_all;
 }
 
 //получаем параметр search_info из параметров options
@@ -153,7 +207,7 @@ function load_post_list(req, res, fn) {
         cnt_words_select += " ("+get_sub_sql("app1_word_name_lower",options)+") AS name_cnt,\n";
         cnt_words_select += " ("+get_sub_sql("app1_word_text_lower",options)+") AS text_cnt \n";
         
-        cnt_words_where  = " (tags_cnt > 0 OR name_cnt > 0 OR text_cnt > 0) \n";
+        cnt_words_where  = get_cnt_where(options); //" (tags_cnt > 0 OR name_cnt > 0 OR text_cnt > 0) \n";
         order_by = " ORDER BY tags_cnt*100+name_cnt*10+text_cnt DESC \n";
         
         options.search_info = get_search_info(options);
@@ -164,7 +218,7 @@ function load_post_list(req, res, fn) {
   var sql = null;
   
   sql  = "SELECT id_post,name,text,tags,date_modify,tags_cnt,name_cnt,text_cnt FROM \n";
-  sql += "(SELECT p.id_post,p.name,p.text,p.tags,p.date_modify,"+cnt_words_select+" FROM app1_post p)\n";
+  sql += "(SELECT p.id_post,p.name,p.text,p.tags,p.date_modify,"+cnt_words_select+" FROM app1_post p) p\n";
   sql += "WHERE "+cnt_words_where;
   sql += order_by;
   
