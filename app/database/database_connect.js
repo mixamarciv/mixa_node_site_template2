@@ -59,6 +59,7 @@ function firebird_database_functions(p_db_conn_config) {
         }
         db_conn = p_db_conn;
         db_conn.is_connected = 1;
+
         g.log.info("connect to DB "+db_conn_config.name+" complete )");
         db_ready_function();
     });
@@ -69,6 +70,12 @@ function firebird_database_functions(p_db_conn_config) {
         }else{
             db_ready_functions_list.push(fn);
         }
+    }
+    
+    db_functions.get_conn = function(fn){
+        db_functions.on_ready(function(){
+            return fn(null, db_conn);
+        });
     }
     
     db_functions.query = function query(query_str,result_function/*(err,rows)*/,options){
@@ -91,6 +98,7 @@ function firebird_database_functions(p_db_conn_config) {
         return 1;
     }
     
+
     db_functions.generator = function generator(gen_name,inc_val,result_function){
         var query_str = "SELECT gen_id("+gen_name+","+inc_val+") AS new_id FROM rdb$database";
         db_conn.query(query_str,function(err,rows){

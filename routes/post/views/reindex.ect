@@ -1,0 +1,58 @@
+<% extend @this_template_path_dir + '/index.ect' %>
+
+
+
+
+    
+  <% if @error : %>
+    <div class="alert alert-dismissable alert-danger">
+      <!-- button type="button" class="close" data-dismiss="alert">×</button -->
+      <strong>ERROR: <%- @error %></strong>
+      <div class="row">
+        <div class="col-md-12"><%- @html_dump_error %></div>
+      </div>
+    </div>
+  <% end %>
+  
+
+  <% if @id_process : %>
+    <div class="alert alert-dismissable alert-info">
+      <!-- button type="button" class="close" data-dismiss="alert">×</button -->
+      процесс индексации и обновления данных ЗАПУЩЕН <br> лог процесса вы можете 
+      <a type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="откроется в новом окне"
+         target0="_blank" href="/process_info?id_process=<%- @id_process %>"
+      > <strong> посмотреть тут </strong>
+      </a>
+       
+    </div>
+  <% end %>
+  
+    <form method="POST" action="<%- @c.post_route_path %>/reindex" class="form-horizontal"> <!-- enctype="multipart/form-data" -->
+    <div class="row">
+	<div class="col-md-9">
+	    <legend><%= @legend %><small><small> (id:<%- @db.id_db %>) </small></small></legend>
+	</div>
+	<div class="col-md-3">
+	    <small>db: <b><%- @db.name %></b> <small><small> (id:<%- @db.id_db %>) </small></small></small>
+	</div>
+    </div>
+        <input type="hidden" name=db value="<%- @id_db %>" />
+
+	
+	<div class="form-group">
+	    <label for="post_save">перед запуском проверьте, нет ли уже запущенных процессов индексации, во избежании deadlock'офф</label>
+	    <div class="row">
+		
+		<div class="col-md-6"><input type=submit name=start id="start" value="сохранить" class="btn btn-lg btn-default btn-block" /></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-2"></div>
+	    </div>
+	    
+	</div>
+
+    </form>
+
+    
+<% block 'footer' : %>
+	<span>реиндексирование записей БД</span>
+<% end %>

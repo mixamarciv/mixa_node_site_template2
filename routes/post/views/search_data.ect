@@ -49,7 +49,7 @@
 			    </button>
 			</a>
 		    </div>
-		    <div class="col-md-9"><%= String(post.text).substr(0,300) %></div>
+		    <div class="col-md-9"><%= String(post.text).replace(/<[^>]*>/g,' ').substr(0,300) %></div>
 		  </div>
 	      </td>
 	    </tr>
