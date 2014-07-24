@@ -20,6 +20,20 @@
     </div>
     <% end %>
     
+    <div class="row">
+	<div class="col-md-12">
+	    
+	    <a href="<%- @c.post_route_path %>/search?<%- @options.url_page_prev %>"
+		 class="col-md-3 btn btn-default <% if @options.page <= 1: %> disabled <% end %>"  
+	    > предыдущая страница </a>
+
+	    <a href="<%- @c.post_route_path %>/search?<%- @options.url_page_next %>"
+		class="col-md-3 btn btn-default <% if @rows && @rows.length <= @options.show_records: %>  disabled  <% end %>" 
+	    > следующая страница </a>
+	    
+	</div>
+    </div>
+    
     <% if @rows && @rows.length > 0 : %>
 	<table class="table table-striped table-hover ">
 	<!--
@@ -30,8 +44,11 @@
 	    </thead>
 	-->
 	<tbody>
-    
+        <% i = 0 %>
 	<% for post in @rows : %>
+	    <% if ++i > @options.show_records : %>
+	    <% break; %>
+	    <% end %>
 	    <tr>
 		<!-- td class="col-md-1"><%- post.id_post %></td -->
 	      <td class="col-md-11">

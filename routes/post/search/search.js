@@ -195,11 +195,32 @@ function get_search_words_arr(text) {
 
 function load_post_list(req, res, fn) {
   var search = req.param('search');
+  if (!search) search = "";
+  var page   = req.param('page');
+  if (!page){
+    page = 1;
+  }else{
+    if (String(page).match(/^\d*$/g)) {
+      page = Number(page);
+    }
+  }
+  
+  var show_records = 10;
+  var skip_records = show_records * (page-1);
   
   var cnt_words_select = " 0 AS tags_cnt, 0 AS name_cnt, 0 AS text_cnt \n";
   var cnt_words_where  = " 1=1 \n";
   var order_by = " ORDER BY date_modify DESC \n";
-  var options = {to_lower:1,like_begin:1};
+  var options = {    search:search,
+                     to_lower:1,
+                     like_begin:1,
+                     show_records:show_records,
+                     skip_records:skip_records,
+                     page:page,
+                     url_page_next: 'db='+req.db.id_db+'&search='+encodeURIComponent(search)+'&page='+(page+1),
+                     url_page_prev: 'db='+req.db.id_db+'&search='+encodeURIComponent(search)+'&page='+(page-1),
+                     
+                };
   if (search) {
     options.words_arr = get_search_words_arr(search);
     if (options.words_arr.length>0) {
@@ -217,7 +238,8 @@ function load_post_list(req, res, fn) {
   
   var sql = null;
   
-  sql  = "SELECT id_post,name,text,tags,date_modify,tags_cnt,name_cnt,text_cnt FROM \n";
+  show_records++;
+  sql  = "SELECT FIRST "+show_records+" SKIP "+skip_records+" id_post,name,text,tags,date_modify,tags_cnt,name_cnt,text_cnt FROM \n";
   sql += "(SELECT p.id_post,p.name,p.text,p.tags,p.date_modify,"+cnt_words_select+" FROM app1_post p) p\n";
   sql += "WHERE "+cnt_words_where;
   sql += order_by;
