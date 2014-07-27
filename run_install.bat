@@ -23,5 +23,9 @@ git clone https://github.com/mixamarciv/mixa_std_js_functions.git
 CALL bower install
 
 @echo ==================================================
+
+@copy db/app_db1.db db/app_db1.fdb
+
+
 @echo все
 @pause

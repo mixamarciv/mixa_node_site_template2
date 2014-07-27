@@ -16,6 +16,7 @@
   "dependencies": {
     "jquery": "*",
     "bootstrap": "*",
-    "spinjs": "*"
+    "spinjs": "*",
+    "underscore": "*"
   }
 }

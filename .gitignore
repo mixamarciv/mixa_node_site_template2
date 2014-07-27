@@ -8,6 +8,8 @@ public/templates/default/stylesheets/style.css
 db/**.fdb
 **.fdb
 
+routes/other/
+
 #############
 ## Windows detritus
 #############
@@ -30,3 +32,4 @@ public/templates/template_elements/bootstrap/themes/gray/example/1/**
 
 public/templates/template_elements/bootstrap/themes/gray/example/1/Bootswatch  Slate.htm
 public/templates/default/scripts/all.scripts.min.js
+

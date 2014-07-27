@@ -38,6 +38,7 @@ function render(req,res,data) {
 function load_process_info(req, res, fn) {
   
   var id_process = req.param('id_process');
+  if (!id_process) id_process = req.param('id');
   if (!id_process) {
     return fn(err_info(new Error(),'undefined id_process'));
   }
