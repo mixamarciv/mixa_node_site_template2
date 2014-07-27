@@ -4,6 +4,7 @@
 ::задаем основные переменные окружения
 @CALL "%curpath%set_path.bat"
 
+@git add **
 @git commit -m "%date% %time%" -a
 
 @cmd
