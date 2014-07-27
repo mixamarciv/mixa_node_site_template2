@@ -27,6 +27,7 @@
     "node-firebird": "*",
     "moment": "*",
     "chalk": "*",
-    "opener": "*"
+    "opener": "*",
+    "request": "*"
   }
 }
