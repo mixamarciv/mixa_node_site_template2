@@ -102,11 +102,13 @@ function execute_app_js(app_options,fn) {
             
             var fr = null;
             
-            try{
+            //try{
                 fr = require(file);
-            }catch(err){
-                return errf(err,"require js file error!",fn);
-            }
+            //}catch(err){
+            //    err.file = file;
+            //    err.require_js_file = file;
+            //    return errf(err,"require js file error!",fn);
+            //}
             
             var fn_end_app = fn;
             try{
