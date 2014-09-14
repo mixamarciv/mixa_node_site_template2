@@ -15,8 +15,8 @@
 :: ===========================================================================
 :: задаем основные пути для запуска скрипта
 @SET NODE_PATH_BIN=d:\program\nodejs
-@SET GIT_PATH=d:\program\nodejs\git
-@SET PYTHON_PATH=d:\program\nodejs\Python26
+@SET GIT_PATH=d:\program\git
+@SET PYTHON_PATH=d:\program\Python26
 
 
 ::@SET PATH=%WINDIR%;%WINDIR%\system32
