@@ -1,4 +1,4 @@
-:: ===========================================================================
+﻿:: ===========================================================================
 :: переходим в каталог запуска скрипта
 ::@SetLocal EnableDelayedExpansion
 :: this_file_path - путь к текущему бат/bat/cmd файлу
@@ -19,7 +19,7 @@
 @SET PYTHON_PATH=d:\program\Python26
 
 
-::@SET PATH=%WINDIR%;%WINDIR%\system32
+@SET PATH=%WINDIR%;%WINDIR%\system32
 @SET PATH=%PATH%;%PYTHON_PATH%;%GIT_PATH%;%GIT_PATH%\bin;%GIT_PATH%\cmd
 @SET PATH=%PATH%;%NODE_PATH_BIN%
 @SET PATH=%PATH%;%NODE_PATH_BIN%\node_modules\npm\node_modules

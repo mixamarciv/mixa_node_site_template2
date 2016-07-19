@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <link rel='stylesheet' href='<%- @this_template_path_web %>/stylesheets/all.styles.min.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<body style="padding: 10px; margin: 20px;">
+
+<div class="row">
+    <div class="col-md-11">
+      <form method="GET" action="/test" class="form-horizontal" id=search_form autocomplete="off" > <!-- enctype="multipart/form-data" -->
+	<input class="form-control" id="search" placeholder="введите текст для поиска" type="text" name=search value="<%- @search %>" />
+      </form>
+    </div>
+</div>
+
+<div id=data class="col-md-12">
+    тут будет список записей
+</div>
+
+<script language="javascript" src="<%- @this_template_path_web %>/scripts/all.scripts.min.js"></script>
+<script>
+    $(function(){
+	var obj_text_input = $("#search");
+	obj_text_input.keyup(function(){
+	    var text = obj_text_input.val()
+	    jQuery.ajax({
+		url: "/test",
+		data: {search: text, ajax: 1}
+	    })
+	    .done(function( data ) {
+		$("[id=data]").html(data)
+	    });
+	});
+    });
+</script>
+    
+</body>
+</html>
+
+
+
+
